@@ -29,6 +29,9 @@ let carritoInicial = {
   eliminarPorId: function(id) {
     this.productos = this.productos.filter(item => item.producto.id !== id);
     this.cuandoSeEliminaUnProducto()  
+  },
+  tieneItems: function() {
+    return this.productos.length > 0
   }
 };
 

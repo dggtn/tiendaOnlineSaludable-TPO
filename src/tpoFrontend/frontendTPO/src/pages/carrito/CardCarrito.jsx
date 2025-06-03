@@ -1,27 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-export default function CardCarrito(props) {
+export default function CardCarrito({producto, cantidad, carrito}) {
+
+  const [imagenUrl, setImagenUrl] = useState("")
+
+    useEffect(() => {
+        async function fetchImagenes() {
+            try {
+                const response = await fetch(`http://localhost:4002/productos/${producto.id}/imagenes`);
+                const imagenes = await response.json();
+                if (imagenes.length > 0) {
+                    setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`);
+                }
+            } catch (error) {
+                setImagenUrl("");
+            }
+        }
+        fetchImagenes();
+    }, []);
+
 
 function eliminarProducto() { 
-  props.carrito.eliminarPorId(props.producto.id)
+  carrito.eliminarPorId(producto.id)
 }
 
   return (
     <div className="flex flex-wrap justify-between border-b dark:border-slate-700 max-w-4xl m-auto p-2 mb-5 ">
       <div className="flex">
-        <Link to={`productos/${props.producto.id}`}>
+        <Link to={`productos/${producto.id}`}>
           <img
             className="w-32 rounded"
-            src={props.producto.imagen}
-            alt={props.producto.nombre}
+            src={imagenUrl}
+            alt={producto.nombre}
           />
         </Link>
         <div className="">
-          <Link to={`productos/${props.producto.id}`}>
+          <Link to={`productos/${producto.id}`}>
             <p className="text-lg ml-2 dark:text-slate-200">
-              {props.producto.nombre} x {props.cantidad}
+              {producto.nombre} x {cantidad}
             </p>
           </Link>
           <button onClick={eliminarProducto} className="text-base ml-2 text-red-400">
@@ -39,8 +57,8 @@ function eliminarProducto() {
         </div>
       </div>
       <div className="text-lg m-2 dark:text-slate-200">
-        <span>(precio unitario: ${props.producto.precio}) - </span>
-        <span>${props.producto.precio * props.cantidad}</span>
+        <span>(precio unitario: ${producto.precio}) - </span>
+        <span>${producto.precio * cantidad}</span>
       </div>
     </div>
   );

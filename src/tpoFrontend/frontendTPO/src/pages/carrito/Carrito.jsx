@@ -3,12 +3,10 @@ import CarritoVacio from './CarritoVacio';
 import ListaCarrito from './ListaCarrito';
 
 
-export default function carrito({autenticacion}) {
-  
-    const lista = 2;
+export default function Carrito({autenticacion, carrito}) {
   return (
      <main>
-        {lista ? <ListaCarrito autenticacion={autenticacion}/>:<CarritoVacio/> }
+        { carrito.tieneItems() ? <ListaCarrito autenticacion={autenticacion} carrito={carrito}/>:<CarritoVacio/> }
     </main>
   )
 }

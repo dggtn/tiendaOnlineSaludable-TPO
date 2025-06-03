@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardCarrito from "./CardCarrito";
 import CheckOut from "./checkOut";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,22 @@ export default function ListaCarrito({ autenticacion, carrito }) {
   const navigate = useNavigate()
   
   const [checkOut, setCheckOut] = useState(false);
+   const [imagenUrl, setImagenUrl] = useState("");
+
+    // useEffect(() => {
+    //     async function fetchImagenes() {
+    //         try {
+    //             const response = await fetch(`http://localhost:4002/productos/${producto.id}/imagenes`);
+    //             const imagenes = await response.json();
+    //             if (imagenes.length > 0) {
+    //                 setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`);
+    //             }
+    //         } catch (error) {
+    //             setImagenUrl("");
+    //         }
+    //     }
+    //     fetchImagenes();
+    // }, [producto.id]);
 
   return (
     <>

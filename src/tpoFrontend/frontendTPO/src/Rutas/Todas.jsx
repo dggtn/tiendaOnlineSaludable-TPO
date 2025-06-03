@@ -10,7 +10,7 @@ import Politicas from "../pages/seccionesFooter/Politicas";
 import Nosotros from "../pages/seccionesFooter/Nosotros";
 import TrabajaConNosotros from "../pages/seccionesFooter/TrabajaConNosotros";
 import FormularioContacto from "../pages/seccionesFooter/FormularioContacto";
-import ListaCarrito from "../pages/carrito/ListaCarrito";
+import Carrito from "../pages/carrito/Carrito";
 
 export const Rutas = ({autenticacion, carrito}) => {
 
@@ -33,7 +33,7 @@ export const Rutas = ({autenticacion, carrito}) => {
           path="/carrito"
           element={
             // <ProtectedRoute autenticacion={autenticacion}>
-              <ListaCarrito autenticacion={autenticacion} carrito={carrito}/>
+              <Carrito autenticacion={autenticacion} carrito={carrito}/>
             // </ProtectedRoute>
           }
         />
