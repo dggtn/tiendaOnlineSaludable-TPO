@@ -22,7 +22,7 @@ export default function CardProducto(props) {
       navigate(`/productos/${props.producto.id}`)      
     }
 
-    const sinStock = props.producto.cantidad === 0;
+    const sinStock = props.producto.cantidad - props.carrito.obtenerCantidadSeleccionada(props.producto.id) === 0;
 
   return ( 
     <div className="pb-4 m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">

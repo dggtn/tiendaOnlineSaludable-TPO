@@ -5,13 +5,16 @@ export default function InformacionProducto({
   cantidad,
   setCantidad,
   agregarAlCarrito,
+  carrito
 }) {
   const incrementar = () => {
-    if (cantidad < producto.cantidad) {
+    const cantidadEnCarrito = carrito.obtenerCantidadSeleccionada(producto.id)
+    const maximo = producto.cantidad - cantidadEnCarrito
+    if (cantidad < maximo) {
         setCantidad((valor) => valor + 1);
     }
     else {
-        toast.info(`Solo hay ${producto.cantidad} unidades disponibles.`);
+        toast.info(`Solo hay ${maximo} unidades disponibles.`);
     }
   };
 

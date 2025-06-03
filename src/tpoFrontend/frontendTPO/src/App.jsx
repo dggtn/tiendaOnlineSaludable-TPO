@@ -15,7 +15,14 @@ let itemCarrito = {
 let carritoInicial = {
   productos: [],
   agregar: function(cantidad, producto) {
-    this.productos.push({cantidad: cantidad, producto: producto})
+
+    let itemEnCarrito = this.productos.find(item => item.producto.id === producto.id)
+    if (itemEnCarrito !== undefined) {
+      itemEnCarrito.cantidad += cantidad
+    } else {
+      this.productos.push({cantidad: cantidad, producto: producto})
+    }
+
      this.cuandoSeAgregaUnProducto()
   },
   cuandoSeAgregaUnProducto: function (){},
@@ -32,6 +39,10 @@ let carritoInicial = {
   },
   tieneItems: function() {
     return this.productos.length > 0
+  },
+  obtenerCantidadSeleccionada: function(idProducto) {
+    let itemEnCarrito = this.productos.find(item => item.producto.id === idProducto)
+    return itemEnCarrito === undefined ? 0 : itemEnCarrito.cantidad
   }
 };
 

@@ -53,6 +53,7 @@ export default function DetalleProducto({carrito}) {
           cantidad={cantidad}
           setCantidad={setCantidad}
           agregarAlCarrito={agregarAlCarrito}
+          carrito={carrito}
         />
       </div>
     </main>
