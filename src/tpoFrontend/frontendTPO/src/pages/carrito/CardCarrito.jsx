@@ -57,26 +57,26 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
         </Link>
         <div className="">
           <Link to={`productos/${producto.id}`}>
-            <p className="text-lg ml-2 dark:text-slate-200">
-              {producto.nombre} x {cantidad}
-            </p>
+            <h2 className="text-center  ml-3 text-xl mb-5 text-lime-900 font-bold mx-20 ">
+              {producto.nombre} 
+            </h2>
 
-            <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="flex items-center mb-5 ">
               <button
                 onClick={decrementar}
-                className="bg-lime-700 text-white rounded-lg px-6 py-3 sm:px-8 sm:py-4 hover:bg-lime-800 transition"
+                className="bg-lime-700 ml-3 text-white rounded-lg px-1 py-1 sm:px-3 sm:py-4 hover:bg-lime-800 transition"
                 aria-label="Disminuir cantidad"
               >
                 -
               </button>
 
-              <span className="w-16 sm:w-[260px] py-3 sm:py-4 text-xl sm:text-2xl font-bold rounded-lg text-center bg-lime-100 text-lime-900">
+              <span className="w-8 sm:w-[100px] h-auto py-3 sm:py-4 text-xl sm:text-2xl font-bold rounded-lg text-center bg-lime-100 text-lime-900">
                 {cantidad}
               </span>
 
               <button
                 onClick={incrementar}
-                className="bg-lime-700 text-white rounded-lg px-6 py-3 sm:px-8 sm:py-4 hover:bg-lime-800 transition"
+                className="bg-lime-700 text-white rounded-lg px-1 py-1 sm:px-3 sm:py-4 hover:bg-lime-800 transition"
                 aria-label="Aumentar cantidad"
               >
                 +
@@ -85,14 +85,14 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
           </Link>
           <button
             onClick={() => setAbierto(true)}
-            className="text-base ml-2 text-red-400"
+            className="text-base   text-red-400"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
               fill="currentColor"
-              className="bi bi-trash3-fill"
+              className="bi bi-trash3-fill size-10 mx-20"
               viewBox="0 0 16 16"
             >
               <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5" />
