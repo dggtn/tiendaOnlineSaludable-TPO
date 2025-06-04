@@ -77,7 +77,7 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
       <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
       <div
         id="authentication-modal"
-        tabIndex="-1"
+        tabIndex={-1}
         className="mt-5 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center flex"
         aria-modal="true"
         role="dialog"
