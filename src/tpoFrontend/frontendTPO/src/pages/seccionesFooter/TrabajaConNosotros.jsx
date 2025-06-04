@@ -106,7 +106,11 @@ export default function TrabajaConNosotros() {
         </div>
       </section>
 
- 
+      <section className="bg-gray-100 p-6 text-center">
+        <h2 className="text-xl font-semibold mb-2 text-lime-900">¿Te interesa sumarte?</h2>
+        <p className="text-lime-900">Envíanos tu CV a <a href="mailto:contacto@tiendaonlinesaludable.com" className="underline text-lime-800">contacto@tiendaonlinesaludable.com</a></p>
+      </section>
+
     </div>
   );
 }
