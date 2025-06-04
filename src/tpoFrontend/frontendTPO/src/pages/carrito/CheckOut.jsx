@@ -48,7 +48,9 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
           }, 2200);
         }
       } catch (error) {
-        toast.error("Ocurrió un error procesando el pago. " + error);
+        toast.error("Ocurrió un error procesando el pago. " + error, {
+      position: 'top-center',
+    });
       }
     }
   };
@@ -63,7 +65,9 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
       formulario.codigo !== "";
 
       if (!valido) {
-        toast.error("Completar el formulario");
+        toast.error("Completar el formulario", {
+      position: 'top-center',
+    });
       }
     return valido;
   }

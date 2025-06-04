@@ -13,7 +13,9 @@ export default function CrearProductoForm({ autenticacion }) {
     e.preventDefault();
 
     if (!nombre.trim() || !descripcion.trim()) {
-      toast.warn("Por favor, completá todos los campos antes de crear el producto.");
+      toast.warn("Por favor, completá todos los campos antes de crear el producto.", {
+      position: 'top-center',
+    });
       return;
     }
 
@@ -34,7 +36,9 @@ export default function CrearProductoForm({ autenticacion }) {
       });
 
       if (response.ok) {
-        toast.success("Producto creado con éxito.");
+        toast.success("Producto creado con éxito.", {
+      position: 'top-center',
+    });
         setNombre("");
         setDescripcion("");
         setCantidad("");
@@ -42,10 +46,14 @@ export default function CrearProductoForm({ autenticacion }) {
         setCategoria("");
       } else {
         const data = await response.json();
-        toast.error("Error: No se pudo crear el producto.");
+        toast.error("Error: No se pudo crear el producto.", {
+      position: 'top-center',
+    });
       }
     } catch (error) {
-      toast.error("Error de conexión con el servidor.");
+      toast.error("Error de conexión con el servidor.", {
+      position: 'top-center',
+    });
     }
   }
   

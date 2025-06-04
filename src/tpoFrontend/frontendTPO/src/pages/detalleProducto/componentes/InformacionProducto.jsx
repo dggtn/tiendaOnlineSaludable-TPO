@@ -14,7 +14,9 @@ export default function InformacionProducto({
         setCantidad((valor) => valor + 1);
     }
     else {
-        toast.info(`Solo hay ${maximo} unidades disponibles.`);
+        toast.info(`Solo hay ${maximo} unidades disponibles.`, {
+      position: 'top-center',
+    });
     }
   };
 

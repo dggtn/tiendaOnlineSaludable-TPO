@@ -16,7 +16,9 @@ const SignUpForm = () => {
       email.trim() === "" ||
       password.trim() === ""
     ) {
-      toast.error("Todos los campos son obligatorios");
+      toast.error("Todos los campos son obligatorios", {
+      position: 'top-center',
+    });
       return;
     }
 
@@ -43,7 +45,9 @@ const SignUpForm = () => {
         toast.success("Registro exitoso");
         navigate("/productos");
     } else {
-        toast.error(data.message);
+        toast.error(data.message, {
+      position: 'top-center',
+    });
     }
     
   };

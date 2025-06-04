@@ -32,13 +32,17 @@ export default function DetalleProducto({carrito}) {
 
   const agregarAlCarrito = () => {
   if (cantidad === 0) {
-    toast.warning("Debes seleccionar al menos 1 unidad para agregar al carrito.");
+    toast.warning("Debes seleccionar al menos 1 unidad para agregar al carrito.", {
+      position: 'top-center',
+    });
     return;
   }
   
   if (producto) {
     carrito.agregar(cantidad, producto)
-    toast.success(`${producto.nombre} ha sido agregado a tu carrito`)
+    toast.success(`${producto.nombre} ha sido agregado a tu carrito`, {
+      position: 'top-center',
+    })
     navigate('/carrito')
   }
 };

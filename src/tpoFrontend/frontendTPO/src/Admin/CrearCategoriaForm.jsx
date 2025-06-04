@@ -11,7 +11,9 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
         e.preventDefault();
 
         if (!nombre.trim()) {
-            toast.warn("Por favor, completá el campo.");
+            toast.warn("Por favor, completá el campo.", {
+      position: 'top-center',
+    });
             return;
         }
 
@@ -26,15 +28,21 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
             });
 
             if (response.ok) {
-                toast.success("Categoría creada con éxito.");
+                toast.success("Categoría creada con éxito.", {
+      position: 'top-center',
+    });
                 setNombre("");
                 
             } else {
                 const data = await response.json();
-                toast.error("Error: No se pudo crear la categoría.");
+                toast.error("Error: No se pudo crear la categoría.", {
+      position: 'top-center',
+    });
             }
         } catch (error) {
-            toast.error("Error de conexión con el servidor.");
+            toast.error("Error de conexión con el servidor.", {
+      position: 'top-center',
+    });
         }
     }
 

@@ -12,7 +12,9 @@ const LoginForm = ({ callbackLogin }) => {
 
   const handleClick = async () => {
     if (email.trim() === "" || password.trim() === "") {
-      toast.error("Los campos no pueden estar vacíos");
+      toast.error("Los campos no pueden estar vacíos", {
+      position: 'top-center',
+    });
       return;
     }
 
@@ -44,7 +46,9 @@ const LoginForm = ({ callbackLogin }) => {
 
       callbackLogin(auth);
 
-      toast.success("Inicio de sesión exitoso");
+      toast.success("Inicio de sesión exitoso", {
+      position: 'top-center',
+    });
       
       if (auth.rol === "CLIENTE") {
         navigate("/");
@@ -52,7 +56,9 @@ const LoginForm = ({ callbackLogin }) => {
         navigate("/admin");
       }
     } else {
-      toast.error(data.message);
+      toast.error(data.message, {
+      position: 'top-center',
+    });
     }
   };
 
