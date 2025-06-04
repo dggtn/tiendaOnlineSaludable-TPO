@@ -27,8 +27,6 @@ export default function SideBar() {
   ];
 
   function onLogout(event) {
-    event.preventDefault();
-    localStorage.removeItem("token");
     window.location.href = "/sesion";
   }
 
