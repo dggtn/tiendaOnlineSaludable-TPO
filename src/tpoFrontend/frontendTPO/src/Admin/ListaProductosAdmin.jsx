@@ -16,6 +16,8 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
     }, []);
 
     async function eliminarProducto(id) {
+        const confirmar = window.confirm("¿Está seguro que desea eliminar el producto?");
+        if (!confirmar) return;
         await fetch(`http://localhost:4002/productos/${id}`, {
             method: "DELETE",
             headers: {
