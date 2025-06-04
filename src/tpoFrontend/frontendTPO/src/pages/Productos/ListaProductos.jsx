@@ -36,7 +36,7 @@ export const ListaProductos = ({carrito}) => {
     fetchProductos();
     setLoading(false);
   
-  }, []);
+  }, [queryParams]);
 
    if (loading) {
     return <p className="text-lime-950 font-bold">Cargando...</p>;

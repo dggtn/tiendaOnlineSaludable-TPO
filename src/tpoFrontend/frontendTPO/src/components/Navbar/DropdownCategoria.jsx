@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function DropdownCategoria({ items }) {
   const [abierto, setAbierto] = useState(false);
@@ -34,7 +35,9 @@ export default function DropdownCategoria({ items }) {
       >
         Tienda
         <svg
-          className={`w-2.5 h-2.5 ms-2.5 transition-transform ${abierto ? "rotate-180" : ""}`}
+          className={`w-2.5 h-2.5 ms-2.5 transition-transform ${
+            abierto ? "rotate-180" : ""
+          }`}
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -54,20 +57,22 @@ export default function DropdownCategoria({ items }) {
         <div className="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
             <li>
-              <a
-                href="/productos"
+              <NavLink
+                to="/productos"
                 className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                 onClick={() => setAbierto(!abierto)}
               >
                 Ver todos
-              </a>
+              </NavLink>
               {items?.map((item, indice) => (
-                <a
+                <NavLink
+                  to={`/productos?categoria=${item.descripcion}`}
                   key={indice}
-                  href={`/productos?categoria=${item.descripcion}`}
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  onClick={() => setAbierto(!abierto)}
                 >
                   {item.descripcion}
-                </a>
+                </NavLink>
               ))}
             </li>
           </ul>
