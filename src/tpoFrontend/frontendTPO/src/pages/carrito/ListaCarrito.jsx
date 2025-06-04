@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardCarrito from "./CardCarrito";
-import CheckOut from "./CheckOut";
+import CheckOut from "./checkOut";
 import { useNavigate } from "react-router-dom";
 
 export default function ListaCarrito({ autenticacion, carrito }) {
@@ -46,7 +46,13 @@ export default function ListaCarrito({ autenticacion, carrito }) {
           </button>
         </div>
       </section>
-      {checkOut && <CheckOut setCheckOut={setCheckOut} carrito={carrito} autenticacion={autenticacion} />}
+      {checkOut && (
+        <CheckOut
+          setCheckOut={setCheckOut}
+          carrito={carrito}
+          autenticacion={autenticacion}
+        />
+      )}
     </>
   );
 }

@@ -1,3 +1,4 @@
+import ModalConfirmacion from "../../Admin/ModalConfirmacion";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -5,6 +6,7 @@ import { Link } from "react-router-dom";
 export default function CardCarrito({producto, cantidad, carrito}) {
 
   const [imagenUrl, setImagenUrl] = useState("")
+  const[abierto,setAbierto] = useState(false)
 
     useEffect(() => {
         async function fetchImagenes() {
@@ -21,6 +23,12 @@ export default function CardCarrito({producto, cantidad, carrito}) {
         fetchImagenes();
     }, []);
 
+  
+
+    function cerrar(){
+      setAbierto(false)
+
+    }
 
 function eliminarProducto() { 
   carrito.eliminarPorId(producto.id)
@@ -42,7 +50,7 @@ function eliminarProducto() {
               {producto.nombre} x {cantidad}
             </p>
           </Link>
-          <button onClick={eliminarProducto} className="text-base ml-2 text-red-400">
+          <button onClick={()=>setAbierto(true)} className="text-base ml-2 text-red-400">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -60,6 +68,6 @@ function eliminarProducto() {
         <span>(precio unitario: ${producto.precio}) - </span>
         <span>${producto.precio * cantidad}</span>
       </div>
-    </div>
+      <ModalConfirmacion open={abierto} onClose={cerrar} onConfirm={eliminarProducto} mensaje={"Seguro quieres eliminar este producto"}   /> </div>
   );
 }
