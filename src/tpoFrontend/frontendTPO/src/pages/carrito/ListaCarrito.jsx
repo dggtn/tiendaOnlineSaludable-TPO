@@ -35,14 +35,15 @@ export default function ListaCarrito({ autenticacion, carrito }) {
             <span>${carrito.calcularTotal()}</span>
           </p>
         </div>
-        <div className="text-right my-5">
-          <button onClick={() => navigate("/productos")}>Volver</button>
+        <div className="flex justify-between my-2">
+          <button className="text-white bg-lime-500 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-base px-5 py-2.5 mr-2 mb-2 dark:bg-lime-600 dark:hover:bg-lime-700 focus:outline-none dark:focus:ring-lime-800"
+       onClick={() => navigate("/productos")}>Volver</button>
           <button
             onClick={() => setCheckOut(true)}
             type="button"
             className="text-white bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 font-medium rounded-lg text-base px-5 py-2.5 mr-2 mb-2 dark:bg-lime-600 dark:hover:bg-lime-700 focus:outline-none dark:focus:ring-lime-800"
           >
-            PAGAR <i className="ml-2 bi bi-arrow-right"></i>
+            Pagar <i className="ml-2 bi bi-arrow-right"></i>
           </button>
         </div>
       </section>
