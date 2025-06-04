@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardCarrito from "./CardCarrito";
-import CheckOut from "./checkOut";
+import CheckOut from "./CheckOut";
 import { useNavigate } from "react-router-dom";
 
 export default function ListaCarrito({ autenticacion, carrito }) {

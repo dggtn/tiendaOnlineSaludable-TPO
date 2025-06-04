@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import CardProductoAdmin from "./CardProductoAdmin.jsx";
+import ModalConfirmacion from "./ModalConfirmacion.jsx";
 
 
 export const ListaProductosAdmin = ({ autenticacion }) => {
     const [productos, setProductos] = useState([]);
     const [productoEditar, setProductoEditar] = useState(null); 
+    const [modalOpen, setModalOpen] = useState(false);
+    const [productoAEliminar, setProductoAEliminar] = useState(null);
 
     useEffect(() => {
         async function fetchProductos() {
@@ -15,15 +18,21 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
         fetchProductos();
     }, []);
 
-    async function eliminarProducto(id) {
-        const confirmar = window.confirm("¿Está seguro que desea eliminar el producto?");
-        if (!confirmar) return;
-        await fetch(`http://localhost:4002/productos/${id}`, {
+    function solicitarEliminarProducto(id) {
+        setProductoAEliminar(id);
+        setModalOpen(true);
+    }
+
+    async function eliminarProductoConfirmado() {
+        setModalOpen(false);
+        if (!productoAEliminar) return;
+        await fetch(`http://localhost:4002/productos/${productoAEliminar}`, {
             method: "DELETE",
             headers: {
                 Authorization: "Bearer " + autenticacion.accessToken,
             },
         });
+        setProductoAEliminar(null);
         const response = await fetch("http://localhost:4002/productos");
         const data = await response.json();
         setProductos(data);
@@ -159,6 +168,12 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
 
     return (
         <main>
+            <ModalConfirmacion
+                open={modalOpen}
+                onClose={() => setModalOpen(false)}
+                onConfirm={eliminarProductoConfirmado}
+                mensaje="¿Está seguro que desea eliminar el producto?"
+            />
             <section className="my-5">
                 <h2 className="text-lime-900 text-2xl font-semibold text-center dark:text-lime-900">
                     Catálogo de Productos
@@ -170,7 +185,7 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                             <CardProductoAdmin
                                 key={productoEditar.id}
                                 producto={productoEditar}
-                                onEliminar={eliminarProducto}
+                                onEliminar={solicitarEliminarProducto}
                                 onEditar={() => setProductoEditar(productoEditar)}
                             />
                         </div>
@@ -182,7 +197,7 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                                 <CardProductoAdmin
                                     key={producto.id}
                                     producto={producto}
-                                    onEliminar={eliminarProducto}
+                                    onEliminar={solicitarEliminarProducto}
                                     onEditar={() => setProductoEditar(producto)}
                                 />
                             ))
