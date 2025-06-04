@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Inicio from "../pages/Inicio/Inicio";
 import DetalleProducto from "../pages/detalleProducto/DetalleProducto";
 import { ListaProductos } from "../pages/Productos/ListaProductos";
@@ -16,7 +16,6 @@ export const Rutas = ({autenticacion, carrito}) => {
 
 
   return (
-    <BrowserRouter>
       <Routes>
         <Route path="/" element={<Inicio />} />
         <Route path="/nosotros" element={<Nosotros  />} />
@@ -38,6 +37,5 @@ export const Rutas = ({autenticacion, carrito}) => {
           }
         />
       </Routes>
-    </BrowserRouter>
   );
 };

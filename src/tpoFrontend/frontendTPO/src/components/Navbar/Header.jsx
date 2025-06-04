@@ -2,6 +2,7 @@ import DropdownCategoria from "./DropdownCategoria";
 import Buscador from "./Buscador";
 import React, { useEffect, useState } from "react";
 import { DropdownUsuarioLogueado } from "./DropdownUsuarioLogueado";
+import { NavLink } from "react-router-dom";
 
 export default function Header({ autenticacion }) {
   const [openNav, setOpenNav] = useState(false);
@@ -64,8 +65,8 @@ export default function Header({ autenticacion }) {
     <main>
       <nav className="bg-white border-gray-500 dark:bg-lime-900 dark:border-gray-700 text-lime-900">
         <div className="mx-auto flex flex-wrap items-center justify-between p-4">
-          <a
-            href="/"
+          <NavLink
+            to={"/"}
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <svg
@@ -85,7 +86,7 @@ export default function Header({ autenticacion }) {
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Tienda Online Saludable
             </span>
-          </a>
+          </NavLink>
 
           <button
             data-collapse-toggle="navbar-dropdown"
@@ -154,11 +155,8 @@ export default function Header({ autenticacion }) {
                 </li>
               ) : (
                 <li>
-                  <a
-                    href="/sesion"
-                    className="flex items-center hover:text-lime-700 dark:text-white dark:hover:text-lime-300"
-                  >
-                    <svg
+                 <NavLink to={"/sesion"} className="flex items-center hover:text-lime-700 dark:text-white dark:hover:text-lime-300">
+                  <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
@@ -168,7 +166,7 @@ export default function Header({ autenticacion }) {
                     >
                       <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                     </svg>
-                  </a>
+                  </NavLink>
                 </li>
               )}
 
@@ -190,8 +188,8 @@ export default function Header({ autenticacion }) {
                 </button>
               </li>
               <li>
-                <a
-                  href="/carrito"
+                <NavLink
+                  to={"/carrito"}
                   className="hover:text-lime-700 dark:text-white dark:hover:text-lime-300"
                 >
                   <svg
@@ -204,7 +202,7 @@ export default function Header({ autenticacion }) {
                   >
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
                   </svg>
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

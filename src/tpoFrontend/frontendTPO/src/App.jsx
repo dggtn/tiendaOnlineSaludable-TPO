@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import { Rutas } from "./Rutas/Todas";
 import { useState } from "react";
 import RutasProtegidas from "./Rutas/RutasProtegidas";
+import { BrowserRouter } from "react-router-dom";
 
 let itemCarrito = {
   cantidad:0,
@@ -72,13 +73,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header autenticacion={autenticacion} />
-      <Rutas autenticacion={autenticacion} carrito={carrito} />
-      <RutasProtegidas
-        autenticacion={autenticacion}
-        callbackLogin={alHacerLogin}
-      />
-      <Footer />
+      <BrowserRouter>
+        <Header autenticacion={autenticacion} />
+        <Rutas autenticacion={autenticacion} carrito={carrito} />
+        <RutasProtegidas
+          autenticacion={autenticacion}
+          callbackLogin={alHacerLogin}
+        />
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

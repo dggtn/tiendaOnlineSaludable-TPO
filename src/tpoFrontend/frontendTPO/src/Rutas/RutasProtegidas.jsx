@@ -1,6 +1,6 @@
 import InicioAdmin from "../admin/InicioAdmin";
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Auth from "../pages/Sesion/Auth";
 import TablaUsuarios from "../admin/TablaUsuarios";
 import { ProtectedRoute } from "./ProtectedRoute";
@@ -13,7 +13,6 @@ import Register from "../pages/Sesion/Register";
 
 export default function RutasProtegidas({ callbackLogin, autenticacion }) {
   return (
-    <BrowserRouter>
       <Routes>
         <Route
           path="/sesion"
@@ -80,6 +79,5 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
           />
         </Route>
       </Routes>
-    </BrowserRouter>
   );
 }
