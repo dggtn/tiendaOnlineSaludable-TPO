@@ -34,6 +34,7 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
         const [cantidad, setCantidad] = useState(productoEditar.cantidad);
         const [categoria, setCategoria] = useState(productoEditar.categoria);
         const [categorias, setCategorias] = useState([]);
+        const [imagenFile, setImagenFile] = useState(null);
 
         useEffect(() => {
             async function fetchCategorias() {
@@ -61,6 +62,21 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                     categoria_id: categoria.id, 
                 }),
             });
+
+            if (imagenFile) {
+            const formData = new FormData();
+            formData.append("file", imagenFile);
+            formData.append("productoId", productoEditar.id);
+
+            await fetch(`http://localhost:4002/productos/${productoEditar.id}/imagen`, {
+                method: "POST",
+                headers: {
+                    Authorization: "Bearer " + autenticacion.accessToken,
+                },
+                body: formData,
+            });
+        }
+
             setProductoEditar(null);
             const response = await fetch("http://localhost:4002/productos");
             const data = await response.json();
@@ -125,6 +141,14 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                         <option key={cat.id} value={cat.id}>{cat.descripcion}</option>
                     ))}
                 </select>
+                <label className="block mb-1 font-medium" htmlFor="imagen-input">Imagen</label>
+                <input
+                    id="imagen-input"
+                    type="file"
+                    accept="image/*"
+                    className="w-full border border-gray-200 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-lime-500"
+                    onChange={(e) => setImagenFile(e.target.files[0])}
+                />
                 <button type="submit" className="bg-lime-600 text-white px-4 py-2 rounded mr-2">Guardar</button>
                 <button type="button" onClick={() => setProductoEditar(null)} className="bg-gray-400 text-white px-4 py-2 rounded">Cancelar</button>
             </form>
