@@ -4,25 +4,9 @@ import CheckOut from "./checkOut";
 import { useNavigate } from "react-router-dom";
 
 export default function ListaCarrito({ autenticacion, carrito }) {
-  const navigate = useNavigate()
-  
-  const [checkOut, setCheckOut] = useState(false);
-   const [imagenUrl, setImagenUrl] = useState("");
+  const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     async function fetchImagenes() {
-    //         try {
-    //             const response = await fetch(`http://localhost:4002/productos/${producto.id}/imagenes`);
-    //             const imagenes = await response.json();
-    //             if (imagenes.length > 0) {
-    //                 setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`);
-    //             }
-    //         } catch (error) {
-    //             setImagenUrl("");
-    //         }
-    //     }
-    //     fetchImagenes();
-    // }, [producto.id]);
+  const [checkOut, setCheckOut] = useState(false);
 
   return (
     <>
@@ -33,9 +17,15 @@ export default function ListaCarrito({ autenticacion, carrito }) {
       </section>
 
       <section>
-        {carrito.productos.length > 0 && carrito.productos.map((item) => (
-          <CardCarrito key={item.producto.id} producto={item.producto} cantidad={item.cantidad} carrito={carrito}/>
-        ))}
+        {carrito.productos.length > 0 &&
+          carrito.productos.map((item) => (
+            <CardCarrito
+              key={item.producto.id}
+              producto={item.producto}
+              cantidad={item.cantidad}
+              carrito={carrito}
+            />
+          ))}
       </section>
 
       <section className="max-w-4xl m-auto">
@@ -46,7 +36,7 @@ export default function ListaCarrito({ autenticacion, carrito }) {
           </p>
         </div>
         <div className="text-right my-5">
-          <button onClick={() => navigate('/productos')}>Volver</button>
+          <button onClick={() => navigate("/productos")}>Volver</button>
           <button
             onClick={() => setCheckOut(true)}
             type="button"
@@ -56,7 +46,7 @@ export default function ListaCarrito({ autenticacion, carrito }) {
           </button>
         </div>
       </section>
-      {checkOut && <CheckOut setCheckOut={setCheckOut} />}
+      {checkOut && <CheckOut setCheckOut={setCheckOut} carrito={carrito} autenticacion={autenticacion} />}
     </>
   );
 }

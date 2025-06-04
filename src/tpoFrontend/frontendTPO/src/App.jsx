@@ -44,6 +44,9 @@ let carritoInicial = {
   obtenerCantidadSeleccionada: function(idProducto) {
     let itemEnCarrito = this.productos.find(item => item.producto.id === idProducto)
     return itemEnCarrito === undefined ? 0 : itemEnCarrito.cantidad
+  },
+  vaciar: function(){
+    this.productos = []
   }
 };
 
