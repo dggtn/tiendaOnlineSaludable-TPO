@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -13,24 +13,19 @@ export default function Footer() {
 
             <ul className="text-gray-500 dark:text-lime-900 font-medium">
               <li className="mb-4">
-                <a href="nosotros" className=" hover:underline">
+                <NavLink to={"nosotros"} className=" hover:underline">
                   Sobre nosotros
-                </a>
+                </NavLink>
               </li>
               <li className="mb-4">
-                <a  href="/trabajaConNosotros" className="hover:underline">
+                <NavLink  to="/trabajaConNosotros" className="hover:underline">
                   Trabaja con nosostros
-                </a>
+                </NavLink>
               </li>
               <li className="mb-4">
-                <a  href="/tiendas" className="hover:underline">
+                <NavLink  to="/tiendas" className="hover:underline">
                   Nuestras tiendas
-                </a>
-              </li>
-              <li className="mb-4">
-                <a  href="/blog" className="hover:underline">
-                  Blog
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -40,24 +35,9 @@ export default function Footer() {
             </a>
             <ul className="text-gray-500 dark:text-lime-900 font-medium">
               <li className="mb-4">
-                <a  href="/" className="hover:underline">
+                <NavLink  to="/" className="hover:underline">
                   Inicio
-                </a>
-              </li>
-              <li className="mb-4">
-                <a  href="/carrito" className="hover:underline">
-                  Tu carrito de compras
-                </a>
-              </li>
-              <li className="mb-4">
-                <a  href="/categorias"className="hover:underline">
-                  Categorias
-                </a>
-              </li>
-              <li className="mb-4">
-                <a  href="/contactanos" className="hover:underline">
-                  Contactanos
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -67,26 +47,26 @@ export default function Footer() {
             </a>
             <ul className="text-gray-500 dark:text-lime-900 font-medium">
               <li className="mb-4">
-                <a href="/politicaPrivacidad" className="hover:underline">
+                <NavLink to="/politicaPrivacidad" className="hover:underline">
                   Politica de privacidad
-                </a>
+                </NavLink>
               </li>
               <li className="mb-4">
-                <a href="/licencia" className="hover:underline">
+                <NavLink to="/licencia" className="hover:underline">
                   Licencia
-                </a>
+                </NavLink>
               </li>
               <li className="mb-4">
-                <a href="condiciones" className="hover:underline">
+                <NavLink to="condiciones" className="hover:underline">
                   Terminos &amp; Condiciones
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
         </div>
         <div className="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
           <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
-            © 2025 <a href="https://flowbite.com/">TiendaOnline™</a>. Todos los
+            © 2025 TiendaOnline™. Todos los
             derechos reservados.
           </span>
           <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
