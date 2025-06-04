@@ -39,7 +39,7 @@ function TiendaOnlineSaludable() {
           <li><strong>0% transporte aéreo:</strong> Priorizamos el origen más cercano para minimizar el impacto ambiental.</li>
         </ul>
       </section>
-      <Banner1/>
+      {/* <Banner1/> */}
     </div>
   );
 }

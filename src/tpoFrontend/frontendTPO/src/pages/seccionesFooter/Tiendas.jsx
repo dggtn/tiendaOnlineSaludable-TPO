@@ -6,7 +6,7 @@ export default function Tiendas() {
       <section className="flex flex-col lg:flex-row text-lime-900 items-center ">
         <div className="text my-5">
           <h1 className="text-5xl text-lime-900 font-bold">
-            Tienda zona norte
+            Tienda Zona norte
           </h1>
           <p className="text-2xl my-7 px-1 text-lime-900">
             Primera dietética natural fundada en 1980{" "}

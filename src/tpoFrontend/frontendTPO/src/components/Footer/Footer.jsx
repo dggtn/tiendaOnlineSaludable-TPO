@@ -39,6 +39,11 @@ export default function Footer() {
                   Inicio
                 </NavLink>
               </li>
+              <li className="mb-4">
+                <NavLink to="/contactanos" className="hover:underline">
+                  Contáctanos
+                </NavLink>
+              </li>
             </ul>
           </div>
           <div>

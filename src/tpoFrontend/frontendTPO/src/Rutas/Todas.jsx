@@ -12,31 +12,30 @@ import TrabajaConNosotros from "../pages/seccionesFooter/TrabajaConNosotros";
 import FormularioContacto from "../pages/seccionesFooter/FormularioContacto";
 import Carrito from "../pages/carrito/Carrito";
 import { ProtectedRoute } from "./ProtectedRoute";
+import Contactanos from "../pages/seccionesFooter/Contactanos";
 
-export const Rutas = ({autenticacion, carrito}) => {
-
-
+export const Rutas = ({ autenticacion, carrito }) => {
   return (
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/nosotros" element={<Nosotros  />} />
-        <Route path="/productos" element={<ListaProductos carrito={carrito} />} />
-        <Route path="/productos/:id" element={<DetalleProducto carrito={carrito} />} /> 
-        <Route path="/trabajaConNosotros" element={<TrabajaConNosotros />} />
-        <Route path="/tiendas" element={<Tiendas />} />
-        <Route path="/blog" element={<Blog />} /> 
-        <Route path="/condiciones" element={<Terminos />} />
-        <Route path="/licencia" element={<Licencia />} />
-        <Route path="/politicaPrivacidad" element={<Politicas />} />
-        <Route path="/contactanos" element={<FormularioContacto />}/>
-        <Route
-          path="/carrito"
-          element={
-            <ProtectedRoute autenticacion={autenticacion}>
-              <Carrito autenticacion={autenticacion} carrito={carrito}/>
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Inicio />} />
+      <Route path="/nosotros" element={<Nosotros />} />
+      <Route path="/productos" element={<ListaProductos carrito={carrito} />} />
+      <Route path="/productos/:id" element={<DetalleProducto carrito={carrito} />} />
+      <Route path="/trabajaConNosotros" element={<TrabajaConNosotros />} />
+      <Route path="/tiendas" element={<Tiendas />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/condiciones" element={<Terminos />} />
+      <Route path="/licencia" element={<Licencia />} />
+      <Route path="/politicaPrivacidad" element={<Politicas />} />
+      <Route path="/contactanos" element={<Contactanos />} />
+      <Route
+        path="/carrito"
+        element={
+          <ProtectedRoute autenticacion={autenticacion}>
+            <Carrito autenticacion={autenticacion} carrito={carrito} />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 };
