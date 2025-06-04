@@ -1,43 +1,57 @@
-import { Link, useNavigate, } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+export default function CardProducto(props) {
+  const [imagenUrl, setImagenUrl] = useState("");
+  const navigate = useNavigate();
 
-export default function CardProducto(props) {  
-    const [imagenUrl, setImagenUrl] = useState("");
-    const navigate = useNavigate()
-
-    useEffect(() => {
-          async function fetchImagenes() {
-          const response = await fetch(`http://localhost:4002/productos/${props.producto.id}/imagenes`);
-          const imagenes = await response.json();
-          if (imagenes.length > 0) {
-            setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`)
-          }
-        }
-        fetchImagenes()
-    }, [])
-
-    function agregarAlCarrito() {
-      navigate(`/productos/${props.producto.id}`)      
+  useEffect(() => {
+    async function fetchImagenes() {
+      const response = await fetch(
+        `http://localhost:4002/productos/${props.producto.id}/imagenes`
+      );
+      const imagenes = await response.json();
+      if (imagenes.length > 0) {
+        setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`);
+      }
     }
+    fetchImagenes();
+  }, []);
 
-    const sinStock = props.producto.cantidad - props.carrito.obtenerCantidadSeleccionada(props.producto.id) === 0;
+  function agregarAlCarrito() {
+    navigate(`/productos/${props.producto.id}`);
+  }
 
-  return ( 
+  const sinStock =
+    props.producto.cantidad -
+      props.carrito.obtenerCantidadSeleccionada(props.producto.id) ===
+    0;
+
+  const imagenProducto = () => (
+    <>
+      <span className="absolute top-4 left-2 px-2 bg-lime-900 bg-opacity-90 text-white rounded">
+        {props.producto.categoria}
+      </span>
+      <img
+        className="rounded-t-lg w-full h-64"
+        src={imagenUrl}
+        alt="imagen"
+      ></img>
+    </>
+  );
+
+  return (
     <div className="pb-4 m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <NavLink to={`/productos/${props.producto.id}`} className="relative">
-        <span className="absolute top-4 left-2 px-2 bg-lime-900 bg-opacity-90 text-white rounded">
-          {props.producto.categoria}
-        </span>
-        <img
-          className="rounded-t-lg w-full h-64"
-          src={imagenUrl}
-          alt="imagen"
-        ></img>
-      </NavLink>
+      {sinStock ? (
+        imagenProducto()
+      ) : (
+        <NavLink to={`/productos/${props.producto.id}`} className="relative">
+          {imagenProducto()}
+        </NavLink>
+      )}
       <div className="p-5">
-        <Link to={`/productos/${props.producto.id}`} >
+        <Link to={`/productos/${props.producto.id}`}>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-lime-900 dark:text-lime">
             {props.producto.nombre}
           </h5>
@@ -53,7 +67,7 @@ export default function CardProducto(props) {
           </span>
 
           {sinStock ? (
-            <button 
+            <button
               type="button"
               disabled
               className="text-white font-medium rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-gray-400 cursor-not-allowed"
@@ -69,7 +83,7 @@ export default function CardProducto(props) {
               Agregar al carrito <i className="ml-1 bi bi-plus-lg"></i>
             </button>
           )}
-        </p>    
+        </p>
       </div>
     </div>
   );
