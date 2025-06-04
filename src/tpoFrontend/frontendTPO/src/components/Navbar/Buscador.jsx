@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Buscador() {
+  const [busqueda, setBusqueda] = useState("");
+  const navigate = useNavigate()
+  function buscar(e) {
+    e.preventDefault();
+    navigate("/productos?buscar=" + busqueda)
+  }
 
   return (
     <div className="mx-auto max-w-screen-xl p-2 my-5">
-      <form className="flex items-center" action="/productos">
+      <form className="flex items-center" action="/productos" onSubmit={buscar}>
         <div className="relative w-full">
           <span className="bi bi-search flex absolute inset-y-0 left-0 items-center pl-3  "></span>
           <input
+            value={busqueda}
+            onChange={(e) => setBusqueda(e.target.value)}
             name="buscar"
             type="text"
             id="simple-search"
