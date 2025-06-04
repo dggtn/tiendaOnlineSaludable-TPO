@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
-const SignUpForm = () => {
+const SignUpForm = ({ callbackLogin }) => {
   const navigate = useNavigate();
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -17,8 +18,8 @@ const SignUpForm = () => {
       password.trim() === ""
     ) {
       toast.error("Todos los campos son obligatorios", {
-      position: 'top-center',
-    });
+        position: 'top-center',
+      });
       return;
     }
 
@@ -42,14 +43,21 @@ const SignUpForm = () => {
     const data = await response.json();
 
     if (data.access_token) {
-        toast.success("Registro exitoso");
-        navigate("/productos");
+      const datos = jwtDecode(data.access_token);
+      const auth = {
+        rol: datos["rol"],
+        email: datos.sub,
+        accessToken: data.access_token,
+        logueado: true,
+      };
+      if (callbackLogin) callbackLogin(auth);
+      toast.success("Registro exitoso");
+      navigate("/productos");
     } else {
-        toast.error(data.message, {
-      position: 'top-center',
-    });
+      toast.error(data.message, {
+        position: 'top-center',
+      });
     }
-    
   };
 
   return (
