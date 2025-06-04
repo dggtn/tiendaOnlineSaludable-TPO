@@ -1,56 +1,92 @@
 import ModalConfirmacion from "../../Admin/ModalConfirmacion";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-
-export default function CardCarrito({producto, cantidad, carrito}) {
-
-  const [imagenUrl, setImagenUrl] = useState("")
-  const[abierto,setAbierto] = useState(false)
-
-    useEffect(() => {
-        async function fetchImagenes() {
-            try {
-                const response = await fetch(`http://localhost:4002/productos/${producto.id}/imagenes`);
-                const imagenes = await response.json();
-                if (imagenes.length > 0) {
-                    setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`);
-                }
-            } catch (error) {
-                setImagenUrl("");
-            }
-        }
-        fetchImagenes();
-    }, []);
-
-  
-
-    function cerrar(){
-      setAbierto(false)
-
+export default function CardCarrito({ producto, cantidad, carrito }) {
+  const [imagenUrl, setImagenUrl] = useState("");
+  const [abierto, setAbierto] = useState(false);
+  const incrementar = () => {
+  const cantidadEnCarrito = carrito.obtenerCantidadSeleccionada(producto.id);
+  const maximo = producto.cantidad - cantidadEnCarrito;
+    
+  if (cantidad < maximo) {
+      setCantidad((valor) => valor + 1);
+    } else {
+      toast.info(`Solo hay ${maximo} unidades disponibles.`, {
+        position: "top-center",
+      });
     }
+  };
 
-function eliminarProducto() { 
-  carrito.eliminarPorId(producto.id)
-}
+  const decrementar = () => {
+    if (cantidad > 0) {
+      setCantidad((valor) => valor - 1);
+    }
+  };
+  useEffect(() => {
+    async function fetchImagenes() {
+      try {
+        const response = await fetch(
+          `http://localhost:4002/productos/${producto.id}/imagenes`
+        );
+        const imagenes = await response.json();
+        if (imagenes.length > 0) {
+          setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`);
+        }
+      } catch (error) {
+        setImagenUrl("");
+      }
+    }
+    fetchImagenes();
+  }, []);
+
+  function cerrar() {
+    setAbierto(false);
+  }
+
+  function eliminarProducto() {
+    carrito.eliminarPorId(producto.id);
+  }
 
   return (
     <div className="flex flex-wrap justify-between border-b dark:border-slate-700 max-w-4xl m-auto p-2 mb-5 ">
       <div className="flex">
         <Link to={`productos/${producto.id}`}>
-          <img
-            className="w-32 rounded"
-            src={imagenUrl}
-            alt={producto.nombre}
-          />
+          <img className="w-32 rounded" src={imagenUrl} alt={producto.nombre} />
         </Link>
         <div className="">
           <Link to={`productos/${producto.id}`}>
             <p className="text-lg ml-2 dark:text-slate-200">
               {producto.nombre} x {cantidad}
             </p>
+
+            <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
+              <button
+                onClick={decrementar}
+                className="bg-lime-700 text-white rounded-lg px-6 py-3 sm:px-8 sm:py-4 hover:bg-lime-800 transition"
+                aria-label="Disminuir cantidad"
+              >
+                -
+              </button>
+
+              <span className="w-16 sm:w-[260px] py-3 sm:py-4 text-xl sm:text-2xl font-bold rounded-lg text-center bg-lime-100 text-lime-900">
+                {cantidad}
+              </span>
+
+              <button
+                onClick={incrementar}
+                className="bg-lime-700 text-white rounded-lg px-6 py-3 sm:px-8 sm:py-4 hover:bg-lime-800 transition"
+                aria-label="Aumentar cantidad"
+              >
+                +
+              </button>
+            </div>
           </Link>
-          <button onClick={()=>setAbierto(true)} className="text-base ml-2 text-red-400">
+          <button
+            onClick={() => setAbierto(true)}
+            className="text-base ml-2 text-red-400"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -68,6 +104,12 @@ function eliminarProducto() {
         <span>(precio unitario: ${producto.precio}) - </span>
         <span>${producto.precio * cantidad}</span>
       </div>
-      <ModalConfirmacion open={abierto} onClose={cerrar} onConfirm={eliminarProducto} mensaje={"Seguro quieres eliminar este producto"}   /> </div>
+      <ModalConfirmacion
+        open={abierto}
+        onClose={cerrar}
+        onConfirm={eliminarProducto}
+        mensaje={"Seguro quieres eliminar este producto"}
+      />{" "}
+    </div>
   );
 }
