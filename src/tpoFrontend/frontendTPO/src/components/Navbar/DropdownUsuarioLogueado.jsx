@@ -7,7 +7,7 @@ export const DropdownUsuarioLogueado = ({ setDropdown, onLogout }) => {
 
   return (
     <div 
-      className="absolute right-0 z-50 mt-1 w-48 bg-white rounded-md shadow-lg py-1 border border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+      className="absolute right-0 top-full z-50 w-48 bg-white rounded-md shadow-lg py-1 border border-gray-200 dark:bg-gray-800 dark:border-gray-700"
       onClick={(e) => e.stopPropagation()}
     >
       <button

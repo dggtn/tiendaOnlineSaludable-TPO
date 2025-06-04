@@ -70,11 +70,11 @@ export default function Header({ autenticacion }) {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <svg
-              className="w-6 h-6 text-lime-900 dark:text-white"
+              className="w-7 h-7 text-lime-900 dark:text-white min-w-[28px] min-h-[28px]"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="28"
+              height="28"
               fill="none"
               viewBox="0 0 24 24"
             >
@@ -96,7 +96,7 @@ export default function Header({ autenticacion }) {
           >
             <span className="sr-only">Abrir menú</span>
             <svg
-              className="w-5 h-5"
+              className="w-6 h-6"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -116,20 +116,20 @@ export default function Header({ autenticacion }) {
             className="hidden w-full md:block md:w-auto"
             id="navbar-dropdown"
           >
-            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-lime-900 dark:border-gray-700">
-              <li>
+            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-lime-900 dark:border-gray-700 items-center gap-2">
+              <li className="flex items-center">
                 <DropdownCategoria items={categorias} />
               </li>
 
               {autenticacion.logueado ? (
-                <li className="relative list-none dropdown-usuario">
+                <li className="relative list-none dropdown-usuario flex items-center">
                   <button
                     onClick={toggleDropdownUsuario}
-                    className="flex items-center hover:text-lime-700 dark:text-white dark:hover:text-lime-300"
+                    className="flex items-center hover:text-lime-700 dark:text-white dark:hover:text-lime-300 gap-1"
                   >
                     {autenticacion.email}
                     <svg
-                      className={`w-2.5 h-2.5 ms-2.5 transition-transform ${
+                      className={`w-4 h-4 ms-2.5 transition-transform ${
                         dropdownUsuario ? "rotate-180" : ""
                       }`}
                       aria-hidden="true"
@@ -154,14 +154,14 @@ export default function Header({ autenticacion }) {
                   )}
                 </li>
               ) : (
-                <li>
+                <li className="flex items-center">
                  <NavLink to={"/sesion"} className="flex items-center hover:text-lime-700 dark:text-white dark:hover:text-lime-300">
                   <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
+                      width="24"
+                      height="24"
                       fill="currentColor"
-                      className="bi bi-person-fill"
+                      className="bi bi-person-fill w-6 h-6"
                       viewBox="0 0 16 16"
                     >
                       <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
@@ -170,34 +170,34 @@ export default function Header({ autenticacion }) {
                 </li>
               )}
 
-              <li>
+              <li className="flex items-center">
                 <button
                   onClick={clickEnBuscar}
-                  className="hover:text-lime-700 dark:text-white dark:hover:text-lime-300"
+                  className="hover:text-lime-700 dark:text-white dark:hover:text-lime-300 flex items-center"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="24"
+                    height="24"
                     fill="currentColor"
-                    className="bi bi-search"
+                    className="bi bi-search w-6 h-6"
                     viewBox="0 0 16 16"
                   >
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                   </svg>
                 </button>
               </li>
-              <li>
+              <li className="flex items-center">
                 <NavLink
                   to={"/carrito"}
-                  className="hover:text-lime-700 dark:text-white dark:hover:text-lime-300"
+                  className="hover:text-lime-700 dark:text-white dark:hover:text-lime-300 flex items-center"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
+                    width="24"
+                    height="24"
                     fill="currentColor"
-                    className="bi bi-cart-fill"
+                    className="bi bi-cart-fill w-6 h-6"
                     viewBox="0 0 16 16"
                   >
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
