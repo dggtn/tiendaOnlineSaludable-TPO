@@ -48,17 +48,17 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
 
     return (
         <>
-        <main className="flex-1 flex justify-center items-start min-h-screen bg-white p-10">
-            <form onSubmit={handleSubmit} className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+        <main className="flex-1 flex justify-center items-start min-h-screen  p-10">
+            <form onSubmit={handleSubmit} className="w-full max-w-xl bg-brown-100 rounded-2xl shadow-xl p-8 border border-gray-200">
 
-                <h2 className="text-4xl font-bold text-lime-700 mb-10 text-center">
+                <h2 className="text-4xl font-bold text-brown-400 mb-10 text-center">
                     Crear Nueva Categoría
                 </h2>
 
                 <div className="mb-8"> 
                     <label
                         htmlFor="nombre"
-                        className="block text-md font-semibold text-gray-700 mb-2"
+                        className="block text-md font-semibold  mb-2 text-brown-400"
                     >
                         Nombre
                     </label>
@@ -75,7 +75,7 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
 
                 <button
                     type="submit"
-                    className="w-full bg-lime-600 hover:bg-lime-700 text-white font-semibold py-3 rounded-lg shadow-md transition"
+                    className="w-full bg-green-600 hover:bg-lime-700 text-brown-200 font-semibold py-3 rounded-lg shadow-md transition"
                 >
                     Crear Categoría
                 </button>
