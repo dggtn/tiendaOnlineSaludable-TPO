@@ -94,79 +94,119 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
             setProductos(data);
         }
 
-        return (
-            <form onSubmit={handleGuardar} className="p-4 bg-brown-200 rounded shadow mb-4 mt-4">
-                <h3 className="mb-2 font-bold">Editar Producto</h3>
-                <label className="block mb-1 font-medium" htmlFor="nombre-input">Nombre</label>
-                <input
-                    id="nombre-input"
-                    className="block mb-2 border p-1 w-full"
-                    type="text"
-                    value={nombre}
-                    onChange={e => setNombre(e.target.value)}
-                    placeholder="Nombre"
-                    required
-                />
-                <label className="block mb-1 font-medium" htmlFor="precio-input">Precio</label>
-                <input
-                    id="precio-input"
-                    className="block mb-2 border p-1 w-full"
-                    type="number"
-                    value={precio}
-                    onChange={e => setPrecio(e.target.value)}
-                    placeholder="Precio"
-                    required
-                />
-                <label className="block mb-1 font-medium" htmlFor="descripcion-input">Descripción</label>
-                <textarea
-                    id="descripcion-input"
-                    className="block mb-2 border p-1 w-full"
-                    value={descripcion}
-                    onChange={e => setDescripcion(e.target.value)}
-                    placeholder="Descripción"
-                    required
-                />
-                <label className="block mb-1 font-medium" htmlFor="cantidad-input">Stock</label>
-                <input
-                    id="cantidad-input"
-                    className="block mb-2 border p-1 w-full"
-                    type="number"
-                    value={cantidad}
-                    onChange={e => setCantidad(Number(e.target.value))}
-                    placeholder="Stock"
-                    required
-                />
-                <label className="block mb-1 font-medium" htmlFor="categoria-input">Categoría</label>
-                <select
-                    id="categoria-input"
-                    className="block mb-2 border p-1 w-full"
-                    value={categoria.id}
-                    onChange={e => {
-                        const cat = categorias.find(c => c.id === Number(e.target.value));
-                        setCategoria(cat);
-                    }}
-                    required
-                >
-                    <option value="">Selecciona una categoría</option>
-                    {categorias.map(cat => (
-                        <option key={cat.id} value={cat.id}>{cat.descripcion}</option>
-                    ))}
-                </select>
-                <label className="block mb-1 font-medium" htmlFor="imagen-input">Imagen</label>
-                <input
-                    id="imagen-input"
-                    type="file"
-                    accept="image/*"
-                    className="w-full border border-gray-200 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-lime-500"
-                    onChange={(e) => setImagenFile(e.target.files[0])}
-                />
-                <button type="submit"         className="  text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 "
->Guardar</button>
-                <button type="button" onClick={() => setProductoEditar(null)} className="bg-gray-400 text-white px-4 py-2 rounded">Cancelar</button>
+                return (
+            <form 
+                onSubmit={handleGuardar} 
+                className="w-full sm:w-[500px] md:w-[700px] xl:w-[900px] p-10 bg-white rounded-2xl shadow-2xl mx-auto my-12
+                            grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <h3 className="mb-4 text-2xl font-bold text-center text-lime-800 col-span-1 md:col-span-2">
+                    Editar Producto
+                </h3>
+
+                <div className="flex flex-col">
+                    <label className="mb-1 font-semibold text-gray-700" htmlFor="nombre-input">Nombre</label>
+                    <input
+                        id="nombre-input"
+                        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
+                        type="text"
+                        value={nombre}
+                        onChange={e => setNombre(e.target.value)}
+                        placeholder="Nombre"
+                        required
+                    />
+
+                </div>
+
+                <div className="flex flex-col">
+                    <label className="mb-1 font-semibold text-gray-700" htmlFor="precio-input">Precio</label>
+                    <input
+                        id="precio-input"
+                        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
+                        type="number"
+                        value={precio}
+                        onChange={e => setPrecio(e.target.value)}
+                        placeholder="Precio"
+                        required
+                    />
+
+                </div>
+
+                <div className="flex flex-col">
+                    <label className="mb-1 font-semibold text-gray-700" htmlFor="cantidad-input">Stock</label>
+                    <input
+                        id="cantidad-input"
+                        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
+                        type="number"
+                        value={cantidad}
+                        onChange={e => setCantidad(Number(e.target.value))}
+                        placeholder="Stock"
+                        required
+                    />
+                </div>
+
+                <div className="flex flex-col">
+                    <label className="mb-1 font-semibold text-gray-700" htmlFor="categoria-input">Categoría</label>
+                    <select
+                        id="categoria-input"
+                        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
+                        value={categoria.id}
+                        onChange={e => {
+                            const cat = categorias.find(c => c.id === Number(e.target.value));
+                            setCategoria(cat);
+                        }}
+                        required
+                    >
+                        <option value="">Selecciona una categoría</option>
+                        {categorias.map(cat => (
+                            <option key={cat.id} value={cat.id}>{cat.descripcion}</option>
+                        ))}
+                    </select>
+                </div>
+
+                <div className="flex flex-col md:col-span-2">
+                    <label className="mb-1 font-semibold text-gray-700" htmlFor="descripcion-input">Descripción</label>
+                    <textarea
+                        id="descripcion-input"
+                        className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition resize-none"
+                        value={descripcion}
+                        onChange={e => setDescripcion(e.target.value)}
+                        placeholder="Descripción"
+                        rows={2}
+                        required
+                    />
+                </div>
+
+                <div className="flex flex-col md:col-span-2">
+                    <label className="mb-1 font-semibold text-gray-700" htmlFor="imagen-input">Imagen</label>
+                    <input
+                        id="imagen-input"
+                        type="file"
+                        accept="image/*"
+                        className="w-full border border-gray-300 rounded-md p-2 bg-white focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
+                        onChange={(e) => setImagenFile(e.target.files[0])}
+                    />
+                </div>
+                
+                <div className="flex justify-center gap-6 md:col-span-2 mt-6">
+                    <button 
+                    type="submit" 
+                    className="bg-lime-600 text-white px-6 py-3 rounded font-bold text-lg hover:bg-lime-700 transition"
+                    >
+                    Guardar
+                    </button>
+
+                    <button 
+                    type="button" 
+                    onClick={() => setProductoEditar(null)} 
+                    className="bg-gray-400 text-white px-6 py-3 rounded font-bold text-lg hover:bg-gray-500 transition"
+                    >
+                    Cancelar
+                    </button>
+                </div>
             </form>
         );
     }
-
     return (
         <main>
             <ModalConfirmacion
