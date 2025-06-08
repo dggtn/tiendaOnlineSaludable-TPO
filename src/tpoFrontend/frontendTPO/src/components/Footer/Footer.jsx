@@ -69,8 +69,8 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="px-4 py-6 bg-brown-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-          <span className="text-sm text-brown-500 dark:text-brown-500sm:text-center">
+        <div className="px-4 py-6 bg-brown-500 dark:bg-gray-700 md:flex md:items-center md:justify-between">
+          <span className="text-sm text-green-500 dark:text-brown-500sm:text-center">
             © 2025 TiendaOnline™. Todos los
             derechos reservados.
           </span>
@@ -79,7 +79,7 @@ export default function Footer() {
               href="https://www.pinterest.com"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-brown-500 hover:text-brown-500 dark:hover:text-brown-500"
+              className="text-green-500 hover:text-green-500 dark:hover:text-green-500"
             >
               <svg
                 className="w-4 h-4 bi bi-pinterest"
@@ -95,7 +95,7 @@ export default function Footer() {
               href="https://instagram.com"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-brown-500 hover:text-brown-500 dark:hover:text-brown-500"
+              className="text-green-500 hover:text-green-500 dark:hover:text-green-500"
             >
               <svg
                 className="w-4 h-4 bi bi-instagram"
@@ -111,7 +111,7 @@ export default function Footer() {
               href="https://www.gmail.com"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-lime-900 hover:text-lime-900 dark:hover:text-white"
+              className="text-green-500 hover:text-green-500 dark:hover:text-green-500"
             >
               <svg
                 className="w-4 h-4 bi bi-envelope-at-fill"

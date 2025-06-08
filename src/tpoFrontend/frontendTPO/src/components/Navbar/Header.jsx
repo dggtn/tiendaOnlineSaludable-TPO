@@ -63,7 +63,7 @@ export default function Header({ autenticacion }) {
 
   return (
     <main>
-      <nav className="bg-green-500   text-brown-100 ">
+      <nav className="bg-brown-500   text-green-600 ">
         <div className="flex flex-wrap items-center justify-between p-4 ">
           <NavLink
             to={"/"}

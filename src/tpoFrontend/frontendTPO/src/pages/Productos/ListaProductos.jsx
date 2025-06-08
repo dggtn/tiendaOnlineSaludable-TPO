@@ -57,7 +57,7 @@ export const ListaProductos = ({carrito}) => {
               <CardProducto key={producto.id} producto={producto} carrito={carrito} />
             ))
           ) : (
-            <p className="text-center text-gray-500 mt-4">
+            <p className=" text-brown-400 py-20 px-6 text-center text-5xl trgb(110 177 32) font-bold mb-4">
               No se hallaron resultados para tu búsqueda.
             </p>
           )}
