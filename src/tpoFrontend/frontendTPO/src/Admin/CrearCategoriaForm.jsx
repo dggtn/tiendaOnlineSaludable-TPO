@@ -24,7 +24,7 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
                     Authorization: "Bearer " + autenticacion.accessToken,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ nombre }),
+                body: JSON.stringify({ descripcion: nombre }),
             });
 
             if (response.ok) {
@@ -48,29 +48,40 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
 
     return (
         <>
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white rounded shadow">
-            <h2 className="text-2xl font-semibold mb-4 text-lime-700">Crear Nueva Categoría</h2>
+        <main className="flex-1 flex justify-center items-start min-h-screen bg-white p-10">
+            <form onSubmit={handleSubmit} className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
 
-            <div className="mb-4">
-                <label htmlFor="nombre" className="block text-sm font-medium text-gray-700">
-                    Nombre
-                </label>
-                <input
-                    type="text"
-                    id="nombre"
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
-                    className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-                />
-            </div>
+                <h2 className="text-4xl font-bold text-lime-700 mb-10 text-center">
+                    Crear Nueva Categoría
+                </h2>
 
-            <button
-                type="submit"
-                className="bg-lime-600 text-white px-4 py-2 rounded hover:bg-lime-700"
-            >
-                Crear
-            </button>
-        </form>
-        </>
-    );
+                <div className="mb-8"> 
+                    <label
+                        htmlFor="nombre"
+                        className="block text-md font-semibold text-gray-700 mb-2"
+                    >
+                        Nombre
+                    </label>
+                    <input
+                        type="text"
+                        id="nombre"
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
+                        placeholder="Ingresa el nombre de la categoría"
+                        className="w-full p-4 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-lime-500 focus:border-lime-500 transition"
+                        autoComplete="off"
+                    />
+                </div>
+
+                <button
+                    type="submit"
+                    className="w-full bg-lime-600 hover:bg-lime-700 text-white font-semibold py-3 rounded-lg shadow-md transition"
+                >
+                    Crear Categoría
+                </button>
+            </form>
+        </main>
+    </>
+);
+
 }
