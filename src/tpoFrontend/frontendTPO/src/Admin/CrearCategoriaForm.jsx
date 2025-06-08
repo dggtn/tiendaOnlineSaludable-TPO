@@ -48,12 +48,12 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
 
     return (
         <>
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white rounded shadow">
-            <h2 className="text-2xl font-semibold mb-4 text-lime-700">Crear Nueva Categoría</h2>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-brown-200 mt-16 mb-80 rounded shadow">
+            <h2 className="text-2xl mt-4 font-semibold mb-4 text-brown-400">Crear Nueva Categoría</h2>
 
             <div className="mb-4">
-                <label htmlFor="nombre" className="block text-sm font-medium text-gray-700">
-                    Nombre
+                <label htmlFor="nombre" className="block text-sm font-medium text-brown-400 ">
+                    Nombre:
                 </label>
                 <input
                     type="text"
@@ -66,7 +66,7 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
 
             <button
                 type="submit"
-                className="bg-lime-600 text-white px-4 py-2 rounded hover:bg-lime-700"
+        className="  text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 "
             >
                 Crear
             </button>

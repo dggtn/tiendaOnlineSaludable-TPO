@@ -74,7 +74,7 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
 
   return (
     <section>
-      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+      <div className="fixed top-0 left-0 w-full h-full bg-brown-100 bg-opacity-50"></div>
       <div
         id="authentication-modal"
         tabIndex={-1}
@@ -83,11 +83,11 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
         role="dialog"
       >
         <div className="relative p-4 w-full max-w-md h-full md:h-auto overflow-y-auto">
-          <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div className="relative bg-brown-100 rounded-lg shadow">
             <button
               onClick={() => setCheckOut(false)}
               type="button"
-              className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+              className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-lime-700"
               data-modal-toggle="authentication-modal"
             >
               <svg
@@ -106,7 +106,7 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
               <span className="sr-only">Close modal</span>
             </button>
             <div className="py-6 px-6 lg:px-8">
-              <h3 className="mb-4 text-xl  lime-gray-900 text-lime-600 font-bold">
+              <h3 className="mb-4 text-xl  lime-gray-900 text-green-600 font-bold">
                 <i className="bi bi-credit-card mr-2"></i>Sólo aceptamos pago
                 con tarjeta
               </h3>
@@ -114,7 +114,7 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-lime-900 "
+                    className="block mb-2 text-sm font-medium text-green-600 "
                   >
                     Nombre:
                   </label>
@@ -126,13 +126,13 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
                     type="text"
                     name="name"
                     id="name"
-                    className="bg-gray-50 border border-gray-300 text-lime-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
+                    className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium  text-lime-900"
+                    className="block mb-2 text-sm font-medium  text-green-600"
                   >
                     Email:
                   </label>
@@ -144,13 +144,13 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
                     type="text"
                     name="email"
                     id="email"
-                    className="bg-gray-50 border border-gray-300 text-lime-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
+                    className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="card"
-                    className="block mb-2 text-sm font-medium  text-lime-900 "
+                    className="block mb-2 text-sm font-medium  text-green-600 "
                   >
                     # Tarjeta:
                   </label>
@@ -162,13 +162,13 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
                     type="number"
                     name="card"
                     id="card"
-                    className="bg-gray-50 border border-gray-300 text-lime-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
+                    className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
                 <div className="">
                   <label
                     htmlFor="code"
-                    className="   text-lime-900 block mb-2 text-sm font-medium "
+                    className="   text-green-600 block mb-2 text-sm font-medium "
                   >
                     Fecha expiración:
                   </label>
@@ -180,7 +180,7 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
                     type="number"
                     name="month"
                     id="month"
-                    className="inline-block   w-20 bg-gray-50 border border-gray-300 text-lime-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
+                    className="inline-block   w-20 bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                   <input
                     onChange={(e) =>
@@ -190,13 +190,13 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
                     type="number"
                     name="year"
                     id="year"
-                    className=" w-20 ml-3 bg-gray-50 border border-gray-300 text-lime-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
+                    className=" w-20 ml-3 bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="code"
-                    className="block mb-2 text-sm font-medium text-lime-900 dark:text-gray-300 gap-3"
+                    className="block mb-2 text-sm font-medium text-green-600 dark:text-gray-300 gap-3"
                   >
                     Código de seguridad:
                   </label>
@@ -208,15 +208,15 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
                     type="number"
                     name="code"
                     id="code"
-                    className="bg-gray-50 border border-gray-300 text-lime-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-white"
+                    className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
-                <p className="mb-4 text-2xl font-semibold text-lime-500 text-center">
+                <p className="mb-4 text-2xl font-semibold text-green-600 text-center">
                   Total: $ {carrito.calcularTotal()}
                 </p>
                 <button
                   type="submit"
-                  className="w-full text-white bg-lime-700 hover:bg-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-lime-600 dark:hover:bg-lime-700"
+                  className="w-full text-brown-200 font-bold  bg-green-600 hover:bg-lime-800  rounded-lg text-sm px-5 py-2.5 text-center dark:bg-lime-600 dark:hover:bg-lime-700"
                 >
                   <i className="mr-2 bi bi-lock-fill"></i>PAGAR
                 </button>

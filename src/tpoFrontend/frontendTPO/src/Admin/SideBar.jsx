@@ -31,9 +31,9 @@ export default function SideBar() {
   }
 
   return (
-    <div className="flex h-full w-full max-w-[20rem] flex-col  rounded-xl bg-white bg-clip-border p-4 text-lime-900 shadow-xl shadow-lime-gray-900/5">
+    <div className="mt-20 flex h-full w-full max-w-[20rem] flex-col  rounded-xl mb-8 bg-clip-border p-4 bg-brown-50 shadow-xl shadow-lime-gray-900/5">
       <div className="p-4 mb-2">
-        <h5 className="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-lime-900">
+        <h5 className="text-brown-200 font-bold block font-sans text-xl antialiased  leading-snug tracking-normal">
           Menu
         </h5>
       </div>
@@ -65,16 +65,15 @@ export default function SideBar() {
               <p className="block mr-auto font-sans text-base antialiased font-normal leading-relaxed text-lime-gray-900">
                 TiendaOnlineSaludable
               </p>
- 
             </button>
           </div>
           <div className="overflow-hidden">
             <div className="block w-full py-1 font-sans text-sm antialiased font-light leading-normal text-gray-700">
-              <nav className="flex min-w-[240px] flex-col gap-1 p-0 font-sans text-base font-normal text-lime-gray-700">
-
+              <nav className="rounded-xl flex min-w-[240px] flex-col gap-1 p-0 font-sans text-base font-normal text-lime-gray-700">
                 <Dropdown
                   titulo="Productos"
-                  items={opcionesProductos}></Dropdown>
+                  items={opcionesProductos}
+                ></Dropdown>
 
                 <Dropdown
                   titulo="Categorias"
@@ -82,17 +81,16 @@ export default function SideBar() {
                 ></Dropdown>
 
                 <NavLink to="/admin/usuarios">
-                  <button>
-                    <h1 className="block px-4 py-2 hover:bg-gray-100 dark:hover:green-lime-900 dark:hover text-lime-900 ">
-                      Usuarios
-                    </h1>
-                  </button>
+                  <h1
+                    className=" text-green-600 font-extrabold rounded-lg
+                    text-base px-5 py-2.5 mr-2 mb-2 "> Usuarios
+                  </h1>
                 </NavLink>
                 <div>
                   <ul>
                     <li>
                       <button
-                        className="w-full text-white bg-lime-700 hover:bg-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-lime-600 dark:hover:bg-lime-700"
+                        className="  text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-600 "
                         onClick={onLogout}
                       >
                         Cerrar Sesión

@@ -13,8 +13,8 @@ const LoginForm = ({ callbackLogin }) => {
   const handleClick = async () => {
     if (email.trim() === "" || password.trim() === "") {
       toast.error("Los campos no pueden estar vacíos", {
-      position: 'top-center',
-    });
+        position: "top-center",
+      });
       return;
     }
 
@@ -47,9 +47,9 @@ const LoginForm = ({ callbackLogin }) => {
       callbackLogin(auth);
 
       toast.success("Inicio de sesión exitoso", {
-      position: 'top-center',
-    });
-      
+        position: "top-center",
+      });
+
       if (auth.rol === "CLIENTE") {
         navigate("/");
       } else {
@@ -57,8 +57,8 @@ const LoginForm = ({ callbackLogin }) => {
       }
     } else {
       toast.error(data.message, {
-      position: 'top-center',
-    });
+        position: "top-center",
+      });
     }
   };
 
@@ -90,7 +90,8 @@ const LoginForm = ({ callbackLogin }) => {
 
       <button
         onClick={handleClick}
-        className="bg-lime-900 text-white px-4 py-2 rounded hover:bg-gray-800 transition w-full"
+        className=" text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 
+transition w-full"
       >
         Ingresar
       </button>

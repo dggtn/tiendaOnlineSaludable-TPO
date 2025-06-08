@@ -29,12 +29,12 @@ export default function Dropdown({ titulo, items }) {
   const activeStyle = "underline underline-offset-4";
 
   return (
-    <div ref={dropdownRef} className="relative">
+    <div ref={dropdownRef} className="relative bg-green-600 rounded-lg ">
       <button
         type="button"
         onClick={toggle}
         id="dropdownNavbar"
-        className="relative flex items-center justify-between w-full py-2 px-3 text-lime-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-lime-900 md:w-auto dark:text-lime-900 md:dark:hover:text-lime-900 dark:focus:text-lime-900 dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+        className="  text-brown-200 font-bold text-lg rounded-lg  px-7 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 "
       >
         {titulo}
         <svg
@@ -56,17 +56,17 @@ export default function Dropdown({ titulo, items }) {
       {abierto && (
         <div
           id="dropdownNavbar"
-          className="z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-green-lime-900 absolute block"
+          className="bg-green-600 z-10 font-normal rounded-lg  divide-y divide-gray-100  shadow-sm w-44 dark:bg-gray-700 dark:divide-green-lime-900 absolute block"
         >
           <ul
-            className="py-2 text-sm text-gray-700 dark:text-lime-900"
+            className="py-2 text-sm text-white rounded-lg "
             aria-labelledby="dropdownLargeButton"
           >
             <li>
               {items.map((item, indice) => (
                 <NavLink to={item.link} key={indice}>
                   <span
-                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:green-lime-900 dark:hover:text-lime-900"
+                    className="block px-4 py-2"
                     role="menuitem"
                     tabIndex={-1}
                     id={item.id}

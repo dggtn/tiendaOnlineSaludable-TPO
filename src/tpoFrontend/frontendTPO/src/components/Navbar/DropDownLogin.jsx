@@ -9,7 +9,7 @@ export const DropdownLoggedIn = ({setDropdown}) => {
 
 
   return (
-    <div id="dropdownAvatar" className="select-none	absolute top-10 right-0 z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+    <div id="dropdownAvatar" className=" bg-green-700  select-none	absolute top-10 right-0 z-10 w-44 rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
 
             <li>

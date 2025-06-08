@@ -44,10 +44,10 @@ export const ListaProductos = ({carrito}) => {
 
   return (
     <main>
-      <section className=" flex flex-col min-h-screen my-5">
-        <div className="my-5 flex justify-between">
-          <span className="text-lime-900   text-2xl font-semibold text-center dark:text-lime-900 ">
-            Nuestros Productos
+      <section className=" flex flex-col min-h-screen  bg-brown-100">
+        <div className="flex justify-between">
+          <span className="text-brown-400   text-3xl font-semibold text-center mx-24 mt-8 ">
+            Nuestros Productos:
           </span>
          
         </div>

@@ -9,7 +9,8 @@ export default function ModalConfirmacion({ open, onClose, onConfirm, mensaje })
         <p className="mb-6 text-gray-700">{mensaje}</p>
         <div className="flex justify-end gap-2">
           <button
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded"
+                   className="  text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 "
+
             onClick={onClose}
           >
             Cancelar

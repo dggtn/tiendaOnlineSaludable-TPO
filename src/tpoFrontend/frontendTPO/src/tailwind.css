@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 body {
-    background: #ffffff;
-    font-size: larger;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    height: full 
+    padding: none;
+    margin: none;
+    height: auto;
+    width: auto;
+
 }

@@ -3,15 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="mt-500 bg-white dark:bg-lime-900">
+    <footer className="mt-500 bg-green-400   text-brown-100 ">
       <div >
-        <div className="mx-20 grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 ">
+        <div className="mx-20 grid grid-cols-2 gap-12 px-16 py-6 lg:py-8 md:grid-cols-4 ">
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-lime-900 uppercase dark:text-white">
+            <h2 className="mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
               Tienda Online Saludable
             </h2>
 
-            <ul className="text-gray-500 dark:text-lime-900 font-medium">
+            <ul className="text-brown-500 font-medium">
               <li className="mb-4">
                 <NavLink to={"nosotros"} className=" hover:underline">
                   Sobre nosotros
@@ -30,11 +30,11 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <a   className="mb-6 text-sm font-semibold text-lime-900 uppercase dark:text-white">
+            <a   className="mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
               Ayuda
             </a>
-            <ul className="text-gray-500 dark:text-lime-900 font-medium">
-              <li className="mb-4">
+            <ul className=" text-brown-500 font-medium">
+              <li className="mb-4 mt-4">
                 <NavLink  to="/" className="hover:underline">
                   Inicio
                 </NavLink>
@@ -47,30 +47,30 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <a  className="mb-6 text-sm font-semibold text-lime-900 uppercase dark:text-white">
+            <a  className="mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
               Legal
             </a>
-            <ul className="text-gray-500 dark:text-lime-900 font-medium">
-              <li className="mb-4">
-                <NavLink to="/politicaPrivacidad" className="hover:underline">
+            <ul className=" dark:text-brown-500 font-medium">
+              <li className="mb-4 mt-4">
+                <NavLink to="/politicaPrivacidad" className="hover:underline text-brown-500">
                   Politica de privacidad
                 </NavLink>
               </li>
               <li className="mb-4">
-                <NavLink to="/licencia" className="hover:underline">
+                <NavLink to="/licencia" className="hover:underline text-brown-500">
                   Licencia
                 </NavLink>
               </li>
               <li className="mb-4">
-                <NavLink to="condiciones" className="hover:underline">
+                <NavLink to="condiciones" className="hover:underline text-brown-500">
                   Terminos &amp; Condiciones
                 </NavLink>
               </li>
             </ul>
           </div>
         </div>
-        <div className="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-          <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
+        <div className="px-4 py-6 bg-brown-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
+          <span className="text-sm text-brown-500 dark:text-brown-500sm:text-center">
             © 2025 TiendaOnline™. Todos los
             derechos reservados.
           </span>
@@ -79,7 +79,7 @@ export default function Footer() {
               href="https://www.pinterest.com"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-lime-900 hover:text-lime-900 dark:hover:text-white"
+              className="text-brown-500 hover:text-brown-500 dark:hover:text-brown-500"
             >
               <svg
                 className="w-4 h-4 bi bi-pinterest"
@@ -95,7 +95,7 @@ export default function Footer() {
               href="https://instagram.com"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-lime-900 hover:text-lime-900 dark:hover:text-white"
+              className="text-brown-500 hover:text-brown-500 dark:hover:text-brown-500"
             >
               <svg
                 className="w-4 h-4 bi bi-instagram"

@@ -49,8 +49,8 @@ export default function DetalleProducto({carrito}) {
 
 
   return (
-    <main className="flex justify-center p-4 sm:p-10 max-w-screen-xl mx-auto">
-      <div className="flex flex-col lg:flex-row gap-10 bg-white shadow-2xl rounded-xl p-6 lg:p-10 min-w-full lg:min-w-[900px] min-h-[600px]">
+    <main className="flex justify-center p-4 sm:p-10 max-w-screen-xl mx-auto bg-brown-100">
+      <div className="flex flex-col lg:flex-row gap-10 bg-brown-200 shadow-2xl rounded-xl p-6 lg:p-10 min-w-full lg:min-w-[900px] min-h-[600px]">
         <CarruselProducto imagenes={imagenes} />
         <InformacionProducto
           producto={producto}

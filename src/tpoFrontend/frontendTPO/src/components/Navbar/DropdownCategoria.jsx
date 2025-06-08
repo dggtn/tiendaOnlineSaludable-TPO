@@ -27,15 +27,15 @@ export default function DropdownCategoria({ items }) {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative bg-green-500  text-brown-200 " ref={dropdownRef}>
       <button
         type="button"
         onClick={toggle}
-        className="flex items-center justify-between w-full py-2 px-3 text-lime-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-lime-900 md:w-auto dark:text-lime-900 md:dark:hover:text-lime-900 dark:focus:text-lime-900 dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+        className="hover:text-green-700 text-brown-100 flex items-center justify-between w-full py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-lime-900 md:w-auto dark:text-lime-900 md:dark:hover:text-lime-900 dark:focus:text-lime-900 dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
       >
         Tienda
         <svg
-          className={`w-2.5 h-2.5 ms-2.5 transition-transform ${
+          className={` w-2.5 h-2.5 ms-2.5 transition-transform ${
             abierto ? "rotate-180" : ""
           }`}
           aria-hidden="true"
@@ -54,12 +54,12 @@ export default function DropdownCategoria({ items }) {
       </button>
 
       {abierto && (
-        <div className="absolute z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+        <div className="text-brown-100 bg-green-500   absolute z-10 font-normal  divide-y divide-gray-100 rounded-lg ">
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
             <li>
               <NavLink
                 to="/productos"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                className="bg-green-500   block px-4 py-2 text-brown-100"
                  onClick={() => setAbierto(!abierto)}
               >
                 Ver todos
@@ -68,7 +68,7 @@ export default function DropdownCategoria({ items }) {
                 <NavLink
                   to={`/productos?categoria=${item.descripcion}`}
                   key={indice}
-                  className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  className="bg-green-500   block px-4 py-2 text-brown-100"
                   onClick={() => setAbierto(!abierto)}
                 >
                   {item.descripcion}

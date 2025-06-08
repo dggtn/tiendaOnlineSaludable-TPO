@@ -71,16 +71,16 @@ export default function CrearProductoForm({ autenticacion }) {
     <>
       <form
         onSubmit={handleSubmit}
-        className="max-w-md mx-auto p-4 bg-white rounded shadow"
+        className="max-w-md mx-auto p-4 bg-brown-200 rounded shadow mt-4 mb-8"
       >
-        <h2 className="text-2xl font-semibold mb-4 text-lime-700">
+        <h2 className="text-2xl font-semibold mb-4 text-green-600">
           Crear nuevo producto
         </h2>
 
         <div className="mb-4">
           <label
             htmlFor="nombre"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-green-600"
           >
             Nombre
           </label>
@@ -89,19 +89,19 @@ export default function CrearProductoForm({ autenticacion }) {
             id="nombre"
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+            className="mt-1 block w-full border text-green-600 rounded-md p-2"
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="categorias"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            className="block mb-2 text-sm font-medium text-green-600 dark:text-white"
           >
 Elige una categoria:          </label>
           <select
             onChange={(e) => setCategoria(e.target.value)}
             id="countries"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
+            className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
           >
             <option selected>Categorias</option>
             {categorias.length > 0 &&
@@ -113,7 +113,7 @@ Elige una categoria:          </label>
         <div className="mb-4">
           <label
             htmlFor="descripcion"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-green-600"
           >
             Cantidad
           </label>
@@ -128,7 +128,7 @@ Elige una categoria:          </label>
         <div className="mb-4">
           <label
             htmlFor="descripcion"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-green-600"
           >
             Descripcion
           </label>
@@ -142,7 +142,7 @@ Elige una categoria:          </label>
         <div className="mb-4">
           <label
             htmlFor="descripcion"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-green-600"
           >
             Precio
           </label>
@@ -155,7 +155,8 @@ Elige una categoria:          </label>
         </div>
         <button
           type="submit"
-          className="bg-lime-600 text-white px-4 py-2 rounded hover:bg-lime-700"
+                  className="  text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 "
+
         >
           Crear
         </button>

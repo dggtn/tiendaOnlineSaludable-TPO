@@ -30,7 +30,7 @@ export default function CardProducto(props) {
 
   const imagenProducto = () => (
     <>
-      <span className="absolute top-4 left-2 px-2 bg-lime-900 bg-opacity-90 text-white rounded">
+      <span className="absolute top-4 left-2 px-2 bg-brown-400 bg-opacity-90 text-white rounded">
         {props.producto.categoria}
       </span>
       <img
@@ -42,7 +42,7 @@ export default function CardProducto(props) {
   );
 
   return (
-    <div className="pb-4 m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="pb-4 m-3 max-w-sm bg-brown-200 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
       {sinStock ? (
         imagenProducto()
       ) : (
@@ -52,11 +52,11 @@ export default function CardProducto(props) {
       )}
       <div className="p-5">
         <Link to={`/productos/${props.producto.id}`}>
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-lime-900 dark:text-lime">
+          <h5 className="mb-2 text-2xl font-bold tracking-tight text-brown-400 ">
             {props.producto.nombre}
           </h5>
         </Link>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <p className="mb-3 font-normal text-brown-400 ">
           {props.producto.descripcion}
         </p>
 
@@ -78,7 +78,7 @@ export default function CardProducto(props) {
             <button
               type="button"
               onClick={agregarAlCarrito}
-              className="text-white font-medium rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-lime-700 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
             >
               Agregar al carrito <i className="ml-1 bi bi-plus-lg"></i>
             </button>

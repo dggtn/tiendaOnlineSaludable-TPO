@@ -37,7 +37,7 @@ function Buscador( ) {
   }
 
   return (
-    <div className="flex flex-col items-center bg-white p-4">
+    <div className="flex flex-col items-center bg-green-200 p-4">
       <form >
         <div className="relative">
           <input
@@ -48,7 +48,7 @@ function Buscador( ) {
             placeholder="Buscar"
           />
           <div className="absolute right-0 top-0 mr-4 mt-3 flex items-center">
-            <button type="submit" className="text-lime-900 hover:text-lime-900">
+            <button type="submit" className=" text-brown-200">
               <Search size={20} />{' '}
             </button>{' '}
           </div>{' '}
@@ -63,7 +63,7 @@ function Buscador( ) {
               <li key={result.id} className="mb-2">
                 <a
                   href={result.imagen}
-                  className="text-lime-900 hover:underline"
+                  className="text-brown-200 hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

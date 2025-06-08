@@ -7,10 +7,10 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
   const [imagenUrl, setImagenUrl] = useState("");
   const [abierto, setAbierto] = useState(false);
   const incrementar = () => {
-  const cantidadEnCarrito = carrito.obtenerCantidadSeleccionada(producto.id);
-  const maximo = producto.cantidad - cantidadEnCarrito;
-    
-  if (cantidad < maximo) {
+    const cantidadEnCarrito = carrito.obtenerCantidadSeleccionada(producto.id);
+    const maximo = producto.cantidad - cantidadEnCarrito;
+
+    if (cantidad < maximo) {
       setCantidad((valor) => valor + 1);
     } else {
       toast.info(`Solo hay ${maximo} unidades disponibles.`, {
@@ -50,21 +50,21 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
   }
 
   return (
-    <div className="flex flex-wrap justify-between border-b dark:border-slate-700 max-w-4xl m-auto p-2 mb-5 ">
+    <div className="flex flex-wrap justify-between border-b max-w-4xl m-auto p-2 mb-5 bg-brown-200  rounded-lg ">
       <div className="flex">
         <Link to={`productos/${producto.id}`}>
-          <img className="w-32 rounded" src={imagenUrl} alt={producto.nombre} />
+          <img className="w-32 rounded mt-3" src={imagenUrl} alt={producto.nombre} />
         </Link>
         <div className="">
           <Link to={`productos/${producto.id}`}>
-            <h2 className="text-center  ml-3 text-xl mb-5 text-lime-900 font-bold mx-20 ">
-              {producto.nombre} 
+            <h2 className="text-center  ml-3 text-2xl mb-5 text-brown-400 font-bold mx-20 mt-3  ">
+              {producto.nombre}
             </h2>
 
-            <div className="flex items-center mb-5 ">
+            <div className="flex items-center mb-5 px-3 py-2 sm:px-8 sm:py-4">
               <button
                 onClick={decrementar}
-                className="bg-lime-700 ml-3 text-white rounded-lg px-1 py-1 sm:px-3 sm:py-4 hover:bg-lime-800 transition"
+                className="bg-green-600 font-bold text-white  text-brown-white rounded-lg px-3 py-2 sm:px-8 sm:py-4  transition"
                 aria-label="Disminuir cantidad"
               >
                 -
@@ -76,7 +76,7 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
 
               <button
                 onClick={incrementar}
-                className="bg-lime-700 text-white rounded-lg px-1 py-1 sm:px-3 sm:py-4 hover:bg-lime-800 transition"
+                className="bg-green-600 font-bold text-white  text-brown-white rounded-lg px-3 py-2 sm:px-8 sm:py-4  transition"
                 aria-label="Aumentar cantidad"
               >
                 +
@@ -100,8 +100,7 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
           </button>
         </div>
       </div>
-      <div className="text-lg m-2 dark:text-slate-200">
-        <span>(precio unitario: ${producto.precio}) - </span>
+      <div className="text-2xl font-bold m-2 text-brown-400">
         <span>${producto.precio * cantidad}</span>
       </div>
       <ModalConfirmacion

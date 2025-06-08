@@ -28,7 +28,7 @@ export default function CarruselProducto({ imagenes }) {
 
             <button
                 onClick={manejarAnteriorImagen}
-                className="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-lime-700 text-white rounded-full px-3 py-2 sm:px-5 sm:py-3 hover:bg-lime-800 shadow"
+                className="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-green-400 text-white rounded-full px-3 py-2 sm:px-5 sm:py-3 hover:bg-lime-800 shadow"
                 aria-label="Imagen anterior"
             >
                 ‹
@@ -36,7 +36,7 @@ export default function CarruselProducto({ imagenes }) {
 
             <button
                 onClick={manejarSiguienteImagen}
-                className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-lime-700 text-white rounded-full px-3 py-2 sm:px-5 sm:py-3 hover:bg-lime-800 shadow"
+                className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-green-400 text-white rounded-full px-3 py-2 sm:px-5 sm:py-3 hover:bg-lime-800 shadow"
                 aria-label="Siguiente imagen"
             >
                 ›

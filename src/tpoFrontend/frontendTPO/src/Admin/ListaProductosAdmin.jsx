@@ -95,7 +95,7 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
         }
 
         return (
-            <form onSubmit={handleGuardar} className="p-4 bg-gray-100 rounded shadow mb-4">
+            <form onSubmit={handleGuardar} className="p-4 bg-brown-200 rounded shadow mb-4 mt-4">
                 <h3 className="mb-2 font-bold">Editar Producto</h3>
                 <label className="block mb-1 font-medium" htmlFor="nombre-input">Nombre</label>
                 <input
@@ -160,7 +160,8 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                     className="w-full border border-gray-200 rounded-md px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-lime-500"
                     onChange={(e) => setImagenFile(e.target.files[0])}
                 />
-                <button type="submit" className="bg-lime-600 text-white px-4 py-2 rounded mr-2">Guardar</button>
+                <button type="submit"         className="  text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 "
+>Guardar</button>
                 <button type="button" onClick={() => setProductoEditar(null)} className="bg-gray-400 text-white px-4 py-2 rounded">Cancelar</button>
             </form>
         );
@@ -174,8 +175,8 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                 onConfirm={eliminarProductoConfirmado}
                 mensaje="¿Está seguro que desea eliminar el producto?"
             />
-            <section className="my-5">
-                <h2 className="text-lime-900 text-2xl font-semibold text-center dark:text-lime-900">
+            <section className="my-8">
+                <h2 className="text-brown-400 text-2xl font-semibold text-center">
                     Catálogo de Productos
                 </h2>
                 {productoEditar ? (

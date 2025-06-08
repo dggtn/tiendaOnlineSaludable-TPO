@@ -37,11 +37,11 @@ if (loading) {
     <main className="flex-grow  p-8 flex justify-center">
       <div className="w-full max-w-5xl dark:bg-gray-800 shadow-md overflow-x-auto">
         <div className="max-h-[400px] overflow-y-auto">
-          <table className="w-full text-left text-gray-700 dark:text-gray-300 text-sm">
-            <thead className="bg-lime-600 dark:bg-lime-700 text-white uppercase tracking-wide font-semibold sticky top-0">
+          <table className="w-full text-left text-brown-400 dark:text-gray-300 text-sm">
+            <thead className="bg-green-400 dark:bg-green-400 text-white uppercase tracking-wide font-semibold sticky top-0">
               <tr>
-                <th className="px-6 py-3">ID</th>
-                <th className="px-6 py-3">Nombre</th>
+                <th className="px-6 py-3 text-brown-400">ID</th>
+                <th className="px-6 py-3 text-brown-400">Nombre</th>
               </tr>
             </thead>
             <tbody>
@@ -49,7 +49,7 @@ if (loading) {
                 categorias.map((categoria) => (
                   <tr
                     key={categoria.id}
-                    className="border-b border-gray-200 dark:border-gray-700"
+                    className="border-b border-brown-200 dark:border-brown-700 bg-brown-100"
                   >
                     <td className="px-6 py-3">{categoria.id}</td>
                     <td className="px-6 py-3">{categoria.descripcion}</td>

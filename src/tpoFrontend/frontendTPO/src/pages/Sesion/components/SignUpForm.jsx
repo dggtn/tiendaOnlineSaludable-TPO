@@ -18,7 +18,7 @@ const SignUpForm = ({ callbackLogin }) => {
       password.trim() === ""
     ) {
       toast.error("Todos los campos son obligatorios", {
-        position: 'top-center',
+        position: "top-center",
       });
       return;
     }
@@ -55,7 +55,7 @@ const SignUpForm = ({ callbackLogin }) => {
       navigate("/productos");
     } else {
       toast.error(data.message, {
-        position: 'top-center',
+        position: "top-center",
       });
     }
   };
@@ -63,7 +63,9 @@ const SignUpForm = ({ callbackLogin }) => {
   return (
     <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
       <div>
-        <label className="block text-sm font-medium text-gray-700">Nombre</label>
+        <label className="block text-sm font-medium text-gray-700">
+          Nombre
+        </label>
         <input
           type="text"
           value={nombre}
@@ -74,7 +76,9 @@ const SignUpForm = ({ callbackLogin }) => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Apellido</label>
+        <label className="block text-sm font-medium text-gray-700">
+          Apellido
+        </label>
         <input
           type="text"
           value={apellido}
@@ -96,7 +100,9 @@ const SignUpForm = ({ callbackLogin }) => {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700">Contraseña</label>
+        <label className="block text-sm font-medium text-gray-700">
+          Contraseña
+        </label>
         <input
           type="password"
           value={password}
@@ -108,7 +114,8 @@ const SignUpForm = ({ callbackLogin }) => {
 
       <button
         onClick={handleClick}
-        className="bg-lime-900 text-white px-4 py-2 rounded hover:bg-gray-800 transition w-full"
+        className=" text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 
+transition w-full"
       >
         Registrarse
       </button>
