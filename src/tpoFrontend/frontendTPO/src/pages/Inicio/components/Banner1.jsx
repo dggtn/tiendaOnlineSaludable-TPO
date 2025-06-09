@@ -4,10 +4,10 @@ export const Banner1 = () => {
   return (
     <section className="flex flex-col lg:flex-row bg-brown-100 text-brown-400  items-center px-4 ">
       <div className="text my-5">
-        <h1 className="text-5xl trgb(110 177 32) font-bold bg-center mb-20">
+        <h1 className="text-5xl trgb(110 177 32) font-bold bg-center mb-20 ">
           Con tu compra ayudas al medio ambiente
         </h1>
-        <p className="text-2xl my-7 px-1 rgb(110 177 32) mb-10">
+        <p className="text-2xl my-7 px-1 rgb(110 177 32) mb-10 animate-pulse">
           Tienda online saludable es la tienda #1 de productos sanos en
           Argentina.
         </p>
