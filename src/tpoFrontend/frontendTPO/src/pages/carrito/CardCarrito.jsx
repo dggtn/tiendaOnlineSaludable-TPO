@@ -64,7 +64,7 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
             <div className="flex items-center mb-5 px-3 py-2 sm:px-8 sm:py-4">
               <button
                 onClick={decrementar}
-                className="bg-green-600 font-bold text-white  text-brown-white rounded-lg px-3 py-2 sm:px-8 sm:py-4  transition"
+                className=" hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800  bg-green-600 font-bold text-white  text-brown-white rounded-lg px-3 py-2 sm:px-8 sm:py-4  transition"
                 aria-label="Disminuir cantidad"
               >
                 -
@@ -76,7 +76,7 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
 
               <button
                 onClick={incrementar}
-                className="bg-green-600 font-bold text-white  text-brown-white rounded-lg px-3 py-2 sm:px-8 sm:py-4  transition"
+                className=" hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800 bg-green-600 font-bold text-white  text-brown-white rounded-lg px-3 py-2 sm:px-8 sm:py-4  transition"
                 aria-label="Aumentar cantidad"
               >
                 +

@@ -42,7 +42,7 @@ export default function InformacionProducto({
       <div className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8">
         <button
           onClick={decrementar}
-          className="bg-green-600 font-bold text-white  text-brown-white rounded-lg px-6 py-3 sm:px-8 sm:py-4  transition"
+          className="hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800  bg-green-600 font-bold text-white  text-brown-white rounded-lg px-6 py-3 sm:px-8 sm:py-4  transition"
           aria-label="Disminuir cantidad"
         >
           -
@@ -54,7 +54,7 @@ export default function InformacionProducto({
 
         <button
           onClick={incrementar}
-          className="bg-green-600 text-white font-bold rounded-lg px-6 py-3 sm:px-8 sm:py-4 transition"
+          className="hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800 bg-green-600 text-white font-bold rounded-lg px-6 py-3 sm:px-8 sm:py-4 transition"
           aria-label="Aumentar cantidad"
         >
           +
@@ -64,7 +64,7 @@ export default function InformacionProducto({
       {producto.cantidad > 0 ? (
         <button
           onClick={agregarAlCarrito}
-          className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
         >
           Agregar al carrito
         </button>

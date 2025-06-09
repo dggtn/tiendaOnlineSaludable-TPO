@@ -39,7 +39,7 @@ export default function ListaCarrito({ autenticacion, carrito }) {
         </div>
         <div className="flex justify-between my-2">
           <button
-            className="bg-green-600  text-brown-200 font-semibold rounded-lg px-6 py-3 sm:px-8 sm:py-4 text-xl sm:text-2xl transition"
+            className="hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800   bg-green-600  text-brown-200 font-semibold rounded-lg px-6 py-3 sm:px-8 sm:py-4 text-xl sm:text-2xl transition"
             onClick={() => navigate("/productos")}
           >
             Volver
@@ -47,7 +47,7 @@ export default function ListaCarrito({ autenticacion, carrito }) {
           <button
             onClick={() => setCheckOut(true)}
             type="button"
-            className="bg-green-600  text-brown-200 font-semibold rounded-lg px-6 py-3 sm:px-8 sm:py-4 text-xl sm:text-2xl transition"
+            className="hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800   bg-green-600  text-brown-200 font-semibold rounded-lg px-6 py-3 sm:px-8 sm:py-4 text-xl sm:text-2xl transition"
           >
             Pagar <i className="ml-2 bi bi-arrow-right"></i>
           </button>
