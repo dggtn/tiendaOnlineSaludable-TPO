@@ -42,7 +42,7 @@ export default function CardProducto(props) {
   );
 
   return (
-    <div className="transform rounded-xl shadow-xl transition duration-300 hover:scale-105 pb-4 m-3 max-w-sm bg-brown-200  border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="transform rounded-xl shadow-xl transition duration-300 hover:scale-105 pb-4 m-3 max-w-sm bg-brown-200  border border-gray-200  dark:bg-gray-800 dark:border-gray-700">
       {sinStock ? (
         imagenProducto()
       ) : (

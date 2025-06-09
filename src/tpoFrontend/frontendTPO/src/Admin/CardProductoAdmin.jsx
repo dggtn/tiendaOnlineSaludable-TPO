@@ -51,7 +51,7 @@ export default function CardProductoAdmin({ producto, onEliminar, onEditar }) {
         <div className="flex justify-end space-x-2 mt-4">
           <button
             onClick={() => onEditar(producto)}
-            className="  text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 "
+              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
           >
             Editar
           </button>

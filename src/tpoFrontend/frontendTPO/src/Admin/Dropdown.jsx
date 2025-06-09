@@ -34,7 +34,7 @@ export default function Dropdown({ titulo, items }) {
         type="button"
         onClick={toggle}
         id="dropdownNavbar"
-        className="  text-brown-200 font-bold text-lg rounded-lg  px-7 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-700 "
+              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
       >
         {titulo}
         <svg

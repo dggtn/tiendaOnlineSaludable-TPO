@@ -41,11 +41,11 @@ export default function SideBar() {
         <div className="relative block w-full">
           <div
             role="button"
-            className="flex items-center w-full p-0 leading-tight transition-all rounded-lg outline-none text-start hover:bg-lime-gray-50 hover:bg-opacity-80 hover:text-lime-gray-900 focus:bg-lime-gray-50 focus:bg-opacity-80 focus:text-lime-gray-900 active:bg-lime-gray-50 active:bg-opacity-80 active:text-lime-gray-900"
+              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
           >
             <button
               type="button"
-              className="flex items-center justify-between w-full p-3 font-sans text-xl antialiased font-semibold leading-snug text-left transition-colors border-b-0 select-none border-b-lime-gray-100 text-lime-gray-700 hover:text-lime-gray-900"
+              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
             >
               <div className="grid mr-4 place-items-center">
                 <svg
@@ -90,7 +90,7 @@ export default function SideBar() {
                   <ul>
                     <li>
                       <button
-                        className="  text-brown-200 font-extrabold  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 bg-green-600 hover:text-green-600 "
+              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
                         onClick={onLogout}
                       >
                         Cerrar Sesión
