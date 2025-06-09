@@ -37,15 +37,15 @@ export default function SideBar() {
           Menu
         </h5>
       </div>
-      <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-lime-700">
+      <nav className="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal ">
         <div className="relative block w-full">
           <div
             role="button"
-              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+              className="text-green-600  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold "
           >
             <button
               type="button"
-              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+              className="text-green-600  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold "
             >
               <div className="grid mr-4 place-items-center">
                 <svg
@@ -62,13 +62,13 @@ export default function SideBar() {
                   ></path>
                 </svg>
               </div>
-              <p className="block mr-auto font-sans text-base antialiased font-normal leading-relaxed text-lime-gray-900">
+              <p className="block mr-auto font-sans text-base antialiased font-normal leading-relaxed ">
                 TiendaOnlineSaludable
               </p>
             </button>
           </div>
           <div className="overflow-hidden">
-            <div className="block w-full py-1 font-sans text-sm antialiased font-light leading-normal text-gray-700">
+            <div className="block w-full py-1 font-sans text-sm antialiased font-light leading-normal ">
               <nav className="rounded-xl flex min-w-[240px] flex-col gap-1 p-0 font-sans text-base font-normal text-lime-gray-700">
                 <Dropdown
                   titulo="Productos"

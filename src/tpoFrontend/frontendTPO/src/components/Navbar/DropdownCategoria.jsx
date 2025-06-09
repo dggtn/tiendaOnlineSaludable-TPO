@@ -59,7 +59,7 @@ export default function DropdownCategoria({ items }) {
             <li>
               <NavLink
                 to="/productos"
-                className="bg-green-500   block px-4 py-2 text-brown-100"
+                className="bg-green-500   block px-4 py-2 text-brown-100 hover:text-green-700"
                  onClick={() => setAbierto(!abierto)}
               >
                 Ver todos
@@ -68,7 +68,7 @@ export default function DropdownCategoria({ items }) {
                 <NavLink
                   to={`/productos?categoria=${item.descripcion}`}
                   key={indice}
-                  className="bg-green-500   block px-4 py-2 text-brown-100"
+                  className="bg-green-500   hover:text-green-700 block px-4 py-2 text-brown-100"
                   onClick={() => setAbierto(!abierto)}
                 >
                   {item.descripcion}

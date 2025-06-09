@@ -22,7 +22,7 @@ export default function CardProductoAdmin({ producto, onEliminar, onEditar }) {
   }, [producto.id]);
 
   return (
-    <div className="m-3 max-w-sm bg-brown-200  rounded-lg border shadow-md ">
+    <div className="transform rounded-xl shadow-xl transition duration-300 hover:scale-105 m-3 max-w-sm bg-brown-200  border  ">
       <NavLink to={`/productos/${producto.id}`} className="relative">
         <span className="absolute top-4 left-2 px-2  bg-brown-200  text-white rounded">
           {producto.categoria}
