@@ -63,14 +63,14 @@ export default function Header({ autenticacion }) {
 
   return (
     <main>
-      <nav className="bg-brown-500   text-green-600 ">
+      <nav className="drop-shadow-lg bg-brown-500   text-green-600 ">
         <div className="flex flex-wrap items-center justify-between p-4 ">
           <NavLink
             to={"/"}
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
            
-            <span className="self-center text-2xl font-semibold whitespace-nowrap hover:text-green-700 ">
+            <span className="drop-shadow-lg self-center text-2xl font-semibold whitespace-nowrap hover:text-green-700 ">
               Tienda Online Saludable
             </span>
           </NavLink>

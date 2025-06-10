@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="mt-500 bg-green-400   text-brown-100 ">
+    <footer className="drop-shadow-lg mt-500 bg-green-400   text-brown-100 ">
       <div >
         <div className="mx-20 grid grid-cols-2 gap-12 px-16 py-6 lg:py-8 md:grid-cols-4 ">
           <div>
@@ -69,7 +69,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="px-4 py-6 bg-brown-500 dark:bg-gray-700 md:flex md:items-center md:justify-between">
+        <div className="drop-shadow-lg px-4 py-6 bg-brown-500 dark:bg-gray-700 md:flex md:items-center md:justify-between">
           <span className="text-sm text-green-500 dark:text-brown-500sm:text-center">
             © 2025 TiendaOnline™. Todos los
             derechos reservados.
