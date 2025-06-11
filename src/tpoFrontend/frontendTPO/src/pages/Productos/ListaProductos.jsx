@@ -10,6 +10,7 @@ export const ListaProductos = ({ carrito }) => {
   const [mostrar, setMostrar] = useState(false);
   const location = useLocation();
   const [queryParams] = useSearchParams();
+ 
   const dispatch = store.dispatch;
   const { items: productos, loading } = useSelector((state) => state.productos);
 
