@@ -2,17 +2,17 @@ import React from "react";
 
 export default function Terminos() {
   return (
-    <section className="px-4 md:px-12 py-10 bg-white text-gray-800">
-  <h2 className="text-lime-900 font-bold text-3xl md:text-4xl mb-8">
+    <section className="px-4 md:px-12 py-10 bg-brown-100 text-gray-800">
+  <h2 className="text-green-600 font-bold text-3xl md:text-4xl mb-8">
     Condiciones Generales de Venta y Uso del Sitio TiendaOnlineSaludable
   </h2>
 
  
   <article className="text-base md:text-lg text-gray-700 leading-relaxed md:leading-loose mb-8">
-    <h3 className="text-xl font-semibold text-lime-800 mb-4">
+    <h3 className="text-xl font-semibold text-green-600 mb-4">
       1. Presentación del Sitio y Nuestro Servicio
     </h3>
-    <p className="mb-4">
+   <p className="mb-4 text-green-600 ">
       El sitio web
       <a
        
@@ -41,12 +41,12 @@ export default function Terminos() {
 
   <article className="text-base md:text-lg text-gray-700 leading-relaxed md:leading-loose mb-8">
     <h3 className="text-xl font-semibold text-lime-800 mb-4">2. Definiciones</h3>
-    <p className="mb-4">
+  <p className="mb-4 text-green-600 ">
       En estas CGV/CGU, “Usted”, “Usuario” o “Cliente” hace referencia al
       consumidor del Sitio. “Nosotros”, “Su Tienda TiendaOnlineSaludable” o
       “Vendedor” se refiere a la tienda donde realiza el pedido.
     </p>
-    <p>
+   <p className="mb-4 text-green-600 ">
       “Nuestro Sitio” es www.tiendaonlinesaludable.com y sus páginas
       asociadas. “Sitio Web de su Tienda” es el espacio de venta online de
       su tienda, accesible desde el Sitio.
@@ -56,7 +56,7 @@ export default function Terminos() {
  
   <article className="text-base md:text-lg text-gray-700 leading-relaxed md:leading-loose mb-8">
     <h3 className="text-xl font-semibold text-lime-800 mb-4">3. Objeto</h3>
-    <p>
+    <p className="mb-4 text-green-600 "></p><p>
       Estas condiciones regulan el uso del Sitio y los Servicios
       disponibles, y definen la relación contractual entre usted y su tienda
       TiendaOnlineSaludable en la compra de productos o servicios.
@@ -64,13 +64,13 @@ export default function Terminos() {
   </article>
 
 
-  <article className="text-base md:text-lg text-gray-700 leading-relaxed md:leading-loose mb-8">
-    <h3 className="text-xl font-semibold text-lime-800 mb-4">4. Aceptación de los Servicios</h3>
-    <p className="mb-4">
+  <article className="text-base md:text-lg text-green-600 leading-relaxed md:leading-loose mb-8">
+    <h3 className="text-xl font-semibold text-green-600 mb-4">4. Aceptación de los Servicios</h3>
+<p className="mb-4 text-green-600 ">
       Al usar nuestros Servicios, declara ser mayor de edad y actuar como
       consumidor, no como profesional.
     </p>
-    <p className="mb-4">
+   <p className="mb-4 text-green-600 ">
       Para comprar, debe tener al menos 18 años y capacidad legal. Antes de
       cada pedido, debe aceptar:
     </p>
@@ -80,7 +80,7 @@ export default function Terminos() {
         Las Condiciones Particulares de su Tienda (precios, servicios, etc.)
       </li>
     </ul>
-    <p>
+    <p className="mb-4 text-green-600 ">
       En caso de conflicto, prevalecen las condiciones particulares. Nos
       reservamos el derecho de modificarlas sin previo aviso. La versión
       aplicable será la vigente al confirmar su pedido.

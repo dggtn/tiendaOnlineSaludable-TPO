@@ -2,16 +2,16 @@ import React from 'react'
 
 export default function TrabajaConNosotros() {
   return (
-    <div className="text-white bg-lime-800 font-sans">
+    <div className="text-brown-400 bg-brown-50 font-sans">
       
-      <header className="bg-lime-green-900 text-white p-6">
+      <header className="bg-lime-green-900 text-brown-400 p-6">
         <h1 className="text-3xl font-bold">
           TRABAJA CON NOSOTROS
         </h1>
       </header>
 
 
-      <section className="p-6 space-y-4">
+      <section className="p-6 space-y-4 bg-brown-50">
         <p>
           tiendaOnlineSaludable reúne hoy más de 700 tiendas ecológicas con un objetivo común: desarrollar la agricultura ecológica con un espíritu de equidad y cooperación. 
           Líder en distribución de alimentos ecológicos, tiendaOnlineSaludable se destaca por sus productos de comercio justo, su amplia variedad de eco-productos y cosméticos.
@@ -28,9 +28,9 @@ export default function TrabajaConNosotros() {
       </section>
 
 
-      <section className="bg-gray-100 p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-lime-900">3 RAZONES PARA UNIRTE A tiendaOnlineSaludable</h2>
-        <ol className="list-decimal list-inside space-y-3 text-lime-900">
+      <section className="p-6 bg-green-50">
+        <h2 className="text-2xl font-semibold mb-4 text-brown-400  ">3 RAZONES PARA UNIRTE A tiendaOnlineSaludable</h2>
+        <ol className="list-decimal list-inside space-y-3  text-brown-400">
           <li>
             <strong>Te conviertes en actor del cambio:</strong> Al crear o asumir tu tienda tiendaOnlineSaludable, te unes a iniciativas que promueven un nuevo modelo de consumo y participas activamente en un proyecto con impacto social.
           </li>
@@ -56,7 +56,7 @@ export default function TrabajaConNosotros() {
         </ul>
       </section>
 
-      <section className="bg-lime-800 p-6">
+      <section className="bg-green-50 p-6">
         <h2 className="text-2xl font-semibold mb-4">UN ACOMPAÑAMIENTO ADAPTADO A TU PROYECTO</h2>
         <p className="mb-4">
           Con los consejos y servicios técnicos de nuestro equipo, nunca estarás solo(a). tiendaOnlineSaludable te acompaña en el desarrollo de un concepto de tienda adaptado a tu proyecto, desde la ubicación ideal hasta la apertura y el plan de negocio adecuado.
