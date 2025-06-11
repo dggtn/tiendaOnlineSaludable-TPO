@@ -64,10 +64,10 @@ export default function Header({ autenticacion }) {
   return (
     <main>
       <nav className="drop-shadow-lg bg-brown-500   text-green-600 ">
-        <div className="flex flex-wrap items-center justify-between p-4 ">
+        <div className="drop-shadow-lg flex flex-wrap items-center justify-between p-4 ">
           <NavLink
             to={"/"}
-            className="flex items-center space-x-3 rtl:space-x-reverse"
+            className="drop-shadow-lg flex items-center space-x-3 rtl:space-x-reverse"
           >
            
             <span className="drop-shadow-lg self-center text-2xl font-semibold whitespace-nowrap hover:text-green-700 ">
@@ -104,19 +104,19 @@ export default function Header({ autenticacion }) {
             id="navbar-dropdown"
           >
             <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border  rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0   items-center gap-2">
-              <li className="flex items-center">
+              <li className="flex items-center drop-shadow-lg">
                 <DropdownCategoria items={categorias} />
               </li>
 
               {autenticacion.logueado ? (
-                <li className="relative list-none dropdown-usuario flex items-center">
+                <li className="drop-shadow-lg relative list-none dropdown-usuario flex items-center">
                   <button
                     onClick={toggleDropdownUsuario}
-                    className="flex items-center hover:text-green-700  gap-1"
+                    className="flex items-center hover:text-green-700  gap-1 drop-shadow-lg"
                   >
                     {autenticacion.email}
                     <svg
-                      className={`w-4 h-4 ms-2.5 transition-transform ${
+                      className={`w-4 h-4 ms-2.5 transition-transform drop-shadow-lg ${
                         dropdownUsuario ? "rotate-180" : ""
                       }`}
                       aria-hidden="true"
@@ -141,8 +141,8 @@ export default function Header({ autenticacion }) {
                   )}
                 </li>
               ) : (
-                <li className="flex items-center">
-                 <NavLink to={"/sesion"} className="flex items-center hover:text-lime-700 dark:text-white dark:hover:text-lime-300">
+                <li className="flex items-center drop-shadow-lg">
+                 <NavLink to={"/sesion"} className="drop-shadow-lg flex items-center hover:text-lime-700 dark:text-white dark:hover:text-lime-300">
                   <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -160,7 +160,7 @@ export default function Header({ autenticacion }) {
               <li className="flex items-center">
                 <button
                   onClick={clickEnBuscar}
-                  className="hover:text-lime-700 dark:text-white dark:hover:text-lime-300 flex items-center"
+                  className="hover:text-lime-700 drop-shadow-lg  dark:text-white dark:hover:text-lime-300 flex items-center"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +177,7 @@ export default function Header({ autenticacion }) {
               <li className="flex items-center">
                 <NavLink
                   to={"/carrito"}
-                  className="hover:text-lime-700 dark:text-white dark:hover:text-lime-300 flex items-center"
+                  className="drop-shadow-lg hover:text-lime-700 dark:text-white dark:hover:text-lime-300 flex items-center"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
