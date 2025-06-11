@@ -1,34 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategorias } from "../redux/categoriasSlice";
+import { store } from "../redux/store";
 
 export default function TablaCategorias({ autenticacion }) {
   const [categorias, setCategorias] = useState([]);
-  const [loading, setLoading] = useState(true);
 
 
- const CategoriasLista = () => {
-    const dispatch = useDispatch(); ///despacho acciones desde componente,componente es de react y acciones de redux desde react-redux se creo este hook
-    //dispatch envia acciones al Store
-    const {
-      items: categorias,
-      loading,
-      error,
-    } = useSelector((state) => state.categorias);
-    
-    useEffect(() => {
-      dispatch(fetchCategorias());
-    }, [dispatch]);
+  const dispatch = store.dispatch;
+  const { items: productos, loading } = useSelector((state) => state.categorias);
 
-    if (loading) return <p className="text-lime-950 font-bold">Cargando...</p>;
-    if (error)
-      return (
-        <p className="text-lime-950 font-bold">
-          Error al cargar productos{error}...
-        </p>
-      );
-   
-  };
+  useEffect(() => {
+    dispatch(fetchCategorias());
+  }, [dispatch]);
 
 
   return (
@@ -44,13 +28,13 @@ export default function TablaCategorias({ autenticacion }) {
             </thead>
             <tbody>
               {categorias.length > 0 &&
-                categorias.map((categoria) => (
+                categorias.map((categorias) => (
                   <tr
-                    key={categoria.id}
+                    key={categorias.id}
                     className="border-b border-brown-200 dark:border-brown-700 bg-brown-100"
                   >
-                    <td className="px-6 py-3">{categoria.id}</td>
-                    <td className="px-6 py-3">{categoria.descripcion}</td>
+                    <td className="px-6 py-3">{categorias.id}</td>
+                    <td className="px-6 py-3">{categorias.descripcion}</td>
                   </tr>
                 ))}
             </tbody>

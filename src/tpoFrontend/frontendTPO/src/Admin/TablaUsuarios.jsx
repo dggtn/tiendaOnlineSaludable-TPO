@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import CardUsuario from "./CardUsuario";
-import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsuarios } from "../redux/usuariosSlice";
+import { store } from "../redux/store";
+import CardUsuario from "./CardUsuario";
 
 
 export default function TablaUsuarios({ autenticacion }) {
@@ -14,10 +14,10 @@ export default function TablaUsuarios({ autenticacion }) {
       dispatch(fetchUsuarios());
     }, [dispatch]);
  
+
   return (
     <main className="flex-grow  p-8 flex justify-center">
       <div className="w-full max-w-5xl rounded-lg shadow-md overflow-x-auto">
-         {loading ? (<p className="text-lime-950 font-bold">Cargando...</p>):(
         <div className="max-h-[400px] overflow-y-auto">
           <table className="w-full text-left text-gray-700 dark:text-gray-300 text-sm ">
             <thead className="bg-green-400 dark:bg-green-400 text-brown-400 uppercase tracking-wide font-semibold sticky top-0 shadow-md">
