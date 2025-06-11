@@ -5,24 +5,24 @@ export default function Footer() {
   return (
     <footer className="drop-shadow-lg mt-500 bg-green-400   text-brown-100 ">
       <div >
-        <div className="mx-20 grid grid-cols-2 gap-12 px-16 py-6 lg:py-8 md:grid-cols-4 ">
+        <div className="drop-shadow-lg mx-20 grid grid-cols-2 gap-12 px-16 py-6 lg:py-8 md:grid-cols-4 ">
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
+            <h2 className="drop-shadow-lg mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
               Tienda Online Saludable
             </h2>
 
-            <ul className="text-brown-500 font-medium">
+            <ul className="drop-shadow-lg text-brown-500 font-medium">
               <li className="mb-4">
                 <NavLink to={"nosotros"} className=" hover:underline">
                   Sobre nosotros
                 </NavLink>
               </li>
-              <li className="mb-4">
+              <li className="mb-4 drop-shadow-lg">
                 <NavLink  to="/trabajaConNosotros" className="hover:underline">
                   Trabaja con nosostros
                 </NavLink>
               </li>
-              <li className="mb-4">
+              <li className="mb-4 drop-shadow-lg">
                 <NavLink  to="/tiendas" className="hover:underline">
                   Nuestras tiendas
                 </NavLink>
@@ -30,16 +30,16 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <a   className="mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
+            <a   className="drop-shadow-lg mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
               Ayuda
             </a>
-            <ul className=" text-brown-500 font-medium">
-              <li className="mb-4 mt-4">
+            <ul className="drop-shadow-lg  text-brown-500 font-medium">
+              <li className="mb-4 mt-4 drop-shadow-lg">
                 <NavLink  to="/" className="hover:underline">
                   Inicio
                 </NavLink>
               </li>
-              <li className="mb-4">
+              <li className="mb-4 drop-shadow-lg ">
                 <NavLink to="/contactanos" className="hover:underline">
                   Contáctanos
                 </NavLink>
@@ -47,21 +47,21 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <a  className="mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
+            <a  className="drop-shadow-lg mb-6 text-sm font-semibold text-brown-500 uppercase dark:text-white">
               Legal
             </a>
-            <ul className=" dark:text-brown-500 font-medium">
-              <li className="mb-4 mt-4">
+            <ul className=" dark:text-brown-500 font-medium drop-shadow-lg">
+              <li className="mb-4 mt-4 drop-shadow-lg">
                 <NavLink to="/politicaPrivacidad" className="hover:underline text-brown-500">
                   Politica de privacidad
                 </NavLink>
               </li>
-              <li className="mb-4">
+              <li className="mb-4 drop-shadow-lg">
                 <NavLink to="/licencia" className="hover:underline text-brown-500">
                   Licencia
                 </NavLink>
               </li>
-              <li className="mb-4">
+              <li className="mb-4 drop-shadow-lg">
                 <NavLink to="condiciones" className="hover:underline text-brown-500">
                   Terminos &amp; Condiciones
                 </NavLink>
@@ -74,12 +74,12 @@ export default function Footer() {
             © 2025 TiendaOnline™. Todos los
             derechos reservados.
           </span>
-          <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
+          <div className="drop-shadow-lg flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
             <a
               href="https://www.pinterest.com"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-green-500 hover:text-green-500 dark:hover:text-green-500"
+              className="drop-shadow-lg text-green-500 hover:text-green-500 dark:hover:text-green-500"
             >
               <svg
                 className="w-4 h-4 bi bi-pinterest"
@@ -95,7 +95,7 @@ export default function Footer() {
               href="https://instagram.com"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-green-500 hover:text-green-500 dark:hover:text-green-500"
+              className="drop-shadow-lg text-green-500 hover:text-green-500 dark:hover:text-green-500"
             >
               <svg
                 className="w-4 h-4 bi bi-instagram"
@@ -111,7 +111,7 @@ export default function Footer() {
               href="https://www.gmail.com"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-green-500 hover:text-green-500 dark:hover:text-green-500"
+              className="drop-shadow-lg text-green-500 hover:text-green-500 dark:hover:text-green-500"
             >
               <svg
                 className="w-4 h-4 bi bi-envelope-at-fill"

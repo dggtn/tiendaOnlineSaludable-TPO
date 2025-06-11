@@ -54,7 +54,7 @@ export default function DropdownCategoria({ items }) {
       </button>
 
       {abierto && (
-        <div className="text-brown-100 bg-green-500   absolute z-10 font-normal  divide-y divide-gray-100 rounded-lg ">
+        <div className="transform rounded-xl shadow-xl transition duration-300 hover:scale-105 z-index text-brown-100 bg-green-500   absolute z-10 font-normal  divide-y divide-gray-100 rounded-lg ">
           <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
             <li>
               <NavLink
@@ -68,7 +68,7 @@ export default function DropdownCategoria({ items }) {
                 <NavLink
                   to={`/productos?categoria=${item.descripcion}`}
                   key={indice}
-                  className="bg-green-500   hover:text-green-700 block px-4 py-2 text-brown-100"
+                  className="bg-green-500   hover:text-green-700 block px-4 py-2 text-brown-100 z-index"
                   onClick={() => setAbierto(!abierto)}
                 >
                   {item.descripcion}

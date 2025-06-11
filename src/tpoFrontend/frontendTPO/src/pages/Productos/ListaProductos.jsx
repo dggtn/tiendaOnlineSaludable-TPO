@@ -46,18 +46,18 @@ export const ListaProductos = ({carrito}) => {
     <main>
       <section className=" flex flex-col min-h-screen  bg-brown-100">
         <div className="flex justify-between">
-          <span className="text-brown-400   text-3xl font-semibold text-center mx-24 mt-8 ">
+          <span className="text-brown-400   text-3xl font-semibold text-center mx-24 mt-8 drop-shadow-lg">
             Nuestros Productos:
           </span>
          
         </div>
-        <div className="flex flex-wrap justify-center lg:flex-row">
+        <div className=" flex flex-wrap justify-center lg:flex-row">
           {productos.length > 0 ? (
             productos.map((producto) => (
               <CardProducto key={producto.id} producto={producto} carrito={carrito} />
             ))
           ) : (
-            <p className=" text-brown-400 py-20 px-6 text-center text-5xl trgb(110 177 32) font-bold mb-4">
+            <p className="drop-shadow-lg text-brown-400 py-20 px-6 text-center text-5xl trgb(110 177 32) font-bold mb-4">
               No se hallaron resultados para tu búsqueda.
             </p>
           )}
