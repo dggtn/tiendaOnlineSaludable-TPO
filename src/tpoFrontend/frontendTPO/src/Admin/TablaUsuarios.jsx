@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import CardUsuario from "./CardUsuario";
 import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchUsuarios } from "../redux/usuariosSlice";
+
 
 export default function TablaUsuarios({ autenticacion }) {
  

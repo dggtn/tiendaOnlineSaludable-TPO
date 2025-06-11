@@ -5,7 +5,7 @@ import axios from "axios";
 const URL = `http://localhost:4002/usuarios`;
 
 export const fetchUsuarios = createAsyncThunk(
-  "productos/fetchUsuarios",
+  "usuarios/fetchUsuarios",
   async () => {
     const { data } = await axios.get(URL);
     return data;

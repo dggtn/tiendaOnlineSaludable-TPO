@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function DropdownCategoria({ items }) {
+export default function DropdownCategoria({ categorias }) {
   const [abierto, setAbierto] = useState(false);
   const dropdownRef = useRef(null);
   const activeStyle = "underline underline-offset-4";
@@ -64,14 +64,14 @@ export default function DropdownCategoria({ items }) {
               >
                 Ver todos
               </NavLink>
-              {items?.map((item, indice) => (
+              {categorias?.map((categoria, indice) => (
                 <NavLink
-                  to={`/productos?categoria=${item.descripcion}`}
+                  to={`/productos?categoria=${categoria.descripcion}`}
                   key={indice}
                   className="bg-green-500 z-50   hover:text-green-700 block px-4 py-2 text-brown-100 z-index"
                   onClick={() => setAbierto(!abierto)}
                 >
-                  {item.descripcion}
+                  {categoria.descripcion}
                 </NavLink>
               ))}
             </li>
