@@ -1,37 +1,35 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategorias } from "../redux/categoriasSlice";
 
 export default function TablaCategorias({ autenticacion }) {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log(autenticacion);
 
-  useEffect(() => {
-    async function fetchCategorias() {
-      setLoading(true);
-      const response = await fetch(
-        `http://localhost:4002/categorias`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: "Bearer " + autenticacion.accessToken,
-          },
-        }
+ const CategoriasLista = () => {
+    const dispatch = useDispatch(); ///despacho acciones desde componente,componente es de react y acciones de redux desde react-redux se creo este hook
+    //dispatch envia acciones al Store
+    const {
+      items: categorias,
+      loading,
+      error,
+    } = useSelector((state) => state.categorias);
+    
+    useEffect(() => {
+      dispatch(fetchCategorias());
+    }, [dispatch]);
+
+    if (loading) return <p className="text-lime-950 font-bold">Cargando...</p>;
+    if (error)
+      return (
+        <p className="text-lime-950 font-bold">
+          Error al cargar productos{error}...
+        </p>
       );
-      const data = await response.json();
-      setCategorias(data.content);
-      setLoading(false);
-    }
-    fetchCategorias();
-  }, []);
+   
+  };
 
-if (loading) {
-  return (
-    <p className="text-lime-950 font-bold text-center my-10">
-      Cargando...
-    </p>
-  );
-}
 
   return (
     <main className="flex-grow  p-8 flex justify-center">

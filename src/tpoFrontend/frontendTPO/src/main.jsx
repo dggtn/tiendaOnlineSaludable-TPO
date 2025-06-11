@@ -12,7 +12,7 @@ import {store} from "./redux/store"
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-    <Windmill/>
+    <Windmill children={''}/>
     <ToastContainer closeButton={false} autoClose={3000} position={'bottom-right'}/>
     <App />
         </Provider>

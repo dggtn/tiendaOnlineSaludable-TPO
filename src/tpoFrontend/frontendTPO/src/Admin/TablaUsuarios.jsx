@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from "react";
 import CardUsuario from "./CardUsuario";
 import SideBar from "./SideBar";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function TablaUsuarios({ autenticacion }) {
-  const [usuarios, setUsuarios] = useState([]);
-  console.log(autenticacion);
+ 
+   const UusuariosLista = () => {
+    const dispatch = useDispatch(); ///despacho acciones desde componente,componente es de react y acciones de redux desde react-redux se creo este hook
+    //dispatch envia acciones al Store
+    const {
+      items: productos,
+      loading,
+      error,
+    } = useSelector((state) => state.usuarios);
+    
+    useEffect(() => {
+      dispatch(fetchUsuarios());
+    }, [dispatch]);
 
-  useEffect(() => {
-    async function fetchUsuarios() {
-      const response = await fetch(
-        `http://localhost:4002/usuarios/registrados`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: "Bearer " + autenticacion.accessToken,
-          },
-        }
+    if (loading) return <p className="text-lime-950 font-bold">Cargando...</p>;
+    if (error)
+      return (
+        <p className="text-lime-950 font-bold">
+          Error al cargar usuarios{error}...
+        </p>
       );
-      const data = await response.json();
-      setUsuarios(data);
-    }
-    fetchUsuarios();
-  }, []);
+    //las acciones se ejecutan en el componente
+  };
+
 
   return (
     <main className="flex-grow  p-8 flex justify-center">
