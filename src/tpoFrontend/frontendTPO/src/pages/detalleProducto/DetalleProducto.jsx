@@ -4,31 +4,38 @@ import CarruselProducto from './componentes/CarrouselProducto';
 import InformacionProducto from './componentes//InformacionProducto';
 import { toast } from 'react-toastify';
 
+import { useSelector } from 'react-redux';
+import { store } from '../../redux/store';
+import { fetchProductoById } from '../../redux/ProductoDetalleSlice';
+import { fetchImagenesProducto } from '../../redux/ImagenesSlice';
+
+
 export default function DetalleProducto({carrito}) {
   const navigate = useNavigate()
   const { id } = useParams();
-  const [producto, setProducto] = useState(null);
-  const [imagenes, setImagenes] = useState([]);
   const [cantidad, setCantidad] = useState(0);
 
+  const dispatch = store.dispatch;
+
+  const { item: producto, loading: loadingProducto } = useSelector(
+    (state) => state.productoDetalle
+  );
+
+  const { items: imagenes, loading: loadingImagenes } = useSelector(
+    (state) => state.imagenes
+  );
+
   useEffect(() => {
-    async function fetchProducto() {
-      const response = await fetch(`http://localhost:4002/productos/${id}`);
-      const data = await response.json();
-      setProducto(data);
+    if (id) {
+      dispatch(fetchProductoById(id));
+      dispatch(fetchImagenesProducto(id));
     }
+  }, [dispatch, id]);
 
-    async function fetchImagenes() {
-      const response = await fetch(`http://localhost:4002/productos/${id}/imagenes`);
-      const data = await response.json();
-      setImagenes(data);
-    }
 
-    fetchProducto();
-    fetchImagenes();
-  }, [id]);
-
-  if (!producto) return <p>Cargando producto...</p>;
+  if (loadingProducto || loadingImagenes) {
+    return <p>Cargando producto...</p>;
+  }
 
   const agregarAlCarrito = () => {
   if (cantidad === 0) {
