@@ -2,21 +2,26 @@ import { useEffect, useState } from "react";
 import CardProductoAdmin from "./CardProductoAdmin.jsx";
 import ModalConfirmacion from "./ModalConfirmacion.jsx";
 
+import { toast } from 'react-toastify';
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductos } from '../redux/productoSlice';
+import { store } from "../redux/store";
+
+
 
 export const ListaProductosAdmin = ({ autenticacion }) => {
-    const [productos, setProductos] = useState([]);
+    const dispatch = store.dispatch;
+    const { items: productos, loading} = useSelector((state) => state.productos);
+
     const [productoEditar, setProductoEditar] = useState(null); 
     const [modalOpen, setModalOpen] = useState(false);
     const [productoAEliminar, setProductoAEliminar] = useState(null);
 
     useEffect(() => {
-        async function fetchProductos() {
-            const response = await fetch("http://localhost:4002/productos");
-            const data = await response.json();
-            setProductos(data);
-        }
-        fetchProductos();
-    }, []);
+        dispatch(fetchProductos());
+    }, [dispatch]);
+
 
     function solicitarEliminarProducto(id) {
         setProductoAEliminar(id);
@@ -32,10 +37,10 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                 Authorization: "Bearer " + autenticacion.accessToken,
             },
         });
+        
         setProductoAEliminar(null);
-        const response = await fetch("http://localhost:4002/productos");
-        const data = await response.json();
-        setProductos(data);
+        dispatch(fetchProductos());
+
     }
 
     function FormularioEdicion() {
@@ -89,9 +94,9 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
         }
 
             setProductoEditar(null);
-            const response = await fetch("http://localhost:4002/productos");
-            const data = await response.json();
-            setProductos(data);
+            dispatch(fetchProductos());
+            toast.success("Producto actualizado correctamente");
+
         }
 
                 return (
