@@ -4,11 +4,10 @@ import { fetchCategorias } from "../redux/categoriasSlice";
 import { store } from "../redux/store";
 
 export default function TablaCategorias({ autenticacion }) {
-  const [categorias, setCategorias] = useState([]);
 
 
   const dispatch = store.dispatch;
-  const { items: productos, loading } = useSelector((state) => state.categorias);
+  const { items: categorias, loading } = useSelector((state) => state.categorias);
 
   useEffect(() => {
     dispatch(fetchCategorias());
@@ -34,7 +33,7 @@ export default function TablaCategorias({ autenticacion }) {
                     className="border-b border-brown-200 dark:border-brown-700 bg-brown-100"
                   >
                     <td className="px-6 py-3">{categorias.id}</td>
-                    <td className="px-6 py-3">{categorias.descripcion}</td>
+                    <td className="px-6 py-3">{categorias.desc}</td>
                   </tr>
                 ))}
             </tbody>
