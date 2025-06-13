@@ -37,7 +37,7 @@ export default function DropdownCategoria() {
 
   return (
     <div
-      className="relative bg-green-500  text-brown-200 z-50 "
+      className="relative bg-green-500  text-brown-200    "
       ref={dropdownRef}
     >
       <button
