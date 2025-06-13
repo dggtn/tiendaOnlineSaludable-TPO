@@ -33,7 +33,7 @@ export default function TablaCategorias({ autenticacion }) {
                     className="border-b border-brown-200 dark:border-brown-700 bg-brown-100"
                   >
                     <td className="px-6 py-3">{categorias.id}</td>
-                    <td className="px-6 py-3">{categorias.desc}</td>
+                    <td className="px-6 py-3">{categorias.descripcion}</td>
                   </tr>
                 ))}
             </tbody>

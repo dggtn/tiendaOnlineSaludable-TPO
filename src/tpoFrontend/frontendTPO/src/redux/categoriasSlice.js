@@ -8,7 +8,7 @@ export const fetchCategorias = createAsyncThunk(
   "categorias/fetchCategorias",
   async () => {
     const { data } = await axios.get(URL);
-    return data;
+    return data.content;
   }
 );
 
