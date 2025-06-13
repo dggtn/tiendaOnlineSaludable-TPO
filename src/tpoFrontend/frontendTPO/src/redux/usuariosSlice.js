@@ -6,7 +6,7 @@ const URL = `http://localhost:4002/usuarios`;
 
 export const fetchUsuarios = createAsyncThunk(
   "usuarios/fetchUsuarios",
-  async () => {
+  async ({accessToken}, {rejectWithValue}) => {
     const { data } = await axios.get(URL);
     return data;
   }
@@ -15,7 +15,7 @@ export const fetchUsuarios = createAsyncThunk(
 const usuariosSlice = createSlice({
   name: "usuarios",
   initialState: {
-    items: [], //coincide con el use state del fetch que hicimos,
+    items: [], //coincide con el q use state del fetch que hicimos,
     loading: false, //se puede agregar spinner o frase 'cargando'
     error: null, //los errores que ocurren se almacenan
   },

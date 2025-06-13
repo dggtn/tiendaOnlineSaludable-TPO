@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { fetchCategorias } from "../../redux/categoriasSlice";
+import { store } from "../../redux/store";
 
-export default function DropdownCategoria({ categorias }) {
+export default function DropdownCategoria() {
   const [abierto, setAbierto] = useState(false);
   const dropdownRef = useRef(null);
-  const activeStyle = "underline underline-offset-4";
 
-  
+  const dispatch = store.dispatch;
+  const { items: categorias, loading } = useSelector(
+    (state) => state.categorias
+  );
+
+  useEffect(() => {
+    dispatch(fetchCategorias());
+  }, [dispatch]);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -27,7 +36,10 @@ export default function DropdownCategoria({ categorias }) {
   };
 
   return (
-    <div className="relative bg-green-500  text-brown-200 z-50 " ref={dropdownRef}>
+    <div
+      className="relative bg-green-500  text-brown-200 z-50 "
+      ref={dropdownRef}
+    >
       <button
         type="button"
         onClick={toggle}
@@ -60,7 +72,7 @@ export default function DropdownCategoria({ categorias }) {
               <NavLink
                 to="/productos"
                 className="bg-green-500  z-50  block px-4 py-2 text-brown-100 hover:text-green-700"
-                 onClick={() => setAbierto(!abierto)}
+                onClick={() => setAbierto(!abierto)}
               >
                 Ver todos
               </NavLink>

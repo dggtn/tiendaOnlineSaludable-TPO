@@ -11,7 +11,7 @@ export default function TablaUsuarios({ autenticacion }) {
     const { items: usuarios, loading } = useSelector((state) => state.usuarios);
   
     useEffect(() => {
-      dispatch(fetchUsuarios());
+      dispatch(fetchUsuarios(autenticacion.accessToken));
     }, [dispatch]);
  
 
