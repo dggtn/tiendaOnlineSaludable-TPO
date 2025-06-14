@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategorias } from "../redux/categoriasSlice";
+import { store } from "../redux/store";
+
+
+
 export default function CrearProductoForm({ autenticacion }) {
+  const dispatch = store.dispatch;
+  const { items: categorias, loading } = useSelector((state) => state.categorias);
+
   const [nombre, setNombre] = useState("");
   const [cantidad, setCantidad] = useState("");
   const [precio, setPrecio] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [categoria, setCategoria] = useState("");
-  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    dispatch(fetchCategorias());
+  }, [dispatch]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -56,16 +68,6 @@ export default function CrearProductoForm({ autenticacion }) {
     });
     }
   }
-  
-  useEffect(() => {
-    async function fetchCategorias() {
-      const response = await fetch(`http://localhost:4002/categorias`);
-      const data = await response.json();
-      setCategorias(data.content);
-    }
-
-    fetchCategorias();
-  }, []);
 
   return (
     <>
