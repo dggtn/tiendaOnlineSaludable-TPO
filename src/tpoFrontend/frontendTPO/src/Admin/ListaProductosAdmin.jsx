@@ -8,11 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductos } from '../redux/productoSlice';
 import { store } from "../redux/store";
 
+import { fetchCategorias } from "../redux/categoriasSlice";
 
 
 export const ListaProductosAdmin = ({ autenticacion }) => {
     const dispatch = store.dispatch;
     const { items: productos, loading} = useSelector((state) => state.productos);
+
+    const { items: categorias } = useSelector((state) => state.categorias);
 
     const [productoEditar, setProductoEditar] = useState(null); 
     const [modalOpen, setModalOpen] = useState(false);
@@ -20,6 +23,9 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
 
     useEffect(() => {
         dispatch(fetchProductos());
+
+        dispatch(fetchCategorias());
+        
     }, [dispatch]);
 
 
@@ -49,17 +55,7 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
         const [descripcion, setDescripcion] = useState(productoEditar.descripcion);
         const [cantidad, setCantidad] = useState(productoEditar.cantidad);
         const [categoria, setCategoria] = useState(productoEditar.categoria);
-        const [categorias, setCategorias] = useState([]);
         const [imagenFile, setImagenFile] = useState(null);
-
-        useEffect(() => {
-            async function fetchCategorias() {
-                const response = await fetch("http://localhost:4002/categorias");
-                const data = await response.json();
-                setCategorias(data.content || data); // Ajusta según tu backend
-            }
-            fetchCategorias();
-        }, []);
 
         async function handleGuardar(e) {
             e.preventDefault();
