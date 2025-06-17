@@ -216,39 +216,47 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                 onConfirm={eliminarProductoConfirmado}
                 mensaje="¿Está seguro que desea eliminar el producto?"
             />
-            <section className="my-8">
-                <h2 className="text-brown-400 text-2xl font-semibold text-center">
-                    Catálogo de Productos
-                </h2>
-                {productoEditar ? (
-                    <>
-                        <FormularioEdicion />
-                        <div className="flex flex-wrap justify-center lg:flex-row mt-6">
-                            <CardProductoAdmin
-                                key={productoEditar.id}
-                                producto={productoEditar}
-                                onEliminar={solicitarEliminarProducto}
-                                onEditar={() => setProductoEditar(productoEditar)}
-                            />
-                        </div>
-                    </>
-                ) : (
-                    <div className="flex flex-wrap justify-center lg:flex-row mt-6">
-                        {productos.length > 0 ? (
-                            productos.map((producto) => (
+
+            {loading ? (
+                <div className="flex justify-center items-center py-10">
+                    <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-green-400 border-solid"></div>
+                    <span className="ml-4 text-green-400 font-medium">Cargando...</span>
+                </div>
+            ) : (
+                <section className="my-8">
+                    <h2 className="text-brown-400 text-2xl font-semibold text-center">
+                        Catálogo de Productos
+                    </h2>
+                    {productoEditar ? (
+                        <>
+                            <FormularioEdicion />
+                            <div className="flex flex-wrap justify-center lg:flex-row mt-6">
                                 <CardProductoAdmin
-                                    key={producto.id}
-                                    producto={producto}
+                                    key={productoEditar.id}
+                                    producto={productoEditar}
                                     onEliminar={solicitarEliminarProducto}
-                                    onEditar={() => setProductoEditar(producto)}
+                                    onEditar={() => setProductoEditar(productoEditar)}
                                 />
-                            ))
-                        ) : (
-                            <p>No hay productos para mostrar.</p>
-                        )}
-                    </div>
-                )}
-            </section>
+                            </div>
+                        </>
+                    ) : (
+                        <div className="flex flex-wrap justify-center lg:flex-row mt-6">
+                            {productos.length > 0 ? (
+                                productos.map((producto) => (
+                                    <CardProductoAdmin
+                                        key={producto.id}
+                                        producto={producto}
+                                        onEliminar={solicitarEliminarProducto}
+                                        onEditar={() => setProductoEditar(producto)}
+                                    />
+                                ))
+                            ) : (
+                                <p>No hay productos para mostrar.</p>
+                            )}
+                        </div>
+                    )}
+                </section>
+            )}
         </main>
     );
 };
