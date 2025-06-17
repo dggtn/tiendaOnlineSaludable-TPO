@@ -22,7 +22,10 @@ export const ListaProductos = ({ carrito }) => {
     <main>
       <section className=" flex flex-col min-h-screen  bg-brown-100">
         {loading ? (
-          <p className="text-lime-950 font-bold">Cargando...</p>
+          <div className="flex justify-center items-center min-h-screen">
+            <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-green-400 border-solid"></div>
+            <span className="ml-4 text-green-400 font-medium">Cargando...</span>
+          </div>
         ) : (
           <>
             <div className="flex justify-between">
