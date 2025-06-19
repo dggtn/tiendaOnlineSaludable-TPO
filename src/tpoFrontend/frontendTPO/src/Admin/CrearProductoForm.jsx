@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategorias } from "../redux/categoriasSlice";
+import { CreateProductos, fetchProductos } from "../redux/productoSlice";
 import { store } from "../redux/store";
 
 
@@ -17,6 +18,7 @@ export default function CrearProductoForm({ autenticacion }) {
   const [descripcion, setDescripcion] = useState("");
   const [categoria, setCategoria] = useState("");
 
+
   useEffect(() => {
     dispatch(fetchCategorias());
   }, [dispatch]);
@@ -27,37 +29,23 @@ export default function CrearProductoForm({ autenticacion }) {
     if (!nombre.trim() || !descripcion.trim()) {
       toast.warn("Por favor, completá todos los campos antes de crear el producto.", {
       position: 'top-center',
-    });
-      return;
-    }
-
+    })
+  }
+  else{
         try {
-      const response = await fetch("http://localhost:4002/productos", {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + autenticacion.accessToken,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre,
-          descripcion,
-          cantidad,
-          precio,
-          categoria: { id: categoria },
-        }),
-      });
+          dispatch(CreateProductos({nombre},{descripcion},{cantidad}, {precio}, {categoria: { id: categoria }}))
+          setNombre(""),
+           setDescripcion(""),
+           setCantidad(""),
+           setCantidad(""),
+           setPrecio(""),
+           setCategoria("")
 
       if (response.ok) {
         toast.success("Producto creado con éxito.", {
       position: 'top-center',
     });
-        setNombre("");
-        setDescripcion("");
-        setCantidad("");
-        setPrecio("");
-        setCategoria("");
       } else {
-        const data = await response.json();
         toast.error("Error: No se pudo crear el producto.", {
       position: 'top-center',
     });
@@ -165,4 +153,4 @@ Elige una categoria:          </label>
       </form>
     </>
   );
-}
+}};

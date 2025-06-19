@@ -19,6 +19,10 @@ export const CreateProductos = createAsyncThunk(
   }
 );
 
+export const editarProducto = createAsyncThunk("productos/actualizarProductos",async(productoActualizado)=>{
+  const{id,nombre,descripcion,cantidad,categoria,precio} =  productoActualizado
+  const{data}= await axios.put(`${URL}/${id}`)
+})
 const productoSlice = createSlice({
   name: "productos",
   initialState: {
