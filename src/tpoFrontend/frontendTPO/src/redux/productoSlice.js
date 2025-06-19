@@ -19,11 +19,25 @@ export const CreateProductos = createAsyncThunk(
   }
 );
 
-export const editarProducto = createAsyncThunk("productos/actualizarProductos",async(productoActualizado)=>{
-  const{id,nombre,descripcion,cantidad,categoria,precio} =  productoActualizado
-  const{data}= await axios.put(`${URL}/${id}`,{nombre,descripcion,cantidad,categoria,precio})
-  return data
-})
+export const editarProducto = createAsyncThunk(
+  "productos/actualizarProductos",
+  async ({ productoActualizado, token }) => {
+    const { id, nombre, descripcion, cantidad, categoria, precio } = productoActualizado;
+    const { data } = await axios.put(`http://localhost:4002/productos/${id}`, {
+      nombre,
+      descripcion,
+      cantidad,
+      categoria,
+      precio,
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    return data;
+  }
+);
+
 const productoSlice = createSlice({
   name: "productos",
   initialState: {
