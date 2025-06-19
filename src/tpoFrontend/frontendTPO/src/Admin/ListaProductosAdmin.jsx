@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductos } from '../redux/productoSlice';
+import { editarProducto } from "../redux/productoSlice";
 import { store } from "../redux/store";
 
 import { fetchCategorias } from "../redux/categoriasSlice";
@@ -59,21 +60,20 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
 
         async function handleGuardar(e) {
             e.preventDefault();
-            await fetch(`http://localhost:4002/productos/${productoEditar.id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + autenticacion.accessToken,
-                },
-                body: JSON.stringify({
+
+            try {
+                await dispatch(editarProducto({
+                productoActualizado: {
                     id: productoEditar.id,
                     nombre,
-                    precio,
+                    precio: Number(precio),
                     descripcion,
-                    cantidad,
-                    categoria_id: categoria.id, 
-                }),
-            });
+                    cantidad: Number(cantidad),
+                    categoria,
+                },
+                token: autenticacion.accessToken,
+            }));
+
 
             if (imagenFile) {
             const formData = new FormData();
