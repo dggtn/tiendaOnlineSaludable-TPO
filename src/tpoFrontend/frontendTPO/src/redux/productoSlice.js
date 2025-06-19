@@ -49,8 +49,12 @@ const productoSlice = createSlice({
       .addCase(CreateProductos.fulfilled,(state,action)=>{
         state.items = [... state.items,action.payload]
 
-      });
-  },
+      })
+      .addCase(editarProducto.fulfilled,(state,action)=>{
+        const index = state.items.findIndex()
+
+  })
+}
 });
 
 export default productoSlice.reducer;
