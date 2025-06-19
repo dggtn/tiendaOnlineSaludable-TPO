@@ -46,15 +46,38 @@ const productoSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
+
+
+      .addCase(CreateProductos.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
       .addCase(CreateProductos.fulfilled,(state,action)=>{
         state.items = [... state.items,action.payload]
-
       })
-      .addCase(editarProducto.fulfilled,(state,action)=>{
-        const index = state.items.findIndex()
+      
+      .addCase(CreateProductos.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
 
-  })
-}
+
+      .addCase(editarProducto.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(editarProducto.fulfilled, (state, action) => {
+        state.loading = false;
+        const index = state.items.findIndex((p) => p.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+      })
+      .addCase(editarProducto.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+    },
 });
 
 export default productoSlice.reducer;
