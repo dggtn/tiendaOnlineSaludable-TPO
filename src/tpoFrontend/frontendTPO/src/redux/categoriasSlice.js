@@ -12,6 +12,23 @@ export const fetchCategorias = createAsyncThunk(
   }
 );
 
+export const createCategoria = createAsyncThunk(
+  "categoria/createCategoria",
+  async ({ newCategoria, token }) => {
+    const { data } = await axios.post(
+      URL,
+      newCategoria,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return data;
+  }
+);
+
 const categoriasSlice = createSlice({
   name: "categorias",
   initialState: {
@@ -35,7 +52,21 @@ const categoriasSlice = createSlice({
         .addCase(fetchCategorias.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
+        })
+        
+        .addCase(createCategoria.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+        })
+        .addCase(createCategoria.fulfilled, (state,action) => {
+            state.items = [...state.items, action.payload]
+        })
+        
+        .addCase(createCategoria.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error.message;
         });
+
     },
   },
 );
