@@ -24,7 +24,7 @@ export default function ListaCarrito({  carrito }) {
          items.map((item) => (
             <CardCarrito
               key={item.id}
-              producto={item}
+              producto={item.producto}
               cantidad={item.cantidad}
               carrito={carrito}
             />
