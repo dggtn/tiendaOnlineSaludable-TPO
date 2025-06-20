@@ -3,12 +3,16 @@ import Buscador from "./Buscador";
 import React, { useEffect, useState } from "react";
 import { DropdownUsuarioLogueado } from "./DropdownUsuarioLogueado";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export default function Header({ autenticacion }) {
+export default function Header() {
   const [openNav, setOpenNav] = useState(false);
   const [categorias, setCategorias] = useState();
   const [mostrarBuscador, setMostrarBuscador] = useState(false);
   const [dropdownUsuario, setDropdownUsuario] = useState(false);
+
+  const { userInfo } = useSelector((state) => state.auth);
+
 
   useEffect(() => {
     async function fetchCategorias() {
@@ -108,13 +112,13 @@ export default function Header({ autenticacion }) {
                 <DropdownCategoria items={categorias} />
               </li>
 
-              {autenticacion.logueado ? (
+              {userInfo ? (
                 <li className="drop-shadow-lg relative list-none dropdown-usuario flex items-center">
                   <button
                     onClick={toggleDropdownUsuario}
                     className="flex items-center hover:text-green-700  gap-1 drop-shadow-lg"
                   >
-                    {autenticacion.email}
+                    {userInfo.email}
                     <svg
                       className={`w-4 h-4 ms-2.5 transition-transform drop-shadow-lg ${
                         dropdownUsuario ? "rotate-180" : ""

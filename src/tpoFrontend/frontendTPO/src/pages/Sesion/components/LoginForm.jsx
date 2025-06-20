@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../../redux/autenticacionSlice";
 
 const LoginForm = () => {
-  const { loading, userInfo, error } = useSelector((state) => state.auth);
+  const { userInfo } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");

@@ -77,7 +77,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header autenticacion={autenticacion} />
+        <Header  />
         <Rutas autenticacion={autenticacion} carrito={carrito} />
         <RutasProtegidas
           autenticacion={autenticacion}
