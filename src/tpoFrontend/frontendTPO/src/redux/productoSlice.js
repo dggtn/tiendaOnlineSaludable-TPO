@@ -83,6 +83,7 @@ const productoSlice = createSlice({
         state.error = null;
       })
       .addCase(CreateProductos.fulfilled,(state,action)=>{
+        state.loading = false;
         state.items = [... state.items,action.payload]
       })
       
@@ -113,6 +114,7 @@ const productoSlice = createSlice({
         state.error = null;
       })
       .addCase(eliminarProducto.fulfilled, (state, action) => {
+        state.loading = false;
         state.items = state.items.filter(producto => producto.id !== action.payload);
       })
       .addCase(eliminarProducto.rejected, (state, action) => {

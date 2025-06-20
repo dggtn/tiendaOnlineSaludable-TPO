@@ -188,7 +188,7 @@ export const ListaProductosAdmin = () => {
                 <div className="flex justify-center gap-6 md:col-span-2 mt-6">
                     <button 
                     type="submit" 
-              className="text-brown-200  rounded-lg text-base  px-6 py-3 rounded font-bold text-lg  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+              className="text-brown-200  px-6 py-3 rounded font-bold text-lg  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
                     >
                     Guardar
                     </button>
