@@ -25,6 +25,9 @@ export default function DetalleProducto({carrito}) {
     (state) => state.imagenes
   );
 
+  console.log("producto:", producto)
+  console.log("id:", id)
+
   useEffect(() => {
     if (id) {
       dispatch(fetchProductoById(id));
@@ -56,16 +59,16 @@ export default function DetalleProducto({carrito}) {
 
 
   return (
-    <main className="flex justify-center p-4 sm:p-10 max-w-screen-xl mx-auto bg-brown-100">
+    <main className="flex justify-center p-4 sm:p-10   bg-brown-100">
       <div className="flex flex-col lg:flex-row gap-10 bg-brown-200 shadow-2xl rounded-xl p-6 lg:p-10 min-w-full lg:min-w-[900px] min-h-[600px]">
         <CarruselProducto imagenes={imagenes} />
-        <InformacionProducto
-          producto={producto}
-          cantidad={cantidad}
-          setCantidad={setCantidad}
-          agregarAlCarrito={agregarAlCarrito}
-          carrito={carrito}
-        />
+        {producto ?(<InformacionProducto
+            producto={producto}
+            cantidad={cantidad}
+            setCantidad={setCantidad}
+            agregarAlCarrito={agregarAlCarrito}
+            carrito={carrito}
+          />):(<p>Cargando producto...</p>)}
       </div>
     </main>
   );

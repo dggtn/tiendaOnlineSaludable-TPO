@@ -51,19 +51,14 @@ let carritoInicial = {
 };
 
 function App() {
-  const [autenticacion, setAutenticacion] = useState({
-    logueado: false,
-    rol: "",
-    email: "",
-    accessToken: "",
-  });
+
   const [carrito, setCarrito] = useState(carritoInicial)
 
   carrito.cuandoSeAgregaUnProducto = productoAgregado
   carrito.cuandoSeEliminaUnProducto = productoEliminado
 
   const alHacerLogin = (auth) => {
-    setAutenticacion(auth);
+    // setAutenticacion(auth);
   };
 
   function productoAgregado() {
@@ -78,7 +73,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header  />
-        <Rutas autenticacion={autenticacion} carrito={carrito} />
+        <Rutas carrito={carrito} />
         <RutasProtegidas
           callbackLogin={alHacerLogin}
         />

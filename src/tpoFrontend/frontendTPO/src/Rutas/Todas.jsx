@@ -9,7 +9,6 @@ import Licencia from "../pages/seccionesFooter/Licencia";
 import Politicas from "../pages/seccionesFooter/Politicas";
 import Nosotros from "../pages/seccionesFooter/Nosotros";
 import TrabajaConNosotros from "../pages/seccionesFooter/TrabajaConNosotros";
-import FormularioContacto from "../pages/seccionesFooter/FormularioContacto";
 import Carrito from "../pages/carrito/Carrito";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Contactanos from "../pages/seccionesFooter/Contactanos";
