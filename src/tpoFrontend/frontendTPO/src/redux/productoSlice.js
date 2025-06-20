@@ -37,6 +37,19 @@ export const editarProducto = createAsyncThunk(
 );
 
 
+export const eliminarProducto = createAsyncThunk(
+  "productos/eliminarProducto",
+  async ({ id, token }) => {
+    await axios.delete(`${URL}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return id; 
+  }
+);
+
+
 const productoSlice = createSlice({
   name: "productos",
   initialState: {
@@ -87,6 +100,18 @@ const productoSlice = createSlice({
         }
       })
       .addCase(editarProducto.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+
+      .addCase(eliminarProducto.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(eliminarProducto.fulfilled, (state, action) => {
+        state.items = state.items.filter(producto => producto.id !== action.payload);
+      })
+      .addCase(eliminarProducto.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
