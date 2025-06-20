@@ -11,7 +11,7 @@ import { fetchImagenesProducto } from '../../redux/ImagenesSlice';
 import { agregarItem } from '../../redux/carritoSlice';
 
 
-export default function DetalleProducto({carrito}) {
+export default function DetalleProducto() {
   const navigate = useNavigate()
   const { id } = useParams();
   const [cantidad, setCantidad] = useState(0);
@@ -66,7 +66,6 @@ export default function DetalleProducto({carrito}) {
             cantidad={cantidad}
             setCantidad={setCantidad}
             agregarAlCarrito={agregarAlCarrito}
-            carrito={carrito}
           />):(<p>Cargando producto...</p>)}
       </div>
     </main>

@@ -1,13 +1,19 @@
 import ModalConfirmacion from "../../Admin/ModalConfirmacion";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { eliminar } from "../../redux/carritoSlice";
 
-export default function CardCarrito({ producto, cantidad, carrito }) {
+export default function CardCarrito({ producto, cantidad }) {
+  const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.carrito);
   const [imagenUrl, setImagenUrl] = useState("");
   const [abierto, setAbierto] = useState(false);
   const incrementar = () => {
-    const cantidadEnCarrito = carrito.obtenerCantidadSeleccionada(producto.id);
+    let itemEnCarrito = items.find((item) => item.producto.id === producto.id);
+    const cantidadEnCarrito =
+      itemEnCarrito === undefined ? 0 : itemEnCarrito.cantidad;
     const maximo = producto.cantidad - cantidadEnCarrito;
 
     if (cantidad < maximo) {
@@ -46,14 +52,18 @@ export default function CardCarrito({ producto, cantidad, carrito }) {
   }
 
   function eliminarProducto() {
-    carrito.eliminarPorId(producto.id);
+    dispatch(eliminar(producto.id));
   }
 
   return (
     <div className="flex flex-wrap justify-between border-b max-w-4xl m-auto p-2 mb-5 bg-brown-200  rounded-lg ">
       <div className="flex">
         <Link to={`productos/${producto.id}`}>
-          <img className="w-32 rounded mt-3" src={imagenUrl} alt={producto.nombre} />
+          <img
+            className="w-32 rounded mt-3"
+            src={imagenUrl}
+            alt={producto.nombre}
+          />
         </Link>
         <div className="">
           <Link to={`productos/${producto.id}`}>

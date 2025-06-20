@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductos } from "../../redux/productoSlice";
 import { store } from "../../redux/store";
 
-export const ListaProductos = ({ carrito }) => {
+export const ListaProductos = () => {
   const { id } = useParams();
   const [mostrar, setMostrar] = useState(false);
   const location = useLocation();
@@ -39,7 +39,6 @@ export const ListaProductos = ({ carrito }) => {
                   <CardProducto
                     key={productos.id}
                     producto={productos}
-                    carrito={carrito}
                   />
                 ))
               ) : (

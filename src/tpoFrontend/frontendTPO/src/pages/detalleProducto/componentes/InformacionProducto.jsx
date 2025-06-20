@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 export default function InformacionProducto({
@@ -5,10 +6,16 @@ export default function InformacionProducto({
   cantidad,
   setCantidad,
   agregarAlCarrito,
-  carrito,
 }) {
+
+   const { items } = useSelector((state) => state.carrito);
+
+
   const incrementar = () => {
-    const cantidadEnCarrito = carrito.obtenerCantidadSeleccionada(producto.id);
+    
+    let itemEnCarrito = items.find(item => item.producto.id === producto.id)
+    const cantidadEnCarrito = itemEnCarrito === undefined ? 0 : itemEnCarrito.cantidad
+
     const maximo = producto.cantidad - cantidadEnCarrito;
     if (cantidad < maximo) {
       setCantidad((valor) => valor + 1);

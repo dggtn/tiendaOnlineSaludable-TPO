@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function checkOut({ setCheckOut, carrito }) {
+export default function checkOut({ setCheckOut }) {
+  const dispatch = useDispatch();
+  const { total, items } = useSelector((state) => state.carrito);
   const { accessToken } = useSelector((state) => state.auth);
   const [formulario, setFormulario] = useState({
     nombre: "",
@@ -19,12 +21,10 @@ export default function checkOut({ setCheckOut, carrito }) {
     e.preventDefault();
 
     if (formularioValido()) {
-      const items = carrito.productos.map((item) => {
-        return { cantidad: item.cantidad, id: item.producto.id };
-      });
-
       const pedido = {
-        items: items,
+        items: items.map((item) => {
+          return { cantidad: item.cantidad, id: item.producto.id };
+        }),
       };
 
       try {
@@ -44,15 +44,15 @@ export default function checkOut({ setCheckOut, carrito }) {
           });
 
           setTimeout(() => {
-            carrito.vaciar();
+            dispatch(vaciar())
             setCheckOut(false);
             navigate("/productos");
           }, 2200);
         }
       } catch (error) {
         toast.error("Ocurrió un error procesando el pago. " + error, {
-      position: 'top-center',
-    });
+          position: "top-center",
+        });
       }
     }
   };
@@ -66,11 +66,11 @@ export default function checkOut({ setCheckOut, carrito }) {
       formulario.anio !== "" &&
       formulario.codigo !== "";
 
-      if (!valido) {
-        toast.error("Completar el formulario", {
-      position: 'top-center',
-    });
-      }
+    if (!valido) {
+      toast.error("Completar el formulario", {
+        position: "top-center",
+      });
+    }
     return valido;
   }
 
@@ -214,7 +214,7 @@ export default function checkOut({ setCheckOut, carrito }) {
                   />
                 </div>
                 <p className="mb-4 text-2xl font-semibold text-green-600 text-center">
-                  Total: $ {carrito.calcularTotal()}
+                  Total: $ {total}
                 </p>
                 <button
                   type="submit"

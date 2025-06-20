@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function CardProducto(props) {
+  const { items } = useSelector((state) => state.carrito);
   const [imagenUrl, setImagenUrl] = useState("");
   const navigate = useNavigate();
 
@@ -22,11 +24,13 @@ export default function CardProducto(props) {
   function agregarAlCarrito() {
     navigate(`/productos/${props.producto.id}`);
   }
+  let itemEnCarrito = items.find(
+    (item) => item.producto.id === props.producto.id
+  );
+  const cantidadEnCarrito =
+    itemEnCarrito === undefined ? 0 : itemEnCarrito.cantidad;
 
-  const sinStock =
-    props.producto.cantidad -
-      props.carrito.obtenerCantidadSeleccionada(props.producto.id) ===
-    0;
+  const sinStock = props.producto.cantidad - cantidadEnCarrito === 0;
 
   const imagenProducto = () => (
     <>

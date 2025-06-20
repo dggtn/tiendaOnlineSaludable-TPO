@@ -8,67 +8,14 @@ import { useState } from "react";
 import RutasProtegidas from "./Rutas/RutasProtegidas";
 import { BrowserRouter } from "react-router-dom";
 
-let itemCarrito = {
-  cantidad:0,
-  producto:{}
-}
-
-let carritoInicial = {
-  productos: [],
-  agregar: function(cantidad, producto) {
-
-    let itemEnCarrito = this.productos.find(item => item.producto.id === producto.id)
-    if (itemEnCarrito !== undefined) {
-      itemEnCarrito.cantidad += cantidad
-    } else {
-      this.productos.push({cantidad: cantidad, producto: producto})
-    }
-
-     this.cuandoSeAgregaUnProducto()
-  },
-  cuandoSeAgregaUnProducto: function (){},
-  cuandoSeEliminaUnProducto: function (){},
-  calcularTotal: function() {
-    const total = this.productos.reduce((acumulado, item) => {
-      return acumulado + (item.producto.precio * item.cantidad)
-    }, 0)
-    return total
-  },
-  eliminarPorId: function(id) {
-    this.productos = this.productos.filter(item => item.producto.id !== id);
-    this.cuandoSeEliminaUnProducto()  
-  },
-  tieneItems: function() {
-    return this.productos.length > 0
-  },
-  obtenerCantidadSeleccionada: function(idProducto) {
-    let itemEnCarrito = this.productos.find(item => item.producto.id === idProducto)
-    return itemEnCarrito === undefined ? 0 : itemEnCarrito.cantidad
-  },
-  vaciar: function(){
-    this.productos = []
-  }
-};
 
 function App() {
-
-  const [carrito, setCarrito] = useState(carritoInicial)
-
-  carrito.cuandoSeAgregaUnProducto = productoAgregado
-  carrito.cuandoSeEliminaUnProducto = productoEliminado
-  function productoAgregado() {
-    setCarrito({...carrito})
-  }
-
-    function productoEliminado() {
-      setCarrito({...carrito})
-  }
 
   return (
     <div className="App">
       <BrowserRouter>
         <Header  />
-        <Rutas carrito={carrito} />
+        <Rutas />
         <RutasProtegidas
         />
         <Footer />

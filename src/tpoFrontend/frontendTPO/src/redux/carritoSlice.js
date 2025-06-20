@@ -5,6 +5,7 @@ const estadoInicial = {
   estaVacio: true,
   total: 0,
 };
+
 export const carritoSlice = createSlice({
   name: "carrito",
   initialState: estadoInicial,
@@ -26,9 +27,26 @@ export const carritoSlice = createSlice({
         return acumulado + item.producto.precio * item.cantidad;
       }, 0);
     },
+    vaciar: (state, action) => {
+      state = estadoInicial;
+    },
+    eliminar: (state, action) => {
+      console.log(action)
+      state.items = state.items.filter(
+        (item) => item.producto.id !== action.payload
+      );
+      if (state.items.length <= 0) {
+        state.total = 0;
+        state.estaVacio = true;
+      } else {
+        state.total = state.items.reduce((acumulado, item) => {
+          return acumulado + item.producto.precio * item.cantidad;
+        }, 0);
+      }
+    },
   },
 });
-export const { agregarItem } = carritoSlice.actions;
+export const { agregarItem, vaciar,eliminar } = carritoSlice.actions;
 export default carritoSlice.reducer;
 
 //logica de no pasarse con stock

@@ -4,7 +4,7 @@ import CheckOut from "./checkOut";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function ListaCarrito({  carrito }) {
+export default function ListaCarrito() {
   const { items,total } = useSelector((state) => state.carrito);
   const navigate = useNavigate();
 
@@ -25,7 +25,6 @@ export default function ListaCarrito({  carrito }) {
               key={item.producto.id}
               producto={item.producto}
               cantidad={item.cantidad}
-              carrito={carrito}
             />
           ))}
       </section>
@@ -58,7 +57,6 @@ export default function ListaCarrito({  carrito }) {
       {checkOut && (
         <CheckOut
           setCheckOut={setCheckOut}
-          carrito={carrito}
         />
       )}
     </>

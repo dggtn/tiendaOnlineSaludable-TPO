@@ -13,13 +13,13 @@ import Carrito from "../pages/carrito/Carrito";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Contactanos from "../pages/seccionesFooter/Contactanos";
 
-export const Rutas = ({ carrito }) => {
+export const Rutas = () => {
   return (
     <Routes>
       <Route path="/" element={<Inicio />} />
       <Route path="/nosotros" element={<Nosotros />} />
-      <Route path="/productos" element={<ListaProductos carrito={carrito} />} />
-      <Route path="/productos/:id" element={<DetalleProducto carrito={carrito} />} />
+      <Route path="/productos" element={<ListaProductos />} />
+      <Route path="/productos/:id" element={<DetalleProducto />} />
       <Route path="/trabajaConNosotros" element={<TrabajaConNosotros />} />
       <Route path="/tiendas" element={<Tiendas />} />
       <Route path="/blog" element={<Blog />} />
@@ -31,7 +31,7 @@ export const Rutas = ({ carrito }) => {
         path="/carrito"
         element={
           <ProtectedRoute>
-            <Carrito carrito={carrito} />
+            <Carrito />
           </ProtectedRoute>
         }
       />
