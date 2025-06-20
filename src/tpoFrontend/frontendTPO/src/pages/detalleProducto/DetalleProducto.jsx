@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { store } from '../../redux/store';
 import { fetchProductoById } from '../../redux/ProductoDetalleSlice';
 import { fetchImagenesProducto } from '../../redux/ImagenesSlice';
+import { agregarItem } from '../../redux/carritoSlice';
 
 
 export default function DetalleProducto({carrito}) {
@@ -25,8 +26,6 @@ export default function DetalleProducto({carrito}) {
     (state) => state.imagenes
   );
 
-  console.log("producto:", producto)
-  console.log("id:", id)
 
   useEffect(() => {
     if (id) {
@@ -50,6 +49,7 @@ export default function DetalleProducto({carrito}) {
   
   if (producto) {
     carrito.agregar(cantidad, producto)
+    dispatch(agregarItem({cantidad:cantidad,producto:producto}))
     toast.success(`${producto.nombre} ha sido agregado a tu carrito`, {
       position: 'top-center',
     })
