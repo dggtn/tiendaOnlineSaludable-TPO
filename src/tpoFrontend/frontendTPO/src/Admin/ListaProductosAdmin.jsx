@@ -11,6 +11,7 @@ import { store } from "../redux/store";
 
 import { fetchCategorias } from "../redux/categoriasSlice";
 import { createImagen } from "../redux/ImagenesSlice";
+import { eliminarProducto } from '../redux/productoSlice';
 
 
 
@@ -40,16 +41,8 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
     async function eliminarProductoConfirmado() {
         setModalOpen(false);
         if (!productoAEliminar) return;
-        await fetch(`http://localhost:4002/productos/${productoAEliminar}`, {
-            method: "DELETE",
-            headers: {
-                Authorization: "Bearer " + autenticacion.accessToken,
-            },
-        });
-        
+        await dispatch(eliminarProducto({ id: productoAEliminar, token: autenticacion.accessToken }));
         setProductoAEliminar(null);
-        dispatch(fetchProductos());
-
     }
 
     function FormularioEdicion() {
