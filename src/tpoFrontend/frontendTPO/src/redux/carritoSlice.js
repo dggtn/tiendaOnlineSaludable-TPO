@@ -1,10 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
+const estadoInicial = {
+  items: [],
+  estaVacio: function () {
+    return this.items.length == 0;
+  },
+};
 export const carritoSlice = createSlice({
   name: "carrito",
-  initialState: { items: [] },
+  initialState: estadoInicial,
   reducers: {
     agregarItem: (state, action) => {
       let itemEnCarrito = state.items.find(
@@ -13,7 +17,6 @@ export const carritoSlice = createSlice({
       if (itemEnCarrito !== undefined) {
         itemEnCarrito.cantidad += action.payload.cantidad;
       } else {
-
         state.items.push({
           cantidad: action.payload.cantidad,
           producto: action.payload.producto,
