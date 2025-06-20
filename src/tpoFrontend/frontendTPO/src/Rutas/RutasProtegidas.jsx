@@ -49,9 +49,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
           path="categorias/nueva"
           element={
             <ProtectedRoute>
-              <CrearCategoriaForm
-                autenticacion={autenticacion}
-              ></CrearCategoriaForm>
+              <CrearCategoriaForm></CrearCategoriaForm>
             </ProtectedRoute>
           }
         />

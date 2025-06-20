@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCategoria, fetchCategorias } from "../redux/categoriasSlice";
 
 
-export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
+export default function FormularioCrearCategoriaAdmin() {
     const dispatch = useDispatch();
+    const { accessToken } = useSelector((state) => state.auth);
     const [nombre, setNombre] = useState("");
 
     async function handleSubmit(e) {
@@ -26,7 +27,7 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
         await dispatch(
             createCategoria({
                 newCategoria,
-                token: autenticacion.accessToken,
+                token: accessToken,
             })
         );
 
@@ -42,7 +43,6 @@ export default function FormularioCrearCategoriaAdmin({ autenticacion }) {
         });
     }
 }
-
 
     return (
         <>
