@@ -56,11 +56,6 @@ function App() {
 
   carrito.cuandoSeAgregaUnProducto = productoAgregado
   carrito.cuandoSeEliminaUnProducto = productoEliminado
-
-  const alHacerLogin = (auth) => {
-    // setAutenticacion(auth);
-  };
-
   function productoAgregado() {
     setCarrito({...carrito})
   }
@@ -75,7 +70,6 @@ function App() {
         <Header  />
         <Rutas carrito={carrito} />
         <RutasProtegidas
-          callbackLogin={alHacerLogin}
         />
         <Footer />
       </BrowserRouter>
