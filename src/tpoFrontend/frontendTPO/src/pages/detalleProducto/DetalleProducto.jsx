@@ -48,7 +48,6 @@ export default function DetalleProducto({carrito}) {
   }
   
   if (producto) {
-    carrito.agregar(cantidad, producto)
     dispatch(agregarItem({cantidad:cantidad,producto:producto}))
     toast.success(`${producto.nombre} ha sido agregado a tu carrito`, {
       position: 'top-center',

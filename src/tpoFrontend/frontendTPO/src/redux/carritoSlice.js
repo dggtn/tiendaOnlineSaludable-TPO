@@ -2,9 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const estadoInicial = {
   items: [],
-  estaVacio: function () {
-    return this.items.length == 0;
-  },
+  estaVacio: true,
 };
 export const carritoSlice = createSlice({
   name: "carrito",
@@ -22,8 +20,13 @@ export const carritoSlice = createSlice({
           producto: action.payload.producto,
         });
       }
+      state.estaVacio = false;     
     },
   },
 });
 export const { agregarItem } = carritoSlice.actions;
 export default carritoSlice.reducer;
+
+
+
+//logica de no pasarse con stock 

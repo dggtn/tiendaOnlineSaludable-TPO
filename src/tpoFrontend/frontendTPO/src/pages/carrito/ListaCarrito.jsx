@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import CardCarrito from "./CardCarrito";
 import CheckOut from "./checkOut";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ListaCarrito({  carrito }) {
+  const { items } = useSelector((state) => state.carrito);
+  console.log(items)
   const navigate = useNavigate();
 
   const [checkOut, setCheckOut] = useState(false);
@@ -17,11 +20,11 @@ export default function ListaCarrito({  carrito }) {
       </section>
 
       <section className="max-w-4xl m-auto bg-brown-200 rounded-lg ">
-        {carrito.productos.length > 0 &&
-          carrito.productos.map((item) => (
+        {items.length > 0 &&
+         items.map((item) => (
             <CardCarrito
-              key={item.producto.id}
-              producto={item.producto}
+              key={item.id}
+              producto={item}
               cantidad={item.cantidad}
               carrito={carrito}
             />
