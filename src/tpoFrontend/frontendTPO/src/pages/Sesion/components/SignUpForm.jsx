@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
+import { registrarUsuario } from "../../../redux/autenticacionSlice";
 
-const SignUpForm = ({ callbackLogin }) => {
+const SignUpForm = () => {
+  const { userInfo } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    if (userInfo) {
+      toast.success("Registro exitoso", {
+        position: "top-center",
+      });
+        if (userInfo.rol === "CLIENTE") {
+        navigate("/");
+      } else {
+        navigate("/admin");
+      }
+
+    }
+  }, [navigate, userInfo]);
 
   const handleClick = async () => {
     if (
@@ -30,34 +49,7 @@ const SignUpForm = ({ callbackLogin }) => {
       contrasena: password,
     };
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(authDetail),
-    };
-
-    const response = await fetch(
-      "http://localhost:4002/v1/auth/registrarse",
-      requestOptions
-    );
-    const data = await response.json();
-
-    if (data.access_token) {
-      const datos = jwtDecode(data.access_token);
-      const auth = {
-        rol: datos["rol"],
-        email: datos.sub,
-        accessToken: data.access_token,
-        logueado: true,
-      };
-      if (callbackLogin) callbackLogin(auth);
-      toast.success("Registro exitoso");
-      navigate("/productos");
-    } else {
-      toast.error(data.message, {
-        position: "top-center",
-      });
-    }
+        dispatch(registrarUsuario(authDetail));
   };
 
   return (

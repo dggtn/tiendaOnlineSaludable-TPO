@@ -11,14 +11,14 @@ import TablaCategorias from "../admin/TablaCategorias";
 
 import Register from "../pages/Sesion/Register";
 
-export default function RutasProtegidas({ callbackLogin }) {
+export default function RutasProtegidas() {
   return (
     <Routes>
       <Route path="/sesion" element={<Auth></Auth>} />
 
       <Route
         path="/registro"
-        element={<Register callbackLogin={callbackLogin} />}
+        element={<Register />}
       />
 
       <Route

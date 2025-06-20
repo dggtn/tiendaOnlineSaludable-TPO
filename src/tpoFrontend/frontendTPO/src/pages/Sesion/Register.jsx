@@ -1,6 +1,6 @@
 import SignUpForm from "./components/SignUpForm";
 
-const Register = ({ callbackLogin }) => {
+const Register = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-green-100 px-4 ">
       <div className="bg-brown-200 p-10 rounded-lg shadow-lg w-full max-w-md">
@@ -9,7 +9,7 @@ const Register = ({ callbackLogin }) => {
           <p className="text-lime-900 mt-2">Completá el siguiente formulario para crear tu cuenta</p>
         </div>
 
-        <SignUpForm callbackLogin={callbackLogin} />
+        <SignUpForm />
       </div>
     </div>
   );
