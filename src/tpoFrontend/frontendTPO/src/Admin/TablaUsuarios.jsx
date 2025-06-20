@@ -4,16 +4,15 @@ import { fetchUsuarios } from "../redux/usuariosSlice";
 import { store } from "../redux/store";
 import CardUsuario from "./CardUsuario";
 
+export default function TablaUsuarios() {
+  const dispatch = useDispatch();
+  const { items: usuarios, loading } = useSelector((state) => state.usuarios);
+  const { accessToken } = useSelector((state) => state.auth);
 
-export default function TablaUsuarios({ autenticacion }) {
-
-   const dispatch = store.dispatch;
-    const { items: usuarios, loading } = useSelector((state) => state.usuarios);
-  
-    useEffect(() => {
-      dispatch(fetchUsuarios(autenticacion.accessToken));
-    }, [dispatch]);
- 
+  useEffect(() => {
+    dispatch(fetchUsuarios(accessToken));
+   
+  }, []);
 
   return (
     <main className="flex-grow  p-8 flex justify-center">
@@ -28,10 +27,8 @@ export default function TablaUsuarios({ autenticacion }) {
               </tr>
             </thead>
             <tbody>
-              {usuarios.length > 0 &&
-                usuarios.map((usuario) => (
-                  <CardUsuario usuario={usuario} />
-                ))}
+              {!loading && usuarios.length > 0 &&
+                usuarios.map((usuario) => <CardUsuario usuario={usuario} />)}
             </tbody>
           </table>
           {usuarios.length === 0 && (

@@ -30,7 +30,7 @@ export const userLogin = createAsyncThunk(
 const initialState = {
   loading: false,
   userInfo: null,
-  accesToken: null,
+  accessToken: null,
   error: null,
   success: false,
 };
@@ -47,7 +47,7 @@ const autenticacionSlice = createSlice({
       })
       .addCase(userLogin.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.accesToken = payload.acces_token;
+        state.accessToken = payload.access_token;
         const datos = jwtDecode(payload.access_token);
         state.userInfo = {
           rol: datos["rol"],

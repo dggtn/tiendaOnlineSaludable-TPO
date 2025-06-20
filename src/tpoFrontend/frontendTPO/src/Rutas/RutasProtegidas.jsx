@@ -25,7 +25,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
           path="/admin"
           element={
             <ProtectedRoute >
-              <InicioAdmin autenticacion={autenticacion}></InicioAdmin>
+              <InicioAdmin ></InicioAdmin>
             </ProtectedRoute>
           }
         >
@@ -33,7 +33,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
             path="usuarios"
             element={
               <ProtectedRoute >
-                <TablaUsuarios autenticacion={autenticacion}></TablaUsuarios>
+                <TablaUsuarios ></TablaUsuarios>
               </ProtectedRoute>
             }
           />

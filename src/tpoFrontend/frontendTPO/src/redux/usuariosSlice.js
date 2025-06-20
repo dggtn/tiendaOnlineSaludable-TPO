@@ -1,13 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
-const URL = `http://localhost:4002/usuarios`;
+const URL = `http://localhost:4002/usuarios/registrados`;
 
 export const fetchUsuarios = createAsyncThunk(
   "usuarios/fetchUsuarios",
-  async ({accessToken}, {rejectWithValue}) => {
-    const { data } = await axios.get(URL);
+  async (accessToken, { rejectWithValue }) => {
+    const { data } = await axios.get(URL, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
     return data;
   }
 );
@@ -20,25 +24,24 @@ const usuariosSlice = createSlice({
     error: null, //los errores que ocurren se almacenan
   },
   reducers: {},
-    //funciones permiten actualizar estado en forma sincrona ,llamadas api son sincronas van vacias}
-    extraReducers: (builder) => {
-      builder
+  //funciones permiten actualizar estado en forma sincrona ,llamadas api son sincronas van vacias}
+  extraReducers: (builder) => {
+    builder
 
-        .addCase(fetchUsuarios.pending, (state) => {
-          state.loading = true;
-          state.error = null;
-        })
-        .addCase(fetchUsuarios.fulfilled, (state, action) => {
-          state.loading = false;
-          state.items = action.payload;
-        })
-        .addCase(fetchUsuarios.rejected, (state, action) => {
-          state.loading = false;
-          state.error = action.error.message;
-        });
-    },
+      .addCase(fetchUsuarios.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUsuarios.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchUsuarios.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
-);
+});
 export default usuariosSlice.reducer;
 
 //define como va a reaccionar slice a reacciones asincronas como fetch/post define que va a pasar cuando conecte a la api
