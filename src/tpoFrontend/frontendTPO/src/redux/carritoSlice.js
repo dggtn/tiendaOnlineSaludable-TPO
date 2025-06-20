@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const estadoInicial = {
   items: [],
   estaVacio: true,
+  total: 0,
 };
 export const carritoSlice = createSlice({
   name: "carrito",
@@ -20,13 +21,14 @@ export const carritoSlice = createSlice({
           producto: action.payload.producto,
         });
       }
-      state.estaVacio = false;     
+      state.estaVacio = false;
+      state.total = state.items.reduce((acumulado, item) => {
+        return acumulado + item.producto.precio * item.cantidad;
+      }, 0);
     },
   },
 });
 export const { agregarItem } = carritoSlice.actions;
 export default carritoSlice.reducer;
 
-
-
-//logica de no pasarse con stock 
+//logica de no pasarse con stock

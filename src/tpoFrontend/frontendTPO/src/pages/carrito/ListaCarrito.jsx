@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function ListaCarrito({  carrito }) {
-  const { items } = useSelector((state) => state.carrito);
-  console.log(items)
+  const { items,total } = useSelector((state) => state.carrito);
   const navigate = useNavigate();
 
   const [checkOut, setCheckOut] = useState(false);
@@ -23,7 +22,7 @@ export default function ListaCarrito({  carrito }) {
         {items.length > 0 &&
          items.map((item) => (
             <CardCarrito
-              key={item.id}
+              key={item.producto.id}
               producto={item.producto}
               cantidad={item.cantidad}
               carrito={carrito}
@@ -37,7 +36,7 @@ export default function ListaCarrito({  carrito }) {
             <span className="font-bold font-mono text-brown-400 text-2xl">
               Total
             </span>
-            <span className="text-2xl text-brown-400 font-bold">${carrito.calcularTotal()}</span>
+            <span className="text-2xl text-brown-400 font-bold">${total}</span>
           </p>
         </div>
         <div className="flex justify-between my-2">
