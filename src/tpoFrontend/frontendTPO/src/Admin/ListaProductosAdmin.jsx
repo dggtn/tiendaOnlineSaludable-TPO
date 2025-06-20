@@ -10,6 +10,8 @@ import { editarProducto } from "../redux/productoSlice";
 import { store } from "../redux/store";
 
 import { fetchCategorias } from "../redux/categoriasSlice";
+import { createImagen } from "../redux/ImagenesSlice";
+
 
 
 export const ListaProductosAdmin = ({ autenticacion }) => {
@@ -69,29 +71,28 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                     precio: Number(precio),
                     descripcion,
                     cantidad: Number(cantidad),
-                    categoria,
+                    categoria_id: categoria.id,
                 },
                 token: autenticacion.accessToken,
             }));
 
-
             if (imagenFile) {
-            const formData = new FormData();
-            formData.append("file", imagenFile);
-            formData.append("productoId", productoEditar.id);
-
-            await fetch(`http://localhost:4002/productos/${productoEditar.id}/imagen`, {
-                method: "POST",
-                headers: {
-                    Authorization: "Bearer " + autenticacion.accessToken,
-                },
-                body: formData,
-            });
-        }
+            await dispatch(
+                createImagen({
+                id: productoEditar.id,
+                imagenFile,
+                token: autenticacion.accessToken,
+                })
+            );
+            }
 
             setProductoEditar(null);
             dispatch(fetchProductos());
             toast.success("Producto actualizado correctamente");
+        
+        } catch (error) {
+        toast.error("Error al actualizar el producto");
+        }
 
         }
 
