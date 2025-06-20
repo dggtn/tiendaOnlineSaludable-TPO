@@ -1,14 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../../../redux/autenticacionSlice";
 
-const LoginForm = ({ callbackLogin }) => {
+const LoginForm = () => {
+  const { loading, userInfo, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (userInfo) {
+      toast.success("Inicio de sesión exitoso", {
+        position: "top-center",
+      });
+        if (userInfo.rol === "CLIENTE") {
+        navigate("/");
+      } else {
+        navigate("/admin");
+      }
+    // } else {
+    //   toast.error(data.message, {
+    //     position: "top-center",
+    //   });
+    // }
+    }
+  }, [navigate, userInfo]);
 
   const handleClick = async () => {
     if (email.trim() === "" || password.trim() === "") {
@@ -23,43 +44,9 @@ const LoginForm = ({ callbackLogin }) => {
       contrasena: password,
     };
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(authDetail),
-    };
+    dispatch(userLogin(authDetail));
 
-    const response = await fetch(
-      "http://localhost:4002/v1/auth/autenticarse",
-      requestOptions
-    );
-    const data = await response.json();
-    if (data.access_token) {
-      const datos = jwtDecode(data.access_token);
-
-      const auth = {
-        rol: datos["rol"],
-        email: datos.sub,
-        accessToken: data.access_token,
-        logueado: true,
-      };
-
-      callbackLogin(auth);
-
-      toast.success("Inicio de sesión exitoso", {
-        position: "top-center",
-      });
-
-      if (auth.rol === "CLIENTE") {
-        navigate("/");
-      } else {
-        navigate("/admin");
-      }
-    } else {
-      toast.error(data.message, {
-        position: "top-center",
-      });
-    }
+    
   };
 
   return (

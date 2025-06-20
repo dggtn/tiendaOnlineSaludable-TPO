@@ -16,7 +16,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
       <Routes>
         <Route
           path="/sesion"
-          element={<Auth callbackLogin={callbackLogin}></Auth>}
+          element={<Auth ></Auth>}
         />
 
         <Route path="/registro" element={<Register callbackLogin={callbackLogin} />} />
