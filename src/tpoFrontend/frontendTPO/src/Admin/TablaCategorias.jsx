@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCategorias } from "../redux/categoriasSlice";
 import { store } from "../redux/store";
 
-export default function TablaCategorias({ autenticacion }) {
+export default function TablaCategorias() {
   const dispatch = store.dispatch;
   const { items: categorias, loading } = useSelector((state) => state.categorias);
+  const { accessToken } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(fetchCategorias());
+    dispatch(fetchCategorias(accessToken));
   }, [dispatch]);
 
   return (

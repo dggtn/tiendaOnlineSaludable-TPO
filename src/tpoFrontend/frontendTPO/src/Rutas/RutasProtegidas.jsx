@@ -13,71 +13,67 @@ import Register from "../pages/Sesion/Register";
 
 export default function RutasProtegidas({ callbackLogin, autenticacion }) {
   return (
-      <Routes>
-        <Route
-          path="/sesion"
-          element={<Auth ></Auth>}
-        />
+    <Routes>
+      <Route path="/sesion" element={<Auth></Auth>} />
 
-        <Route path="/registro" element={<Register callbackLogin={callbackLogin} />} />
+      <Route
+        path="/registro"
+        element={<Register callbackLogin={callbackLogin} />}
+      />
 
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <InicioAdmin></InicioAdmin>
+          </ProtectedRoute>
+        }
+      >
         <Route
-          path="/admin"
+          path="usuarios"
           element={
-            <ProtectedRoute >
-              <InicioAdmin ></InicioAdmin>
+            <ProtectedRoute>
+              <TablaUsuarios></TablaUsuarios>
             </ProtectedRoute>
           }
-        >
-          <Route
-            path="usuarios"
-            element={
-              <ProtectedRoute >
-                <TablaUsuarios ></TablaUsuarios>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="productos"
-            element={
-              <ProtectedRoute >
-                <ListaProductosAdmin
-                  autenticacion={autenticacion}
-                ></ListaProductosAdmin>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="categorias/nueva"
-            element={
-              <ProtectedRoute >
-                <CrearCategoriaForm
-                  autenticacion={autenticacion}
-                ></CrearCategoriaForm>
-              </ProtectedRoute>
-            }
-          />
+        />
+        <Route
+          path="productos"
+          element={
+            <ProtectedRoute>
+              <ListaProductosAdmin></ListaProductosAdmin>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="categorias/nueva"
+          element={
+            <ProtectedRoute>
+              <CrearCategoriaForm
+                autenticacion={autenticacion}
+              ></CrearCategoriaForm>
+            </ProtectedRoute>
+          }
+        />
 
-          <Route
-            path="productos/nuevo"
-            element={
-              <ProtectedRoute >
-                <CrearProductoForm
-                  autenticacion={autenticacion}
-                ></CrearProductoForm>
-              </ProtectedRoute>
-            }
-          />
+        <Route
+          path="productos/nuevo"
+          element={
+            <ProtectedRoute>
+              <CrearProductoForm></CrearProductoForm>
+            </ProtectedRoute>
+          }
+        />
 
-          <Route
-            path="categorias"
-            element={
-              <ProtectedRoute >
-                <TablaCategorias autenticacion={autenticacion} />
-              </ProtectedRoute>
-            }
-          />
-        </Route>
-      </Routes>
+        <Route
+          path="categorias"
+          element={
+            <ProtectedRoute>
+              <TablaCategorias />
+            </ProtectedRoute>
+          }
+        />
+      </Route>
+    </Routes>
   );
 }

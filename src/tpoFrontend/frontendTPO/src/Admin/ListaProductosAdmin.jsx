@@ -15,20 +15,22 @@ import { eliminarProducto } from '../redux/productoSlice';
 
 
 
-export const ListaProductosAdmin = ({ autenticacion }) => {
+export const ListaProductosAdmin = () => {
     const dispatch = store.dispatch;
     const { items: productos, loading} = useSelector((state) => state.productos);
 
     const { items: categorias } = useSelector((state) => state.categorias);
+
+    const { accessToken } = useSelector((state) => state.auth);
 
     const [productoEditar, setProductoEditar] = useState(null); 
     const [modalOpen, setModalOpen] = useState(false);
     const [productoAEliminar, setProductoAEliminar] = useState(null);
 
     useEffect(() => {
-        dispatch(fetchProductos());
+        dispatch(fetchProductos(accessToken));
 
-        dispatch(fetchCategorias());
+        dispatch(fetchCategorias(accessToken));
         
     }, [dispatch]);
 
@@ -41,7 +43,7 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
     async function eliminarProductoConfirmado() {
         setModalOpen(false);
         if (!productoAEliminar) return;
-        await dispatch(eliminarProducto({ id: productoAEliminar, token: autenticacion.accessToken }));
+        await dispatch(eliminarProducto({ id: productoAEliminar, token:accessToken }));
         setProductoAEliminar(null);
     }
 
@@ -66,7 +68,7 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                     cantidad: Number(cantidad),
                     categoria_id: categoria.id,
                 },
-                token: autenticacion.accessToken,
+                token: accessToken,
             }));
 
             if (imagenFile) {
@@ -74,7 +76,7 @@ export const ListaProductosAdmin = ({ autenticacion }) => {
                 createImagen({
                 id: productoEditar.id,
                 imagenFile,
-                token: autenticacion.accessToken,
+                token: accessToken,
                 })
             );
             }

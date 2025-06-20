@@ -13,8 +13,12 @@ export const fetchProductos = createAsyncThunk(
 
 export const CreateProductos = createAsyncThunk(
     "productos/CrearProductos",
-    async (newProducto) => {
-    const { data } = await axios.post(URL, newProducto);
+    async ({newProducto, accessToken}) => {
+      console.log(accessToken)
+    const { data } = await axios.post(URL, newProducto,{headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },});
+    
     return data;
   }
 );
