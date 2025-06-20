@@ -80,7 +80,6 @@ function App() {
         <Header  />
         <Rutas autenticacion={autenticacion} carrito={carrito} />
         <RutasProtegidas
-          autenticacion={autenticacion}
           callbackLogin={alHacerLogin}
         />
         <Footer />

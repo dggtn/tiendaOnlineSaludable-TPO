@@ -11,7 +11,7 @@ import TablaCategorias from "../admin/TablaCategorias";
 
 import Register from "../pages/Sesion/Register";
 
-export default function RutasProtegidas({ callbackLogin, autenticacion }) {
+export default function RutasProtegidas({ callbackLogin }) {
   return (
     <Routes>
       <Route path="/sesion" element={<Auth></Auth>} />
