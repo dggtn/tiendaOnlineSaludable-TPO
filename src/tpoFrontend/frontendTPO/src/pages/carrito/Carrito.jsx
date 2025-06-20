@@ -3,10 +3,10 @@ import CarritoVacio from './CarritoVacio';
 import ListaCarrito from './ListaCarrito';
 
 
-export default function Carrito({autenticacion, carrito}) {
+export default function Carrito({ carrito}) {
   return (
      <main className='bg-green-100'>
-        { carrito.tieneItems() ? <ListaCarrito autenticacion={autenticacion} carrito={carrito}/>:<CarritoVacio/> }
+        { carrito.tieneItems() ? <ListaCarrito carrito={carrito}/>:<CarritoVacio/> }
     </main>
   )
 }

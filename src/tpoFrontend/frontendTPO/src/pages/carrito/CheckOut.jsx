@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-export default function checkOut({ setCheckOut, carrito, autenticacion }) {
+export default function checkOut({ setCheckOut, carrito }) {
+  const { accessToken } = useSelector((state) => state.auth);
   const [formulario, setFormulario] = useState({
     nombre: "",
     email: "",
@@ -29,7 +31,7 @@ export default function checkOut({ setCheckOut, carrito, autenticacion }) {
         const respuesta = await fetch("http://localhost:4002/pedidos/comprar", {
           method: "POST",
           headers: {
-            Authorization: "Bearer " + autenticacion.accessToken,
+            Authorization: "Bearer " + accessToken,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(pedido),

@@ -14,7 +14,7 @@ import Carrito from "../pages/carrito/Carrito";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Contactanos from "../pages/seccionesFooter/Contactanos";
 
-export const Rutas = ({ autenticacion, carrito }) => {
+export const Rutas = ({ carrito }) => {
   return (
     <Routes>
       <Route path="/" element={<Inicio />} />
@@ -31,8 +31,8 @@ export const Rutas = ({ autenticacion, carrito }) => {
       <Route
         path="/carrito"
         element={
-          <ProtectedRoute autenticacion={autenticacion}>
-            <Carrito autenticacion={autenticacion} carrito={carrito} />
+          <ProtectedRoute>
+            <Carrito carrito={carrito} />
           </ProtectedRoute>
         }
       />

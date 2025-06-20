@@ -3,7 +3,7 @@ import CardCarrito from "./CardCarrito";
 import CheckOut from "./checkOut";
 import { useNavigate } from "react-router-dom";
 
-export default function ListaCarrito({ autenticacion, carrito }) {
+export default function ListaCarrito({  carrito }) {
   const navigate = useNavigate();
 
   const [checkOut, setCheckOut] = useState(false);
@@ -57,7 +57,6 @@ export default function ListaCarrito({ autenticacion, carrito }) {
         <CheckOut
           setCheckOut={setCheckOut}
           carrito={carrito}
-          autenticacion={autenticacion}
         />
       )}
     </>
