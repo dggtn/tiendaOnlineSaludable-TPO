@@ -3,21 +3,21 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { eliminar } from "../../redux/carritoSlice";
+import { decrementar, eliminar, incrementar } from "../../redux/carritoSlice";
 
 export default function CardCarrito({ producto, cantidad }) {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.carrito);
   const [imagenUrl, setImagenUrl] = useState("");
   const [abierto, setAbierto] = useState(false);
-  const incrementar = () => {
+  const aumentar = () => {
     let itemEnCarrito = items.find((item) => item.producto.id === producto.id);
     const cantidadEnCarrito =
       itemEnCarrito === undefined ? 0 : itemEnCarrito.cantidad;
     const maximo = producto.cantidad - cantidadEnCarrito;
 
     if (cantidad < maximo) {
-      setCantidad((valor) => valor + 1);
+      dispatch(incrementar(producto.id));
     } else {
       toast.info(`Solo hay ${maximo} unidades disponibles.`, {
         position: "top-center",
@@ -25,9 +25,9 @@ export default function CardCarrito({ producto, cantidad }) {
     }
   };
 
-  const decrementar = () => {
+  const reducir = () => {
     if (cantidad > 0) {
-      setCantidad((valor) => valor - 1);
+      dispatch(decrementar(producto.id));
     }
   };
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function CardCarrito({ producto, cantidad }) {
   return (
     <div className="flex flex-wrap justify-between border-b max-w-4xl m-auto p-2 mb-5 bg-brown-200  rounded-lg ">
       <div className="flex">
-        <Link to={`productos/${producto.id}`}>
+        <Link to={`/productos/${producto.id}`}>
           <img
             className="w-32 rounded mt-3"
             src={imagenUrl}
@@ -66,14 +66,13 @@ export default function CardCarrito({ producto, cantidad }) {
           />
         </Link>
         <div className="">
-          <Link to={`productos/${producto.id}`}>
             <h2 className="text-center  ml-3 text-2xl mb-5 text-brown-400 font-bold mx-20 mt-3  ">
               {producto.nombre}
             </h2>
 
             <div className="flex items-center mb-5 px-3 py-2 sm:px-8 sm:py-4">
               <button
-                onClick={decrementar}
+                onClick={reducir}
                 className=" hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800  bg-green-600 font-bold text-white  text-brown-white rounded-lg px-3 py-2 sm:px-8 sm:py-4  transition"
                 aria-label="Disminuir cantidad"
               >
@@ -85,14 +84,13 @@ export default function CardCarrito({ producto, cantidad }) {
               </span>
 
               <button
-                onClick={incrementar}
+                onClick={aumentar}
                 className=" hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800 bg-green-600 font-bold text-white  text-brown-white rounded-lg px-3 py-2 sm:px-8 sm:py-4  transition"
                 aria-label="Aumentar cantidad"
               >
                 +
               </button>
             </div>
-          </Link>
           <button
             onClick={() => setAbierto(true)}
             className="text-base   text-red-400"

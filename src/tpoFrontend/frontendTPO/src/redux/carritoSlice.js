@@ -6,6 +6,12 @@ const estadoInicial = {
   total: 0,
 };
 
+const calcularTotal = (items) => {
+  return items.reduce((acumulado, item) => {
+    return acumulado + item.producto.precio * item.cantidad;
+  }, 0);
+};
+
 export const carritoSlice = createSlice({
   name: "carrito",
   initialState: estadoInicial,
@@ -23,15 +29,13 @@ export const carritoSlice = createSlice({
         });
       }
       state.estaVacio = false;
-      state.total = state.items.reduce((acumulado, item) => {
-        return acumulado + item.producto.precio * item.cantidad;
-      }, 0);
+      state.total = calcularTotal(state.items);
     },
     vaciar: (state, action) => {
       state = estadoInicial;
     },
     eliminar: (state, action) => {
-      console.log(action)
+      console.log(action);
       state.items = state.items.filter(
         (item) => item.producto.id !== action.payload
       );
@@ -39,14 +43,23 @@ export const carritoSlice = createSlice({
         state.total = 0;
         state.estaVacio = true;
       } else {
-        state.total = state.items.reduce((acumulado, item) => {
-          return acumulado + item.producto.precio * item.cantidad;
-        }, 0);
+        state.total = calcularTotal(state.items);
       }
+    },
+    incrementar: (state, action) => {
+      let item = state.items.find((item) => item.producto.id == action.payload);
+      item.cantidad++;
+      state.total = calcularTotal(state.items);
+    },
+    decrementar: (state, action) => {
+      let item = state.items.find((item) => item.producto.id == action.payload);
+      item.cantidad--;
+      state.total = calcularTotal(state.items);
     },
   },
 });
-export const { agregarItem, vaciar,eliminar } = carritoSlice.actions;
+export const { agregarItem, vaciar, eliminar, incrementar, decrementar } =
+  carritoSlice.actions;
 export default carritoSlice.reducer;
 
 //logica de no pasarse con stock
