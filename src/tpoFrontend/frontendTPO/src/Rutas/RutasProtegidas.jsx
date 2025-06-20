@@ -24,7 +24,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
         <Route
           path="/admin"
           element={
-            <ProtectedRoute autenticacion={autenticacion}>
+            <ProtectedRoute >
               <InicioAdmin autenticacion={autenticacion}></InicioAdmin>
             </ProtectedRoute>
           }
@@ -32,7 +32,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
           <Route
             path="usuarios"
             element={
-              <ProtectedRoute autenticacion={autenticacion}>
+              <ProtectedRoute >
                 <TablaUsuarios autenticacion={autenticacion}></TablaUsuarios>
               </ProtectedRoute>
             }
@@ -40,7 +40,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
           <Route
             path="productos"
             element={
-              <ProtectedRoute autenticacion={autenticacion}>
+              <ProtectedRoute >
                 <ListaProductosAdmin
                   autenticacion={autenticacion}
                 ></ListaProductosAdmin>
@@ -50,7 +50,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
           <Route
             path="categorias/nueva"
             element={
-              <ProtectedRoute autenticacion={autenticacion}>
+              <ProtectedRoute >
                 <CrearCategoriaForm
                   autenticacion={autenticacion}
                 ></CrearCategoriaForm>
@@ -61,7 +61,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
           <Route
             path="productos/nuevo"
             element={
-              <ProtectedRoute autenticacion={autenticacion}>
+              <ProtectedRoute >
                 <CrearProductoForm
                   autenticacion={autenticacion}
                 ></CrearProductoForm>
@@ -72,7 +72,7 @@ export default function RutasProtegidas({ callbackLogin, autenticacion }) {
           <Route
             path="categorias"
             element={
-              <ProtectedRoute autenticacion={autenticacion}>
+              <ProtectedRoute >
                 <TablaCategorias autenticacion={autenticacion} />
               </ProtectedRoute>
             }
