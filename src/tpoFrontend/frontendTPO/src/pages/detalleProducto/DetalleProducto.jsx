@@ -36,8 +36,14 @@ export default function DetalleProducto() {
 
 
   if (loadingProducto || loadingImagenes) {
-    return <p>Cargando producto...</p>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-green-400 border-solid"></div>
+        <span className="ml-4 text-green-400 font-medium">Cargando...</span>
+      </div>
+    );
   }
+
 
   const agregarAlCarrito = () => {
   if (cantidad === 0) {
