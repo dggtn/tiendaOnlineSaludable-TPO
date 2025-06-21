@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import { comprarPedido } from "../../redux/pedidoSlice";
+
 export default function checkOut({ setCheckOut }) {
   const dispatch = useDispatch();
   const { total, items } = useSelector((state) => state.carrito);
@@ -28,28 +30,19 @@ export default function checkOut({ setCheckOut }) {
       };
 
       try {
-        const respuesta = await fetch("http://localhost:4002/pedidos/comprar", {
-          method: "POST",
-          headers: {
-            Authorization: "Bearer " + accessToken,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(pedido),
+        await dispatch(comprarPedido({ pedido, token: accessToken }));
+
+        toast.success("Compra realizada con éxito", {
+          position: "top-center",
+          autoClose: 2000,
         });
 
-        if (respuesta.ok) {
-          toast.success("Compra realizada con éxito", {
-            position: "top-center",
-            autoClose: 2000,
-          });
-
-          setTimeout(() => {
-            dispatch(vaciar())
-            setCheckOut(false);
-            navigate("/productos");
-          }, 2200);
-        }
-      } catch (error) {
+        setTimeout(() => {
+          dispatch(vaciar())
+          setCheckOut(false);
+          navigate("/productos");
+        }, 2200);
+      }catch (error) {
         toast.error("Ocurrió un error procesando el pago. " + error, {
           position: "top-center",
         });
