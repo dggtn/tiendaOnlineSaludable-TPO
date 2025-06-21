@@ -7,6 +7,8 @@ import imagenesReducer from "./ImagenesSlice";
 import authReducer from "./autenticacionSlice";
 import carritoReducer from "./carritoSlice";
 
+import pedidoReducer from "./pedidoSlice";
+
 export const store = configureStore({
   reducer: {
     productos: productosReducer,
@@ -15,7 +17,8 @@ export const store = configureStore({
     productoDetalle: productoDetalleReducer,
     imagenes: imagenesReducer,
     auth: authReducer,
-    carrito: carritoReducer
+    carrito: carritoReducer,
+    pedido: pedidoReducer,
   },
 });
 
