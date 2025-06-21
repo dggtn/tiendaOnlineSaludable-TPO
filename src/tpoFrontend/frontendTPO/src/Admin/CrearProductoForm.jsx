@@ -49,6 +49,11 @@ export default function CrearProductoForm() {
         dispatch(
           CreateProductos(argumentos)
         );
+
+        toast.success("Producto creado con éxito.", {
+          position: "top-center",
+        });
+        
         setNombre(""),
           setDescripcion(""),
           setCantidad(""),
@@ -77,38 +82,59 @@ export default function CrearProductoForm() {
       <>
         <form
           onSubmit={handleSubmit}
-          className="max-w-md mx-auto p-4 bg-brown-200 rounded shadow mt-4 mb-8"
+          className="w-full sm:w-[500px] md:w-[700px] xl:w-[900px] p-10 bg-white rounded-2xl shadow-2xl mx-auto my-12 grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          <h2 className="text-2xl font-semibold mb-4 text-green-600">
+          <h3 className="mb-4 text-2xl font-bold text-center text-lime-800 col-span-1 md:col-span-2">
             Crear nuevo producto
-          </h2>
+          </h3>
 
-          <div className="mb-4">
-            <label
-              htmlFor="nombre"
-              className="block text-sm font-medium text-green-600"
-            >
+          <div className="flex flex-col">
+            <label className="mb-1 font-semibold text-gray-700" htmlFor="nombre-input">
               Nombre
             </label>
             <input
               type="text"
-              id="nombre"
+              id="nombre-input"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="mt-1 block w-full border text-green-600 rounded-md p-2"
+              className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
             />
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="categorias"
-              className="block mb-2 text-sm font-medium text-green-600 dark:text-white"
-            >
+
+          <div className="flex flex-col">
+            <label className="mb-1 font-semibold text-gray-700" htmlFor="precio-input">
+              Precio
+            </label>
+            <input
+              id="precio-input"
+              type="number"
+              value={precio}
+              onChange={(e) => setPrecio(e.target.value)}
+              className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
+            ></input>
+          </div>
+
+          <div className="flex flex-col">
+            <label className="mb-1 font-semibold text-gray-700" htmlFor="cantidad-input">
+              Cantidad
+            </label>
+            <input
+              id="cantidad-input"
+              type="number"
+              value={cantidad}
+              onChange={(e) => setCantidad(e.target.value)}
+              className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
+            ></input>
+          </div>
+
+          <div className="flex flex-col">
+            <label className="mb-1 font-semibold text-gray-700" htmlFor="categoria-input">
               Elige una categoria:{" "}
             </label>
             <select
               onChange={(e) => setCategoria(e.target.value)}
               id="countries"
-              className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500"
+              className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition"
             >
               <option selected>Categorias</option>
               {categorias.length > 0 &&
@@ -117,55 +143,28 @@ export default function CrearProductoForm() {
                 ))}
             </select>
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="descripcion"
-              className="block text-sm font-medium text-green-600"
-            >
-              Cantidad
-            </label>
-            <textarea
-              id="descripcion"
-              value={cantidad}
-              onChange={(e) => setCantidad(e.target.value)}
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            ></textarea>
-          </div>
+        
 
-          <div className="mb-4">
-            <label
-              htmlFor="descripcion"
-              className="block text-sm font-medium text-green-600"
-            >
+          <div className="flex flex-col md:col-span-2">
+            <label className="mb-1 font-semibold text-gray-700" htmlFor="descripcion-input">
               Descripcion
             </label>
             <textarea
               id="descripcion"
               value={descripcion}
               onChange={(e) => setDescripcion(e.target.value)}
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-lime-500 transition resize-none"
             ></textarea>
           </div>
-          <div className="mb-4">
-            <label
-              htmlFor="descripcion"
-              className="block text-sm font-medium text-green-600"
+
+          <div className="flex justify-center md:col-span-2 mt-6">
+            <button
+              type="submit"
+              className="text-brown-200 px-6 py-3 rounded font-bold text-lg bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
             >
-              Precio
-            </label>
-            <textarea
-              id="descripcion"
-              value={precio}
-              onChange={(e) => setPrecio(e.target.value)}
-              className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            ></textarea>
+              Crear
+            </button>
           </div>
-          <button
-            type="submit"
-            className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
-          >
-            Crear
-          </button>
         </form>
       </>
     );
