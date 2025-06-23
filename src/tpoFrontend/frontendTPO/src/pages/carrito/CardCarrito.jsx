@@ -14,12 +14,12 @@ export default function CardCarrito({ producto, cantidad }) {
     let itemEnCarrito = items.find((item) => item.producto.id === producto.id);
     const cantidadEnCarrito =
       itemEnCarrito === undefined ? 0 : itemEnCarrito.cantidad;
-    const maximo = producto.cantidad - cantidadEnCarrito;
+    //const maximo = producto.cantidad - cantidadEnCarrito;
 
-    if (cantidad < maximo) {
+    if (cantidad < producto.cantidad) {
       dispatch(incrementar(producto.id));
     } else {
-      toast.info(`Solo hay ${maximo} unidades disponibles.`, {
+      toast.info(`Solo hay ${producto.cantidad} unidades disponibles.`, {
         position: "top-center",
       });
     }
