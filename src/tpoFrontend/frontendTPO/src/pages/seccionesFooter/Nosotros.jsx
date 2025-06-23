@@ -4,7 +4,7 @@ import React from 'react';
 function TiendaOnlineSaludable() {
   return (
     <div className="bg-white text-brown-800 font-sans">
-      <header className="bg-brown-400 text-white p-6">
+      <header className="bg-brown-400 text-white p-6 text-center">
         <h1 className="text-3xl font-bold">Bienvenidos a tiendaOnlineSaludable</h1>
         <p className="mt-2 text-lg">
           Desarrollando la agricultura ecológica con equidad y cooperación.
