@@ -37,13 +37,13 @@ export default function DropdownCategoria() {
 
   return (
     <div
-      className="relative bg-green-500  text-brown-200    "
+      className="relative bg-green-500 z-50 text-brown-200    "
       ref={dropdownRef}
     >
       <button
         type="button"
         onClick={toggle}
-        className="hover:text-green-700 text-brown-100 flex items-center justify-between w-full py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-lime-900 md:w-auto dark:text-lime-900 md:dark:hover:text-lime-900 dark:focus:text-lime-900 dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+        className="hover:text-green-700 z-50 text-brown-100 flex items-center justify-between w-full py-2 px-3  rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-green-lime-900 md:w-auto dark:text-lime-900 md:dark:hover:text-lime-900 dark:focus:text-lime-900 dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
       >
         Tienda
         <svg
