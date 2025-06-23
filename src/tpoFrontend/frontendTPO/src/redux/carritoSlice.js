@@ -46,11 +46,15 @@ export const carritoSlice = createSlice({
         state.total = calcularTotal(state.items);
       }
     },
+    
     incrementar: (state, action) => {
       let item = state.items.find((item) => item.producto.id == action.payload);
-      item.cantidad++;
-      state.total = calcularTotal(state.items);
+      if (item && item.cantidad < item.producto.cantidad) {
+        item.cantidad++;
+        state.total = calcularTotal(state.items);
+      }
     },
+
     decrementar: (state, action) => {
       let item = state.items.find((item) => item.producto.id == action.payload);
       item.cantidad--;
