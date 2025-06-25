@@ -12,9 +12,22 @@ export const fetchCategorias = createAsyncThunk(
   }
 );
 
+/**
+ * @typedef {Object} CategoriaThunkArgs
+ * @property {Object} newCategoria
+ * @property {string} token
+ */
+
 export const createCategoria = createAsyncThunk(
   "categoria/createCategoria",
-  async ({ newCategoria, token }) => {
+  /**
+   * @param {CategoriaThunkArgs} payload
+   */
+  async (payload) => {
+    if (!payload || !payload.newCategoria || !payload.token) {
+      throw new Error("Faltan datos para crear la categoría");
+    }
+    const { newCategoria, token } = payload;
     const { data } = await axios.post(
       URL,
       newCategoria,
@@ -32,45 +45,37 @@ export const createCategoria = createAsyncThunk(
 const categoriasSlice = createSlice({
   name: "categorias",
   initialState: {
-    items: [], //coincide con el use state del fetch que hicimos,
-    loading: false, //se puede agregar spinner o frase 'cargando'
-    error: null, //los errores que ocurren se almacenan
+    items: [],
+    loading: false,
+    error: null,
   },
   reducers: {},
-    //funciones permiten actualizar estado en forma sincrona ,llamadas api son sincronas van vacias}
-    extraReducers: (builder) => {
-      builder
-
-        .addCase(fetchCategorias.pending, (state) => {
-          state.loading = true;
-          state.error = null;
-        })
-        .addCase(fetchCategorias.fulfilled, (state, action) => {
-          state.loading = false;
-          state.items = action.payload;
-        })
-        .addCase(fetchCategorias.rejected, (state, action) => {
-          state.loading = false;
-          state.error = action.error.message;
-        })
-        
-        .addCase(createCategoria.pending, (state) => {
-          state.loading = true;
-          state.error = null;
-        })
-        .addCase(createCategoria.fulfilled, (state,action) => {
-            state.items = [...state.items, action.payload]
-        })
-        
-        .addCase(createCategoria.rejected, (state, action) => {
-          state.loading = false;
-          state.error = action.error.message;
-        });
-
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCategorias.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchCategorias.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchCategorias.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(createCategoria.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(createCategoria.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = [...state.items, action.payload];
+      })
+      .addCase(createCategoria.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
-);
+});
 export default categoriasSlice.reducer;
-
-//define como va a reaccionar slice a reacciones asincronas como fetch/post define que va a pasar cuando conecte a la api
-//parametro es builder

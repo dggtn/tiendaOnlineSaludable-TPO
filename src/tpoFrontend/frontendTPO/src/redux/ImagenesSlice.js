@@ -9,28 +9,42 @@ export const fetchImagenesProducto = createAsyncThunk(
     }
 );
 
+/**
+ * @typedef {Object} ImagenArgs
+ * @property {string|number} id
+ * @property {File} imagenFile
+ * @property {string} token
+ */
 export const createImagen = createAsyncThunk(
     "imagenes/createImagen",
-    async ({ id, imagenFile, token }) => {
-        const formData = new FormData();
-        formData.append("file", imagenFile);
-        formData.append("productoId", id);
-
-        const { data } = await axios.post(
-            `http://localhost:4002/productos/${id}/imagen`,
-            formData,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data",
-                },
-            }
-        );
-        return data; 
+    /**
+     * @param {ImagenArgs} payload
+     * @param {Object} thunkAPI
+     */
+    async (payload, { rejectWithValue }) => {
+        if (!payload || !payload.id || !payload.imagenFile || !payload.token) {
+            return rejectWithValue("Faltan datos para subir la imagen");
+        }
+        try {
+            const formData = new FormData();
+            formData.append("file", payload.imagenFile);
+            formData.append("productoId", payload.id.toString());
+            const { data } = await axios.post(
+                `http://localhost:4002/productos/${payload.id}/imagen`,
+                formData,
+                {
+                    headers: {
+                        Authorization: `Bearer ${payload.token}`,
+                        "Content-Type": "multipart/form-data",
+                    },
+                }
+            );
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.response?.data?.message || error.message);
+        }
     }
 );
-
-
 
 const imagenesSlice = createSlice({
     name: "imagenes",
@@ -54,18 +68,17 @@ const imagenesSlice = createSlice({
             state.loading = false;
             state.error = action.error.message;
         })
-
         .addCase(createImagen.pending, (state) => {
             state.loading = true;   
             state.error = null;    
         })
         .addCase(createImagen.fulfilled, (state, action) => {
+            state.loading = false;
             state.items = [...state.items, action.payload];
         })
-
         .addCase(createImagen.rejected, (state, action) => {
             state.loading = false;  
-            state.error = action.error.message;
+            state.error = action.payload || action.error.message;
         });
     },
 });

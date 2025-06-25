@@ -2,9 +2,21 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 const backendURL = `http://localhost:4002/v1`;
+/**
+ * @typedef {Object} LoginArgs
+ * @property {string} email
+ * @property {string} contrasena
+ */
 export const userLogin = createAsyncThunk(
   "auth/login",
-  async ({ email, contrasena }, { rejectWithValue }) => {
+  /**
+   * @param {LoginArgs} payload
+   * @param {Object} thunkAPI
+   */
+  async (payload, { rejectWithValue }) => {
+    if (!payload || !payload.email || !payload.contrasena) {
+      return rejectWithValue("Faltan datos para login");
+    }
     try {
       const config = {
         headers: {
@@ -13,10 +25,9 @@ export const userLogin = createAsyncThunk(
       };
       const { data } = await axios.post(
         `${backendURL}/auth/autenticarse`,
-        { email, contrasena },
+        { email: payload.email, contrasena: payload.contrasena },
         config
       );
-
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -27,9 +38,23 @@ export const userLogin = createAsyncThunk(
     }
   }
 );
+/**
+ * @typedef {Object} RegisterArgs
+ * @property {string} email
+ * @property {string} contrasena
+ * @property {string} nombre
+ * @property {string} apellido
+ */
 export const registrarUsuario = createAsyncThunk(
   "register/singIn",
-  async ({ email, contrasena,nombre,apellido }, { rejectWithValue }) => {
+  /**
+   * @param {RegisterArgs} payload
+   * @param {Object} thunkAPI
+   */
+  async (payload, { rejectWithValue }) => {
+    if (!payload || !payload.email || !payload.contrasena || !payload.nombre || !payload.apellido) {
+      return rejectWithValue("Faltan datos para registro");
+    }
     try {
       const config = {
         headers: {
@@ -38,10 +63,9 @@ export const registrarUsuario = createAsyncThunk(
       };
       const { data } = await axios.post(
         `${backendURL}/auth/registrarse`,
-        {  email, contrasena,nombre,apellido },
+        {  email: payload.email, contrasena: payload.contrasena, nombre: payload.nombre, apellido: payload.apellido },
         config
       );
-
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -79,12 +103,13 @@ const autenticacionSlice = createSlice({
           email: datos.sub,
           accessToken: payload.access_token,
         };
+        state.error = null;
       })
       .addCase(userLogin.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       })
-       .addCase(registrarUsuario.pending, (state) => {
+      .addCase(registrarUsuario.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
@@ -97,6 +122,7 @@ const autenticacionSlice = createSlice({
           email: datos.sub,
           accessToken: payload.access_token,
         };
+        state.error = null;
       })
       .addCase(registrarUsuario.rejected, (state, { payload }) => {
         state.loading = false;
@@ -104,5 +130,4 @@ const autenticacionSlice = createSlice({
       });
   },
 });
-
 export default autenticacionSlice.reducer;

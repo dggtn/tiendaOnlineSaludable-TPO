@@ -4,6 +4,7 @@ const estadoInicial = {
   items: [],
   estaVacio: true,
   total: 0,
+  // Se puede agregar loading y error si se agregan operaciones asíncronas en el futuro
 };
 
 const calcularTotal = (items) => {
@@ -32,10 +33,11 @@ export const carritoSlice = createSlice({
       state.total = calcularTotal(state.items);
     },
     vaciar: (state, action) => {
-      state = estadoInicial;
+      state.items = [];
+      state.estaVacio = true;
+      state.total = 0;
     },
     eliminar: (state, action) => {
-      console.log(action);
       state.items = state.items.filter(
         (item) => item.producto.id !== action.payload
       );
@@ -46,7 +48,6 @@ export const carritoSlice = createSlice({
         state.total = calcularTotal(state.items);
       }
     },
-    
     incrementar: (state, action) => {
       let item = state.items.find((item) => item.producto.id == action.payload);
       if (item && item.cantidad < item.producto.cantidad) {
@@ -54,11 +55,18 @@ export const carritoSlice = createSlice({
         state.total = calcularTotal(state.items);
       }
     },
-
     decrementar: (state, action) => {
       let item = state.items.find((item) => item.producto.id == action.payload);
-      item.cantidad--;
-      state.total = calcularTotal(state.items);
+      if (item) {
+        item.cantidad--;
+        if (item.cantidad <= 0) {
+          state.items = state.items.filter(
+            (i) => i.producto.id !== item.producto.id
+          );
+        }
+        state.total = calcularTotal(state.items);
+        state.estaVacio = state.items.length === 0;
+      }
     },
   },
 });
