@@ -18,12 +18,14 @@ export default function DetalleProducto() {
 
   const dispatch = store.dispatch;
 
+  // Tipar correctamente los selectores para evitar errores de acceso
+  // @ts-ignore
   const { item: producto, loading: loadingProducto } = useSelector(
-    (state) => state.productoDetalle
+    (state) => state["productoDetalle"]
   );
 
   const { items: imagenes, loading: loadingImagenes } = useSelector(
-    (state) => state.imagenes
+    (state) => state["imagenes"]
   );
 
   // Obtener imágenes por id (igual que en CardProducto)
@@ -31,9 +33,12 @@ export default function DetalleProducto() {
 
 
   useEffect(() => {
-    if (id) {
-      dispatch(fetchProductoById(id));
-      dispatch(fetchImagenesProducto(id));
+    const idNum = Number(id);
+    if (!isNaN(idNum) && idNum > 0) {
+      // @ts-ignore
+      dispatch(fetchProductoById(idNum));
+      // @ts-ignore
+      dispatch(fetchImagenesProducto(idNum));
     }
   }, [dispatch, id]);
 

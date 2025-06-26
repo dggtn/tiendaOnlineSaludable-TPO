@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../../redux/autenticacionSlice";
 
 const LoginForm = () => {
-  const { userInfo } = useSelector((state) => state.auth);
+  const { userInfo, error } = useSelector((state) => state["auth"]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -18,18 +18,23 @@ const LoginForm = () => {
       toast.success("Inicio de sesión exitoso", {
         position: "top-center",
       });
-        if (userInfo.rol === "CLIENTE") {
+      if (userInfo.rol === "CLIENTE") {
         navigate("/");
       } else {
         navigate("/admin");
       }
-    // } else {
-    //   toast.error(data.message, {
-    //     position: "top-center",
-    //   });
-    // }
     }
-  }, [navigate, userInfo]);
+    // Mostrar error de login
+    if (error) {
+      let mensaje = error;
+      if (typeof error === "string" && error.toLowerCase().includes("denied")) {
+        mensaje = "El mail no está registrado o la contraseña es incorrecta.";
+      }
+      toast.error(mensaje, {
+        position: "top-center",
+      });
+    }
+  }, [navigate, userInfo, error]);
 
   const handleClick = async () => {
     if (email.trim() === "" || password.trim() === "") {
@@ -44,9 +49,8 @@ const LoginForm = () => {
       contrasena: password,
     };
 
+    // @ts-ignore
     dispatch(userLogin(authDetail));
-
-    
   };
 
   return (

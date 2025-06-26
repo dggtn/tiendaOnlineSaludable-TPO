@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchImagenesProducto } from "../redux/ImagenesSlice.js";
@@ -22,7 +21,8 @@ export default function CardProductoAdmin({ producto, onEliminar, onEditar }) {
 
   return (
     <div className="transform rounded-xl shadow-xl transition duration-300 hover:scale-105 m-3 max-w-sm bg-brown-200  border  ">
-      <NavLink to={`/productos/${producto.id}`} className="relative">
+      {/* Imagen y categoría, sin enlace */}
+      <div className="relative">
         <span className="absolute top-4 left-2 px-2  bg-brown-200  text-white rounded">
           {producto.categoria}
         </span>
@@ -31,13 +31,12 @@ export default function CardProductoAdmin({ producto, onEliminar, onEditar }) {
           src={imagenUrl}
           alt="imagen"
         />
-      </NavLink>
+      </div>
       <div className="p-5">
-        <NavLink to={`/productos/${producto.id}`}>
-          <h5 className="mb-2 text-2xl font-bold tracking-tight  text-brown-400 ">
-            {producto.nombre}
-          </h5>
-        </NavLink>
+        {/* Nombre sin enlace */}
+        <h5 className="mb-2 text-2xl font-bold tracking-tight  text-brown-400 ">
+          {producto.nombre}
+        </h5>
         <p className="mb-3 font-normal  text-brown-400 ">
           {producto.descripcion}
         </p>
