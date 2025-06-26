@@ -26,6 +26,9 @@ export default function DetalleProducto() {
     (state) => state.imagenes
   );
 
+  // Obtener imágenes por id (igual que en CardProducto)
+  const imagenesProducto = imagenes[String(id)] || [];
+
 
   useEffect(() => {
     if (id) {
@@ -66,7 +69,7 @@ export default function DetalleProducto() {
   return (
     <main className="flex justify-center p-4 sm:p-10   bg-brown-100">
       <div className="flex flex-col lg:flex-row gap-10 bg-brown-200 shadow-2xl rounded-xl p-6 lg:p-10 min-w-full lg:min-w-[900px] min-h-[600px]">
-        <CarruselProducto imagenes={imagenes} />
+        <CarruselProducto imagenes={imagenesProducto} />
         {producto ?(<InformacionProducto
             producto={producto}
             cantidad={cantidad}

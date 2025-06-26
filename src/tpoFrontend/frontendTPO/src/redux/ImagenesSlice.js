@@ -49,7 +49,7 @@ export const createImagen = createAsyncThunk(
 const imagenesSlice = createSlice({
     name: "imagenes",
     initialState: {
-        items: [],
+        items: {}, // Cambiamos a objeto para guardar por id de producto
         loading: false,
         error: null,
     },
@@ -62,7 +62,10 @@ const imagenesSlice = createSlice({
         })
         .addCase(fetchImagenesProducto.fulfilled, (state, action) => {
             state.loading = false;
-            state.items = action.payload;
+            // Validamos que action.meta.arg exista y lo forzamos a string
+            if (action.meta && action.meta.arg !== undefined && action.meta.arg !== null) {
+                state.items[String(action.meta.arg)] = action.payload;
+            }
         })
         .addCase(fetchImagenesProducto.rejected, (state, action) => {
             state.loading = false;
@@ -74,7 +77,7 @@ const imagenesSlice = createSlice({
         })
         .addCase(createImagen.fulfilled, (state, action) => {
             state.loading = false;
-            state.items = [...state.items, action.payload];
+            // Opcional: podrías agregar la imagen al array correspondiente
         })
         .addCase(createImagen.rejected, (state, action) => {
             state.loading = false;  

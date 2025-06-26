@@ -1,25 +1,24 @@
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchImagenesProducto } from "../redux/ImagenesSlice.js";
 
 export default function CardProductoAdmin({ producto, onEliminar, onEditar }) {
-  const [imagenUrl, setImagenUrl] = useState("");
+  const dispatch = useDispatch();
+  // @ts-ignore
+  const imagenes = useSelector((state) => state.imagenes.items[String(producto.id)] || []);
 
   useEffect(() => {
-    async function fetchImagenes() {
-      try {
-        const response = await fetch(
-          `http://localhost:4002/productos/${producto.id}/imagenes`
-        );
-        const imagenes = await response.json();
-        if (imagenes.length > 0) {
-          setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`);
-        }
-      } catch (error) {
-        setImagenUrl("");
-      }
-    }
-    fetchImagenes();
-  }, [producto.id]);
+    // @ts-ignore
+    dispatch(fetchImagenesProducto(producto.id));
+  }, [dispatch, producto.id]);
+
+  // Si imagenes es un array, usamos la primera imagen
+  const imagenProductoObj = Array.isArray(imagenes) && imagenes.length > 0 ? imagenes[0] : null;
+  const imagenUrl =
+    imagenProductoObj && imagenProductoObj.imagenData
+      ? `data:image/jpeg;base64,${imagenProductoObj.imagenData}`
+      : "";
 
   return (
     <div className="transform rounded-xl shadow-xl transition duration-300 hover:scale-105 m-3 max-w-sm bg-brown-200  border  ">
@@ -51,7 +50,7 @@ export default function CardProductoAdmin({ producto, onEliminar, onEditar }) {
         <div className="flex justify-end space-x-2 mt-4">
           <button
             onClick={() => onEditar(producto)}
-              className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
+            className="text-brown-200  rounded-lg text-base px-5 py-2.5 mr-2 mb-2 font-bold  bg-green-600 hover:bg-lime-800 focus:ring-4 focus:ring-lime-300 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800"
           >
             Editar
           </button>

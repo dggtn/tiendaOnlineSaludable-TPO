@@ -10,7 +10,7 @@ import { editarProducto } from "../redux/productoSlice";
 import { store } from "../redux/store";
 
 import { fetchCategorias } from "../redux/categoriasSlice";
-import { createImagen } from "../redux/ImagenesSlice";
+import { createImagen } from "../redux/ImagenesSlice.js";
 import { eliminarProducto } from '../redux/productoSlice';
 
 

@@ -1,25 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchImagenesProducto } from "../../../redux/ImagenesSlice.js";
 
 export default function CardProducto(props) {
-  const { items } = useSelector((state) => state.carrito);
-  const [imagenUrl, setImagenUrl] = useState("");
+  const dispatch = useDispatch();
+  // @ts-ignore
+  const items = useSelector((state) => state.carrito?.items || []);
+  // @ts-ignore
+  const imagenes = useSelector((state) => state.imagenes.items[String(props.producto.id)] || []);
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchImagenes() {
-      const response = await fetch(
-        `http://localhost:4002/productos/${props.producto.id}/imagenes`
-      );
-      const imagenes = await response.json();
-      if (imagenes.length > 0) {
-        setImagenUrl(`data:image/jpeg;base64,${imagenes[0].imagenData}`);
-      }
-    }
-    fetchImagenes();
-  }, []);
+    // @ts-ignore
+    dispatch(fetchImagenesProducto(props.producto.id));
+  }, [dispatch, props.producto.id]);
+
+  // Si imagenes es un array, usamos la primera imagen
+  const imagenProductoObj = Array.isArray(imagenes) && imagenes.length > 0 ? imagenes[0] : null;
+  const imagenUrl =
+    imagenProductoObj && imagenProductoObj.imagenData
+      ? `data:image/jpeg;base64,${imagenProductoObj.imagenData}`
+      : "";
 
   function agregarAlCarrito() {
     navigate(`/productos/${props.producto.id}`);
