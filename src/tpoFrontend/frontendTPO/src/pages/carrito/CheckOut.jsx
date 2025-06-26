@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { comprarPedido } from "../../redux/pedidoSlice";
+import { vaciar } from "../../redux/carritoSlice";
+
 
 export default function checkOut({ setCheckOut }) {
   const dispatch = useDispatch();
