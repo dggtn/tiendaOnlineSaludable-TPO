@@ -4,50 +4,15 @@ import React, { useEffect, useState } from "react";
 import { DropdownUsuarioLogueado } from "./DropdownUsuarioLogueado";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { store } from "../../redux/store";
 
 export default function Header() {
+  const dispatch = store.dispatch;
   const [openNav, setOpenNav] = useState(false);
-  const [categorias, setCategorias] = useState();
   const [mostrarBuscador, setMostrarBuscador] = useState(false);
   const [dropdownUsuario, setDropdownUsuario] = useState(false);
 
   const { userInfo } = useSelector((state) => state.auth);
-
-
-  useEffect(() => {
-    async function fetchCategorias() {
-      const response = await fetch(`http://localhost:4002/categorias`);
-      const data = await response.json();
-      setCategorias(data.content);
-    }
-
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-
-    fetchCategorias();
-
-    return () => {
-      window.removeEventListener("resize", () => setOpenNav(false));
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      const usuarioDropdown = document.querySelector(".dropdown-usuario");
-      if (
-        dropdownUsuario &&
-        usuarioDropdown &&
-        !usuarioDropdown.contains(e.target)
-      ) {
-        setDropdownUsuario(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, [dropdownUsuario]);
 
   const clickEnBuscar = (e) => {
     e.preventDefault();
@@ -107,7 +72,7 @@ export default function Header() {
           >
             <ul className=" z-50 flex flex-col font-medium p-4 md:p-0 mt-4 border  rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0   items-center gap-2">
               <li className="flex items-center drop-shadow-lg">
-                <DropdownCategoria items={categorias} />
+                <DropdownCategoria/>
               </li>
 
               {userInfo ? (

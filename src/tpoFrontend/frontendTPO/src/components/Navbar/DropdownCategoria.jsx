@@ -16,6 +16,7 @@ export default function DropdownCategoria() {
   useEffect(() => {
     dispatch(fetchCategorias());
   }, [dispatch]);
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {

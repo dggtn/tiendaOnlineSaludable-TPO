@@ -81,4 +81,3 @@ function Buscador( ) {
 
 export default Buscador;
 
-//buscar por query para en la barra de navegacion http://localhost:5173/?q=lo que estoy buscando
