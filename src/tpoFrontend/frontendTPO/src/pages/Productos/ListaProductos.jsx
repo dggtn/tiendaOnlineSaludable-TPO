@@ -15,8 +15,8 @@ export const ListaProductos = () => {
   const { items: productos, loading } = useSelector((state) => state.productos);
 
   useEffect(() => {
-      const categoria = queryParams.get("categoria");
-    dispatch(fetchProductos(categoria));
+      
+    dispatch(fetchProductos(queryParams));
   }, [dispatch, queryParams]);
 
   return (

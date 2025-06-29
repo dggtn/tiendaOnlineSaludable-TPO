@@ -5,13 +5,20 @@ const URL = `http://localhost:4002/productos`;
 
 export const fetchProductos = createAsyncThunk(
   "productos/fetchProductos",
-  async (categoria) => {
-    let url = URL
-    if(categoria!=undefined && categoria !== null  && categoria !== ""){
-      url = `${URL}?categoria=${categoria}`
+  async (queryParam) => {
+    const categoria = queryParam.get("categoria");
+    const buscar = queryParam.get("buscar");
+    let url = URL;
+    if (categoria != undefined && categoria !== null && categoria !== "") {
+      url = `${URL}?categoria=${categoria}`;
     }
-  const { data } =  await axios.get(url);
-    return  data;
+    let { data } = await axios.get(url);
+    if (buscar != undefined && buscar !== null && buscar !== "") {
+      data = data.filter((producto) =>
+        producto.nombre.toUpperCase().includes(buscar.toUpperCase())
+      );
+    }
+    return data;
   }
 );
 
@@ -135,17 +142,18 @@ const productoSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(filtrarProducto.pending,(state)=>{
+      .addCase(filtrarProducto.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-       .addCase(filtrarProducto.fulfilled,(state, action)=>{
+      .addCase(filtrarProducto.fulfilled, (state, action) => {
         state.loading = false;
         state.items = action.payload;
       })
-       .addCase(filtrarProducto.rejected,(state, action)=>{
+      .addCase(filtrarProducto.rejected, (state, action) => {
         state.loading = true;
-        state.error = null; state.error = action.error.message;
+        state.error = null;
+        state.error = action.error.message;
       });
   },
 });

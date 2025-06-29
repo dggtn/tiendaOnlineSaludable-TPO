@@ -50,9 +50,7 @@ public class ProductoController {
         productoServicio.crearProducto(producto);
 
     }
-
-
-
+    
 
     @GetMapping("/{id}")
     public Producto clickEnUnProducto(@PathVariable Long id) {
