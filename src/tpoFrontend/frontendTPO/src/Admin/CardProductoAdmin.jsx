@@ -4,15 +4,15 @@ import { fetchImagenesProducto } from "../redux/ImagenesSlice.js";
 
 export default function CardProductoAdmin({ producto, onEliminar, onEditar }) {
   const dispatch = useDispatch();
-  // @ts-ignore
+
   const imagenes = useSelector((state) => state.imagenes.items[String(producto.id)] || []);
 
   useEffect(() => {
-    // @ts-ignore
+
     dispatch(fetchImagenesProducto(producto.id));
   }, [dispatch, producto.id]);
 
-  // Si imagenes es un array, usamos la primera imagen
+
   const imagenProductoObj = Array.isArray(imagenes) && imagenes.length > 0 ? imagenes[0] : null;
   const imagenUrl =
     imagenProductoObj && imagenProductoObj.imagenData
@@ -21,7 +21,6 @@ export default function CardProductoAdmin({ producto, onEliminar, onEditar }) {
 
   return (
     <div className="transform rounded-xl shadow-xl transition duration-300 hover:scale-105 m-3 max-w-sm bg-brown-200  border  ">
-      {/* Imagen y categoría, sin enlace */}
       <div className="relative">
         <span className="absolute top-4 left-2 px-2  bg-brown-200  text-white rounded">
           {producto.categoria}

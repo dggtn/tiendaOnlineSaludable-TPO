@@ -6,12 +6,18 @@ const URL = `http://localhost:4002/productos`;
 export const fetchProductos = createAsyncThunk(
   "productos/fetchProductos",
   async (queryParam) => {
-    const categoria = queryParam.get("categoria");
-    const buscar = queryParam.get("buscar");
     let url = URL;
-    if (categoria != undefined && categoria !== null && categoria !== "") {
-      url = `${URL}?categoria=${categoria}`;
+    let buscar;
+
+    if (queryParam) {
+      const categoria = queryParam.get("categoria");
+      let buscar = queryParam.get("buscar");
+
+      if (categoria != undefined && categoria !== null && categoria !== "") {
+        url = `${URL}?categoria=${categoria}`;
+      }
     }
+
     let { data } = await axios.get(url);
     if (buscar != undefined && buscar !== null && buscar !== "") {
       data = data.filter((producto) =>
