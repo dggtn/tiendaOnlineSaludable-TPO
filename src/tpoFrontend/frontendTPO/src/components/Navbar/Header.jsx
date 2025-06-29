@@ -60,15 +60,13 @@ export default function Header() {
   };
 
   const cerrarSesion = () => {
-    //setAuth({ logueado: false, email: "" });
-    //setDropdownUsuario(false);
     window.location.href = "/";
   };
 
   return (
     <main>
-      <nav className="drop-shadow-lg bg-brown-500   text-green-600 ">
-        <div className="drop-shadow-lg flex flex-wrap items-center justify-between p-4 ">
+      <nav className="drop-shadow-lg bg-brown-500   text-green-600 relative z-1000 ">
+        <div className="drop-shadow-lg flex flex-wrap items-center justify-between p-4 relative z-1000">
           <NavLink
             to={"/"}
             className="drop-shadow-lg flex items-center space-x-3 rtl:space-x-reverse"
@@ -105,9 +103,9 @@ export default function Header() {
 
           <div
             className="hidden w-full md:block md:w-auto"
-            id="navbar-dropdown"
+            id="navbar-dropdown"  
           >
-            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border  rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0   items-center gap-2">
+            <ul className=" z-50 flex flex-col font-medium p-4 md:p-0 mt-4 border  rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0   items-center gap-2">
               <li className="flex items-center drop-shadow-lg">
                 <DropdownCategoria items={categorias} />
               </li>

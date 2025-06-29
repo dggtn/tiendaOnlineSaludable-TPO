@@ -57,7 +57,9 @@ public class ProductoServicio implements IProductoServicio {
         List<ProductoResponseDTO> dtos = new ArrayList<>();
 
         for (Producto p : productos) {
+
             ProductoResponseDTO prdto = new ProductoResponseDTO();
+            prdto.setId(p.getId());
             prdto.setNombre(p.getNombre());
             prdto.setCantidad(p.getCantidad());
             prdto.setPrecio(p.getPrecio());

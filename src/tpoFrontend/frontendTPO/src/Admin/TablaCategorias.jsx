@@ -14,7 +14,7 @@ export default function TablaCategorias() {
 
   return (
     <main className="flex-grow p-8 flex justify-center">
-      <div className="w-full max-w-5xl dark:bg-gray-800 shadow-md overflow-x-auto">
+      <div className="w-full max-w-5xl  shadow-md dark:bg-gray-800 overflow-x-auto">
         {loading ? (
           <div className="flex justify-center items-center py-10">
             <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-green-400 border-solid"></div>

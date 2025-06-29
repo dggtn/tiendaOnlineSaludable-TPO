@@ -17,7 +17,7 @@ export default function CardProducto(props) {
     dispatch(fetchImagenesProducto(props.producto.id));
   }, [dispatch, props.producto.id]);
 
-  // Si imagenes es un array, usamos la primera imagen
+
   const imagenProductoObj = Array.isArray(imagenes) && imagenes.length > 0 ? imagenes[0] : null;
   const imagenUrl =
     imagenProductoObj && imagenProductoObj.imagenData
@@ -49,7 +49,7 @@ export default function CardProducto(props) {
   );
 
   return (
-    <div className="transform rounded-xl shadow-xl transition duration-300 hover:scale-105 pb-4 m-3 max-w-sm bg-brown-200  border border-gray-200  dark:bg-gray-800 dark:border-gray-700">
+    <div className="z-0 transform rounded-xl shadow-xl transition duration-300 hover:scale-105 pb-4 m-3 max-w-sm bg-brown-200  border border-gray-200  dark:bg-gray-800 dark:border-gray-700">
       {sinStock ? (
         imagenProducto()
       ) : (

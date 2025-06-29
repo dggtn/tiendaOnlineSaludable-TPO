@@ -75,7 +75,7 @@ const categoriasSlice = createSlice({
       .addCase(createCategoria.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-      });
+      })
   },
 });
 export default categoriasSlice.reducer;

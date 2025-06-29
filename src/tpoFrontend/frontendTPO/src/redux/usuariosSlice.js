@@ -19,7 +19,6 @@ export const fetchUsuarios = createAsyncThunk(
   }
 );
 
-// Aquí puedes agregar futuros thunks para crear, editar y eliminar usuarios
 
 const usuariosSlice = createSlice({
   name: "usuarios",

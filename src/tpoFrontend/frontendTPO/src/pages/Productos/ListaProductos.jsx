@@ -15,8 +15,9 @@ export const ListaProductos = () => {
   const { items: productos, loading } = useSelector((state) => state.productos);
 
   useEffect(() => {
-    dispatch(fetchProductos());
-  }, [dispatch]);
+      const categoria = queryParams.get("categoria");
+    dispatch(fetchProductos(categoria));
+  }, [dispatch, queryParams]);
 
   return (
     <main>
@@ -34,6 +35,7 @@ export const ListaProductos = () => {
               </span>
             </div>
             <div className=" flex flex-wrap justify-center lg:flex-row">
+              {}
               {productos.length > 0 ? (
                 productos.map((productos) => (
                   <CardProducto

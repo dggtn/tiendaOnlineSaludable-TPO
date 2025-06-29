@@ -77,7 +77,7 @@ const imagenesSlice = createSlice({
         })
         .addCase(createImagen.fulfilled, (state, action) => {
             state.loading = false;
-            // Opcional: podrías agregar la imagen al array correspondiente
+           
         })
         .addCase(createImagen.rejected, (state, action) => {
             state.loading = false;  
