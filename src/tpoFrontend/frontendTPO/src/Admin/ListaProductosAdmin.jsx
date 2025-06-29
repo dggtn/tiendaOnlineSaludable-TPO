@@ -28,7 +28,7 @@ export const ListaProductosAdmin = () => {
     const [productoAEliminar, setProductoAEliminar] = useState(null);
 
     useEffect(() => {
-        dispatch(fetchProductos(accessToken));
+        dispatch(fetchProductos());
 
         dispatch(fetchCategorias(accessToken));
         
@@ -48,12 +48,6 @@ export const ListaProductosAdmin = () => {
     }
 
     function FormularioEdicion() {
-        const [nombre, setNombre] = useState(productoEditar.nombre);
-        const [precio, setPrecio] = useState(productoEditar.precio);
-        const [descripcion, setDescripcion] = useState(productoEditar.descripcion);
-        const [cantidad, setCantidad] = useState(productoEditar.cantidad);
-        const [categoria, setCategoria] = useState(productoEditar.categoria);
-        const [imagenFile, setImagenFile] = useState(null);
 
         async function handleGuardar(e) {
             e.preventDefault();

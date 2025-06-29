@@ -7,7 +7,7 @@ export const fetchProductos = createAsyncThunk(
   "productos/fetchProductos",
   async (categoria) => {
     let url = URL
-    if(categoria !== null  && categoria !== ""){
+    if(categoria!=undefined && categoria !== null  && categoria !== ""){
       url = `${URL}?categoria=${categoria}`
     }
   const { data } =  await axios.get(url);
