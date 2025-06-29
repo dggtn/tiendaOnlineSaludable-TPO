@@ -1,19 +1,14 @@
 import { useEffect, useState } from "react";
 import CardProductoAdmin from "./CardProductoAdmin.jsx";
 import ModalConfirmacion from "./ModalConfirmacion.jsx";
-
 import { toast } from 'react-toastify';
-
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductos } from '../redux/productoSlice';
 import { editarProducto } from "../redux/productoSlice";
 import { store } from "../redux/store";
-
 import { fetchCategorias } from "../redux/categoriasSlice";
 import { createImagen } from "../redux/ImagenesSlice.js";
 import { eliminarProducto } from '../redux/productoSlice';
-
-
 
 export const ListaProductosAdmin = () => {
     const dispatch = store.dispatch;
@@ -48,7 +43,13 @@ export const ListaProductosAdmin = () => {
     }
 
     function FormularioEdicion() {
-
+        const [nombre, setNombre] = useState(productoEditar.nombre);
+        const [descripcion, setDescripcion] = useState(productoEditar.descripcion);
+        const [cantidad, setCantidad] = useState(productoEditar.cantidad);
+        const [categoria, setCategoria] = useState(productoEditar.categoria);
+        const [precio, setPrecio] = useState(productoEditar.categoria);
+        const [imagenFile, setImagenFile] = useState(null);
+        
         async function handleGuardar(e) {
             e.preventDefault();
 
