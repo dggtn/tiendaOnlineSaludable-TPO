@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function TrabajaConNosotros() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brown-50 via-brown-100 to-brown-200 font-sans">
+    <div className="min-h-screen bg-brown-100 font-sans">
       
       <header className="bg-brown-400 text-white p-6 text-center">
           <h1 className="text-3xl font-bold">TRABAJA CON NOSOTROS</h1>
@@ -13,24 +13,24 @@ export default function TrabajaConNosotros() {
 
       <div className="max-w-6xl mx-auto px-6 py-12">
         <section className="mb-16">
-          <div className="bg-green-100 backdrop-blur-sm rounded-2xl p-8 shadow-md border border-green-300">
+          <div className="bg-green-50 rounded-2xl p-8 shadow-md border border-green-200">
             <div className="space-y-6 text-green-800 leading-relaxed">
-              <p className="text-lg md:text-xl font-normal">
+              <p className="text-base md:text-lg font-normal">
                 tiendaOnlineSaludable reúne hoy más de 700 tiendas ecológicas con un objetivo común: desarrollar la agricultura ecológica con un espíritu de equidad y cooperación. 
                 Líder en distribución de alimentos ecológicos, tiendaOnlineSaludable se destaca por sus productos de comercio justo, su amplia variedad de eco-productos y cosméticos.
 
               </p>
               
-              <p className="text-lg md:text-xl font-normal">
+              <p className="text-base md:text-lg font-normal">
                 Más que una simple red de comerciantes, tiendaOnlineSaludable quiere influir en las decisiones sociales y compartir su proyecto con otros actores: empleados, consumidores, productores y socios.
               </p>
               
-              <p className="text-lg md:text-xl font-normal">
+              <p className="text-base md:text-lg font-normal">
                 Para difundir aún más su proyecto a los "consum'actores", tiendaOnlineSaludable busca emprendedores interesados en crear o tomar el control de una tienda, así como comerciantes ecológicos que deseen unirse a nuestra cooperativa.
               </p>
 
               <div className="bg-green-200 p-6 rounded-lg border-l-4 border-green-700">
-                <p className="font-medium text-green-900 text-lg md:text-xl">
+                <p className="text-base md:text-lg font-normal">
                   Si deseas comerciar de una manera diferente, únete a la primera red cooperativa de tiendas ecológicas y justas en Francia.
                 </p>
             </div>
@@ -40,9 +40,9 @@ export default function TrabajaConNosotros() {
 
 
       <section className="mb-16">
-        <div className="bg-green-50 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-green-300">
+        <div className="bg-green-50 rounded-2xl p-8 shadow-md border border-green-200">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-green-700 text-center">
-            3 RAZONES PARA UNIRTE A tiendaOnlineSaludable
+            3 Razones para unirte a tiendaOnlineSaludable
           </h2>
 
           <div className="space-y-8">
@@ -78,9 +78,9 @@ export default function TrabajaConNosotros() {
       </section>
 
       <section className="mb-16">
-        <div className="bg-green-50 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-green-300">
+        <div className="bg-green-50 rounded-2xl p-8 shadow-md border border-green-200">
           <h2 className="text-3xl md:text-4xl font-bold mb-8 text-green-700 text-center">
-              TIENDAONLINESALUDABLE EN CIFRAS
+              tiendaOnlineSaludable en cifras
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -118,9 +118,9 @@ export default function TrabajaConNosotros() {
       </section>
 
       <section className="mb-16">
-          <div className="bg-green-50 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-green-300">
+          <div className="bg-green-50 rounded-2xl p-8 shadow-md border border-green-200">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-green-700 text-center">
-              UN ACOMPAÑAMIENTO ADAPTADO A TU PROYECTO
+              Un acompañamiento integral para tu proyecto
             </h2>
             <div className="bg-green-100 p-6 rounded-lg border-l-4 border-green-700 mb-8">
               <p className="text-green-800 text-lg leading-relaxed">

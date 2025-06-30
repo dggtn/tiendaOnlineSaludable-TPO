@@ -6,7 +6,7 @@ export default function Politicas() {
       <div className="max-w-6xl mx-auto px-6 py-12">
           <div className="px-8 pb-12 text-center">
             <h1 className="text-4xl font-bold text-green-800 mb-4">
-              Condiciones Generales de Venta y Uso del Sitio
+              Politica de privacidad del Sitio
             </h1>
             <p className="text-green-700 text-lg max-w-2xl mx-auto">
               TiendaOnlineSaludable
