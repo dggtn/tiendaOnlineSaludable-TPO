@@ -1,16 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCategorias } from "../redux/categoriasSlice";
+import { fetchCategorias, updateCategoria } from "../redux/categoriasSlice";
 import { store } from "../redux/store";
 
 export default function TablaCategorias() {
   const dispatch = store.dispatch;
-  const { items: categorias, loading } = useSelector((state) => state.categorias);
-  const { accessToken } = useSelector((state) => state.auth);
+
+  // @ts-ignore
+  const categoriasState = useSelector((state) => state.categorias);
+  // @ts-ignore
+  const authState = useSelector((state) => state.auth);
+  const categorias = categoriasState.items || [];
+  const loading = categoriasState.loading;
+  const accessToken = authState && authState.accessToken;
+  const [editId, setEditId] = useState(null);
+  const [editNombre, setEditNombre] = useState("");
 
   useEffect(() => {
     dispatch(fetchCategorias(accessToken));
   }, [dispatch]);
+
+  const handleEdit = (categoria) => {
+    setEditId(categoria.id);
+    setEditNombre(categoria.descripcion);
+  };
+
+  const handleCancel = () => {
+    setEditId(null);
+    setEditNombre("");
+  };
+
+  const handleSave = (id) => {
+    if (editNombre.trim() !== "") {
+      dispatch(updateCategoria({ id, descripcion: editNombre, token: accessToken }))
+        .then(() => {
+          dispatch(fetchCategorias(accessToken));
+        });
+      setEditId(null);
+      setEditNombre("");
+    }
+  };
 
   return (
     <main className="flex-grow p-8 flex justify-center">
@@ -27,6 +56,7 @@ export default function TablaCategorias() {
                 <tr>
                   <th className="px-6 py-3 text-brown-400">ID</th>
                   <th className="px-6 py-3 text-brown-400">Nombre</th>
+                  <th className="px-6 py-3 text-brown-400">Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -37,7 +67,43 @@ export default function TablaCategorias() {
                       className="border-b border-brown-200 dark:border-brown-700 bg-brown-100"
                     >
                       <td className="px-6 py-3">{categoria.id}</td>
-                      <td className="px-6 py-3">{categoria.descripcion}</td>
+                      <td className="px-6 py-3">
+                        {editId === categoria.id ? (
+                          <input
+                            type="text"
+                            value={editNombre}
+                            onChange={(e) => setEditNombre(e.target.value)}
+                            className="border rounded px-2 py-1"
+                          />
+                        ) : (
+                          categoria.descripcion
+                        )}
+                      </td>
+                      <td className="px-6 py-3">
+                        {editId === categoria.id ? (
+                          <>
+                            <button
+                              className="bg-green-500 text-white px-2 py-1 rounded mr-2"
+                              onClick={() => handleSave(categoria.id)}
+                            >
+                              Guardar
+                            </button>
+                            <button
+                              className="bg-gray-400 text-white px-2 py-1 rounded"
+                              onClick={handleCancel}
+                            >
+                              Cancelar
+                            </button>
+                          </>
+                        ) : (
+                          <button
+                            className="bg-blue-500 text-white px-2 py-1 rounded"
+                            onClick={() => handleEdit(categoria)}
+                          >
+                            Editar
+                          </button>
+                        )}
+                      </td>
                     </tr>
                   ))}
               </tbody>
