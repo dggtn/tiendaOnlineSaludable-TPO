@@ -18,33 +18,33 @@ export default function Contactanos() {
 
           <div className="space-y-8">
 
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <div className="bg-green-50 rounded-2xl p-6 shadow-lg">
               <h2 className="text-2xl font-semibold text-green-800 mb-6">
                 Información de contacto
               </h2>
               <div className="space-y-4">
-                <div className="p-3 bg-brown-50 rounded-xl">
+                <div className="p-3 bg-green-100 rounded-xl border-l-4 border-green-400">
                   <span className="font-semibold text-green-800">Email:</span>
-                  <p className="text-gray-700">contacto@tiendaonlinesaludable.com</p>
+                  <p className="text-green-800">contacto@tiendaonlinesaludable.com</p>
                 </div>
-                <div className="p-3 bg-brown-50 rounded-xl">
+                <div className="p-3 bg-green-100 rounded-xl border-l-4 border-green-400">
                   <span className="font-semibold text-green-800">Teléfono:</span>
-                  <p className="text-gray-700">+54 11 1234-5678</p>
+                  <p className="text-green-800">+54 11 1234-5678</p>
                 </div>
-                <div className="p-3 bg-brown-50 rounded-xl">
+                <div className="p-3 bg-green-100 rounded-xl border-l-4 border-green-400">
                   <span className="font-semibold text-green-800">Dirección:</span>
-                  <p className="text-gray-700">Av. Rivarola 123, CABA, Argentina</p>
+                  <p className="text-green-800">Av. Rivarola 123, CABA, Argentina</p>
                 </div>
               </div>
             </div>
 
 
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <div className="bg-green-50 rounded-2xl p-6 shadow-lg">
               <h2 className="text-2xl font-semibold text-green-800 mb-4">
                 Horario de atención
               </h2>
-              <div className="p-4 bg-green-50 rounded-xl border-l-4 border-green-600">
-                <p className="text-gray-800 font-medium">Lunes a Viernes de 9:00 a 18:00 hs</p>
+              <div className="p-3 bg-green-100 rounded-xl border-l-4 border-green-400">
+                <p className="text-green-800 font-medium">Lunes a Viernes de 9:00 a 18:00 hs</p>
               </div>
             </div>
           </div>
@@ -52,18 +52,18 @@ export default function Contactanos() {
 
           <div className="space-y-8">
 
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
+            <div className="bg-green-50 rounded-2xl p-6 shadow-lg">
               <h2 className="text-2xl font-semibold text-green-800 mb-6">
                 Redes sociales
               </h2>
               <div className="space-y-4">
-                <div className="p-3 bg-brown-50 rounded-xl">
+                <div className="p-3 bg-green-100 rounded-xl border-l-4 border-green-400">
                   <span className="font-semibold text-green-800">Instagram:</span>
-                  <p className="text-gray-700">@tiendaonline</p>
+                  <p className="text-green-800">@tiendaonline</p>
                 </div>
-                <div className="p-3 bg-brown-50 rounded-xl">
+                <div className="p-3 bg-green-100 rounded-xl border-l-4 border-green-400">
                   <span className="font-semibold text-green-800">Facebook:</span>
-                  <p className="text-gray-700">/tiendaonline</p>
+                  <p className="text-green-800">/tiendaonline</p>
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function Contactanos() {
                 <h3 className="text-xl font-semibold text-green-800 mb-3">
                   ¡Estamos aquí para ayudarte!
                 </h3>
-                <p className="text-gray-700">
+                <p className="text-green-800">
                   Nuestro equipo está comprometido en brindarte la mejor atención y resolver todas tus dudas sobre productos saludables.
                 </p>
               </div>

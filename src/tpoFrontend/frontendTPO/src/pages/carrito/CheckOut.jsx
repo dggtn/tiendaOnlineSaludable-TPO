@@ -103,7 +103,7 @@ export default function checkOut({ setCheckOut }) {
               <span className="sr-only">Close modal</span>
             </button>
             <div className="py-6 px-6 lg:px-8">
-              <h3 className="mb-4 text-xl  lime-gray-900 text-green-600 font-bold">
+              <h3 className="mb-4 text-xl  lime-gray-900 text-brown-400 font-bold">
                 <i className="bi bi-credit-card mr-2"></i>Sólo aceptamos pago
                 con tarjeta
               </h3>
@@ -111,7 +111,7 @@ export default function checkOut({ setCheckOut }) {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-green-600 "
+                    className="block mb-2 text-sm font-medium text-brown-400 font-bold"
                   >
                     Nombre:
                   </label>
@@ -123,13 +123,13 @@ export default function checkOut({ setCheckOut }) {
                     type="text"
                     name="name"
                     id="name"
-                    className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
+                    className="bg-gray-50 border border-gray-300 text-brown-500 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium  text-green-600"
+                    className="block mb-2 text-sm font-medium text-brown-400 font-bold"
                   >
                     Email:
                   </label>
@@ -141,15 +141,15 @@ export default function checkOut({ setCheckOut }) {
                     type="text"
                     name="email"
                     id="email"
-                    className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
+                    className="bg-gray-50 border border-gray-300 text-brown-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="card"
-                    className="block mb-2 text-sm font-medium  text-green-600 "
+                    className="block mb-2 text-sm font-medium  text-brown-400 font-bold "
                   >
-                    # Tarjeta:
+                    Tarjeta:
                   </label>
                   <input
                     onChange={(e) =>
@@ -159,13 +159,13 @@ export default function checkOut({ setCheckOut }) {
                     type="number"
                     name="card"
                     id="card"
-                    className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
+                    className="bg-gray-50 border border-gray-300 text-brown-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
                 <div className="">
                   <label
                     htmlFor="code"
-                    className="   text-green-600 block mb-2 text-sm font-medium "
+                    className="   text-brown-400 font-bold block mb-2 text-sm font-medium "
                   >
                     Fecha expiración:
                   </label>
@@ -177,7 +177,7 @@ export default function checkOut({ setCheckOut }) {
                     type="number"
                     name="month"
                     id="month"
-                    className="inline-block   w-20 bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
+                    className="w-20 bg-gray-50 border border-gray-300 text-brown-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                   <input
                     onChange={(e) =>
@@ -187,13 +187,13 @@ export default function checkOut({ setCheckOut }) {
                     type="number"
                     name="year"
                     id="year"
-                    className=" w-20 ml-3 bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
+                    className="w-20 bg-gray-50 border border-gray-300 text-brown-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="code"
-                    className="block mb-2 text-sm font-medium text-green-600 dark:text-gray-300 gap-3"
+                    className="block mb-2 text-sm font-medium text-brown-400 font-bold dark:text-gray-300 gap-3"
                   >
                     Código de seguridad:
                   </label>
@@ -205,10 +205,10 @@ export default function checkOut({ setCheckOut }) {
                     type="number"
                     name="code"
                     id="code"
-                    className="bg-gray-50 border border-gray-300 text-green-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
+                    className="bg-gray-50 border border-gray-300 text-brown-600 text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:value-gray-400 dark:text-lime-700"
                   />
                 </div>
-                <p className="mb-4 text-2xl font-semibold text-green-600 text-center">
+                <p className="mb-4 text-2xl font-semibold text-brown-600 text-center">
                   Total: $ {total}
                 </p>
                 <button
