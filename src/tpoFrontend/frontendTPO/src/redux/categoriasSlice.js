@@ -42,30 +42,6 @@ export const createCategoria = createAsyncThunk(
   }
 );
 
-export const updateCategoria = createAsyncThunk(
-  "categoria/updateCategoria",
-  /**
-   * @param {{id: number, descripcion: string, token: string}} payload
-   */
-  async (payload) => {
-    if (!payload || !payload.id || !payload.descripcion || !payload.token) {
-      throw new Error("Faltan datos para actualizar la categoría");
-    }
-    const { id, descripcion, token } = payload;
-    const { data } = await axios.put(
-      `${URL}/${id}`,
-      { descripcion },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return data;
-  }
-);
-
 const categoriasSlice = createSlice({
   name: "categorias",
   initialState: {
@@ -100,23 +76,6 @@ const categoriasSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(updateCategoria.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(updateCategoria.fulfilled, (state, action) => {
-        state.loading = false;
-        // Actualiza la categoría en el array
-        const idx = state.items.findIndex((cat) => cat.id === action.payload.id);
-        if (idx !== -1) {
-          state.items[idx] = action.payload;
-        }
-      })
-      .addCase(updateCategoria.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
   },
 });
-
 export default categoriasSlice.reducer;
