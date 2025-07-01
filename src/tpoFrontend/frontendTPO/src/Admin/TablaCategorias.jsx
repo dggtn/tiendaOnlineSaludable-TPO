@@ -97,7 +97,7 @@ export default function TablaCategorias() {
                           </>
                         ) : (
                           <button
-                            className="bg-blue-500 text-white px-2 py-1 rounded"
+                            className="bg-green-500 text-white px-2 py-1 rounded"
                             onClick={() => handleEdit(categoria)}
                           >
                             Editar
