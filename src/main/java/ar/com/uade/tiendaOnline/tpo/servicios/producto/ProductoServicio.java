@@ -47,7 +47,12 @@ public class ProductoServicio implements IProductoServicio {
 
     @Transactional(rollbackFor = Throwable.class)
     public void crearProducto(Producto producto) {
-
+        if (producto.getPrecio() <= 0) {
+            throw new IllegalArgumentException("El precio debe ser mayor a 0.");
+        }
+        if (producto.getCantidad() < 0) {
+            throw new IllegalArgumentException("La cantidad (stock) no puede ser negativa.");
+        }
         productoRepositorio.save(producto);
     }
 

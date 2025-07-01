@@ -33,6 +33,18 @@ export default function CrearProductoForm() {
       });
       return;
     }
+    if (isNaN(Number(precio)) || Number(precio) <= 0) {
+      toast.warn("El precio debe ser mayor a 0.", {
+        position: "top-center",
+      });
+      return;
+    }
+    if (isNaN(Number(cantidad)) || Number(cantidad) < 0) {
+      toast.warn("La cantidad (stock) no puede ser negativa.", {
+        position: "top-center",
+      });
+      return;
+    }
     const argumentos = {
       newProducto: {
         nombre,
