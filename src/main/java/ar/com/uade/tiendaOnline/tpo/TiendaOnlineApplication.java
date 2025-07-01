@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class TiendaOnlineApplication {
-	@Autowired
+	// @Autowired
 	public static void main(String[] args) {
 
 		SpringApplication.run(TiendaOnlineApplication.class, args);
