@@ -5,7 +5,7 @@ export default function Contactanos() {
     <main className="bg-green-100 min-h-screen py-8">
       <div className="max-w-4xl mx-auto px-4">
 
-        <div className="px-8 pt-3 pb-12 text-center">
+        <div className="px-8 pt-10 pb-12 text-center">
           <h1 className="text-4xl font-bold text-green-800 mb-4">
             Contáctanos
           </h1>
