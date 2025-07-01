@@ -47,7 +47,7 @@ export const ListaProductosAdmin = () => {
     const [descripcion, setDescripcion] = useState(productoEditar.descripcion);
     const [cantidad, setCantidad] = useState(productoEditar.cantidad);
     const [categoria, setCategoria] = useState(productoEditar.categoria);
-    const [precio, setPrecio] = useState(productoEditar.categoria);
+    const [precio, setPrecio] = useState(productoEditar.precio);
     const [imagenFile, setImagenFile] = useState(null);
 
     async function handleGuardar(e) {
