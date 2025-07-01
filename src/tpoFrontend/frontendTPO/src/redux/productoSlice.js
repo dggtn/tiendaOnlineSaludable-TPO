@@ -7,7 +7,7 @@ export const fetchProductos = createAsyncThunk(
   "productos/fetchProductos",
   async (queryParam) => {
     let url = URL;
-    let buscar = null;
+    let buscar;
 
     if (queryParam) {
       const categoria = queryParam.get("categoria");
